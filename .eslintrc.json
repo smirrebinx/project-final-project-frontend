@@ -42,7 +42,7 @@
         "allowSingleLine": true
       }
     ],
-  "linebreak-style":[
+     "linebreak-style":[
       "off",
       "unix"
     ],
