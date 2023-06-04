@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import user, { loginSuccess } from 'reducers/user';
-import { API_URL } from '../utils/utils';
+import { API_URL } from '../utils/urls';
 
 const OuterWrapper = styled.div`
   display: flex;

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link, Route } from 'react-router-dom';
 import user from 'reducers/user';
-import { API_URL } from '../utils/utils';
+import { API_URL } from '../utils/urls';
+import Login from './Login';
 import WelcomePage from './WelcomePage';
 import UserInfo from './UserInfo';
 
@@ -10,7 +11,6 @@ const Main = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     if (!accessToken) {
@@ -27,13 +27,19 @@ const Main = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.userinfo) {
-            setUserInfo(data.userinfo);
+            // Handle successful user info retrieval
+            console.log('User info:', data.userinfo);
+            // You can update the state or perform any other necessary actions here
           } else {
-            setUserInfo('Failed to fetch user info');
+            // Handle case when user info is not available
+            console.log('Failed to fetch user info');
+            // You can update the state or perform any other necessary actions here
           }
         })
         .catch((error) => {
-          console.log('User info fetch error', error);
+          // Handle fetch error
+          console.log('User info fetch error:', error);
+          // You can update the state or perform any other necessary actions here
         });
     }
   }, [accessToken, navigate]);
@@ -50,37 +56,21 @@ const Main = () => {
     navigate('/login');
   };
 
-  if (!accessToken) {
-    return (
-      <section>
-        <div className="form-container">
-          <h1>Welcome page</h1>
-          <div className="button-container">
-            <button
-              className="logout-button"
-              type="button"
-              onClick={logOutButton}>
-              Log out
-            </button>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section>
       <div className="form-container">
-        <UserInfo />
         <div className="button-container">
-          <button
-            className="logout-button"
-            type="button"
-            onClick={logOutButton}>
+          <button className="logout-button" type="button" onClick={logOutButton}>
             Log out
           </button>
         </div>
       </div>
+      <WelcomePage />
+      <Link to="/userinfo">
+        <button type="button">Go to UserInfo</button>
+      </Link>
+      <Route path="/userinfo" element={<UserInfo />} />
+      <Route path="/login" element={<Login />} />
     </section>
   );
 };
