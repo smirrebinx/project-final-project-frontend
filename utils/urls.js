@@ -1,0 +1,1 @@
+export const API_URL = process.env.FINAL_PROJECT_API_KEY
