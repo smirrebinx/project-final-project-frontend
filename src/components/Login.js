@@ -68,7 +68,7 @@ const Login = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [mobilePhone, setMobilePhone] = useState('');
+  const [mobilePhone, setMobilePhone] = useState(0);
   const [password, setPassword] = useState('');
   const [mode, setMode] = useState('login');
   const dispatch = useDispatch();
@@ -91,7 +91,9 @@ const Login = () => {
       body: JSON.stringify({ firstName, lastName, email, mobilePhone, password })
     };
 
-    fetch(API_URL, options)
+    const url = mode === 'register' ? '/register' : '/login';
+
+    fetch(API_URL + url, options)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
