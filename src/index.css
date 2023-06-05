@@ -1,3 +1,11 @@
+:root {
+  --headings-font-family-one: "PT Sans Narrow", cursive;
+  --paragraph-font-family-one: "PT Sans Narrow", serif;
+  --second-headings-font-family-two: "Proxima Nova", cursive;
+  --paragraph-font-family-two: "Proxima Nova", serif;
+  --border-color-one: #5b604d;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
