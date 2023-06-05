@@ -65,7 +65,10 @@ const Wrapper = styled.div`
 `;
 
 const Login = () => {
-  const [username, setUsernameState] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobilePhone, setMobilePhone] = useState('');
   const [password, setPassword] = useState('');
   const [mode, setMode] = useState('login');
   const dispatch = useDispatch();
@@ -76,7 +79,7 @@ const Login = () => {
     if (userAccessToken) {
       navigate('/');
     }
-  }, [userAccessToken]);
+  }, [userAccessToken, navigate]);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -85,15 +88,15 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name: username, password })
+      body: JSON.stringify({ firstName, lastName, email, mobilePhone, password })
     };
 
-    fetch(API_URL(mode), options)
+    fetch(API_URL, options)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
           console.log(data);
-          const { firstName, lastName, id, accessToken } = data.response;
+          const { id, accessToken } = data.response;
           dispatch(loginSuccess({ firstName, lastName, id, accessToken }));
         } else {
           dispatch(user.actions.setAccessToken(null));
@@ -109,13 +112,38 @@ const Login = () => {
       <InnerWrapper>
         <FormWrapper>
           <form onSubmit={onFormSubmit}>
-            <label htmlFor="username">Username</label>
+            <label htmlFor="firstName">First Name</label>
             <input
               type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsernameState(e.target.value)}
-              aria-labelledby="username" />
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              aria-labelledby="firstName" />
+
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              aria-labelledby="lastName" />
+
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-labelledby="email" />
+
+            <label htmlFor="mobilePhone">Mobile Phone</label>
+            <input
+              type="text"
+              id="mobilePhone"
+              value={mobilePhone}
+              onChange={(e) => setMobilePhone(e.target.value)}
+              aria-labelledby="email" />
+
             <label htmlFor="password">Password</label>
             <input
               type="password"

@@ -3,15 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 const user = createSlice({
   name: 'user',
   initialState: {
-    username: null,
     userId: null,
     accessToken: null,
     error: null
   },
   reducers: {
-    setUsername: (store, action) => {
-      store.username = action.payload
-    },
     setUserId: (store, action) => {
       store.userId = action.payload
     },
@@ -22,8 +18,7 @@ const user = createSlice({
       store.error = action.payload
     },
     loginSuccess: (store, action) => {
-      const { firstName, lastName, id, accessToken } = action.payload;
-      store.username = `${firstName} ${lastName}`;
+      const { id, accessToken } = action.payload;
       store.userId = id;
       store.accessToken = accessToken;
       store.error = null;
@@ -31,5 +26,5 @@ const user = createSlice({
   }
 });
 
-export const { setUsername, setUserId, setAccessToken, setError, loginSuccess } = user.actions;
+export const { setUserId, setAccessToken, setError, loginSuccess } = user.actions;
 export default user;
