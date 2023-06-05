@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
-import { useNavigate, Link, Route } from 'react-router-dom';
+import { useNavigate, Link, BrowserRouter, Routes, Route } from 'react-router-dom';
 import user from 'reducers/user';
 import { API_URL } from '../utils/urls';
 import Login from './Login';
@@ -69,8 +69,12 @@ const Main = () => {
       <Link to="/userinfo">
         <button type="button">Go to UserInfo</button>
       </Link>
-      <Route path="/userinfo" element={<UserInfo />} />
-      <Route path="/login" element={<Login />} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/userinfo" element={<UserInfo />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </section>
   );
 };

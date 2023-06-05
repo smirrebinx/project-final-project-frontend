@@ -6,6 +6,6 @@ border: 10px solid var(--border-color-one);
 width: 70%;
 `
 
-export const secondHeader = styled.h2`
+export const SecondHeader = styled.h2`
 font-weight: 700;
 `
