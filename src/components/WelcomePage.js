@@ -1,14 +1,15 @@
 import React from 'react';
 import { ImageContainer, SecondHeader } from './WelcomePageStyling';
+import Header from './Header';
 
 const WelcomePage = () => {
   return (
-    <div>
-      <h1>Header</h1>
+    <>
+      <Header />
       <ImageContainer>
         <SecondHeader>Eco-Friendly</SecondHeader>
       </ImageContainer>
-    </div>
+    </>
   )
 };
 
