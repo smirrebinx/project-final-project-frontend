@@ -91,9 +91,9 @@ const Login = () => {
       body: JSON.stringify({ firstName, lastName, email, mobilePhone, password })
     };
 
-    const url = mode === 'register' ? '/register' : '/login';
+    const url = mode === 'register' ? API_URL('register') : API_URL('login');
 
-    fetch(API_URL + url, options)
+    fetch(url, options)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -102,7 +102,6 @@ const Login = () => {
           dispatch(loginSuccess({ firstName, lastName, id, accessToken }));
         } else {
           dispatch(user.actions.setAccessToken(null));
-          dispatch(user.actions.setUsername(null));
           dispatch(user.actions.setUserId(null));
           dispatch(user.actions.setError(data.response));
         }
