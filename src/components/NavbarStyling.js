@@ -12,6 +12,14 @@ export const Nav = styled.nav`
   padding: 0 2rem;
   z-index: 1;
   width: 100%;
+
+  @media screen and (max-width: 768px) {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: content-box;
+    margin: 0;
+    overflow-x: hidden;
+  }
 `;
 
 export const StickyNav = styled(Nav)`

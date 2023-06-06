@@ -7,11 +7,17 @@ margin: 2rem auto;
 border: 0.625rem solid var(--circle-border-color-one);
 border-radius: 50%;
 background-color: var(--background-color-one);
-max-width: 450px;
-height: 450px;
+max-width: 28.125rem;
+height: 28.125rem;
 text-align: center;
 justify-content: center;
 align-items: center;
+
+@media screen and (max-width: 768px) {
+    max-width: 17.375rem;
+    height: auto;
+    margin: 2rem auto;
+  }
 `
 export const StyledHeader = styled.h1`
 font-family: var(--headings-font-family-one);
