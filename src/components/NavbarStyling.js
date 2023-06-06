@@ -4,12 +4,6 @@ export const DesktopNavItems = styled.div`
 display:block;
 `;
 
-export const MobileQuery = styled(DesktopNavItems)`
- @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
 export const Nav = styled.nav`
   position: relative;
   background-color: var(--navbar-background-color-one);
@@ -47,19 +41,6 @@ export const NavItem = styled.a`
   }
   @media (max-width: 768px) {
     display: none;
-  }
-`;
-
-export const MobileNavIcon = styled.div`
-  display: none;
-
-  @media (max-width: 768px) {
-    display: block;
-    position: absolute;
-    font-size: 1.2rem;
-    color: #E3F7FC;
-    cursor: pointer;
-    margin-right: -14rem;
   }
 `;
 
