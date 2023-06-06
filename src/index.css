@@ -1,9 +1,11 @@
 :root {
-  --headings-font-family-one: "PT Sans Narrow", cursive;
-  --paragraph-font-family-one: "PT Sans Narrow", serif;
+  --headings-font-family-one: 'PT Sans Narrow', sans-serif;
+  --paragraph-font-family-one: 'PT Sans Narrow', sans-serif;
   --second-headings-font-family-two: "Proxima Nova", cursive;
   --paragraph-font-family-two: "Proxima Nova", serif;
-  --border-color-one: #5b604d;
+  --border-color-one: #5b604e;
+  --circle-border-color-one: #113125;
+  --background-color-one: #E2AE94;
 }
 
 body {
