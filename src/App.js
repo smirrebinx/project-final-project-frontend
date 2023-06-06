@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Main from 'components/Main'
-import Login from 'components/Login'
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import user from 'reducers/user';
+import WelcomePage from 'components/WelcomePage';
 
 const reducer = combineReducers({
   user: user.reducer
@@ -18,7 +18,7 @@ export const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<Main />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/welcome" element={<WelcomePage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
