@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, Link, Routes, Route } from 'react-router-dom';
+import { useNavigate, Routes, Route } from 'react-router-dom';
 import WelcomePage from './WelcomePage';
 import Login from './Login';
 
@@ -25,9 +25,6 @@ const Main = () => {
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-      <Link to="/login">
-        <button type="button">Go to Login</button>
-      </Link>
     </section>
   );
 };
