@@ -4,15 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import user, { loginSuccess } from 'reducers/user';
 import { API_URL } from '../utils/urls';
-import { SecondHeaderLogIn, FormWrapper, InnerWrapper, OuterWrapper, Wrapper, LineBeforeAndAfter } from './LoginStyling';
+import { SecondHeaderLogIn, FormWrapper, InnerWrapper, OuterWrapper, LineBeforeAndAfter } from './LoginStyling';
 
 const Login = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [mobilePhone, setMobilePhone] = useState(0);
+  const [mobilePhone, setMobilePhone] = useState('');
   const [password, setPassword] = useState('');
-  const [mode, setMode] = useState('login');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userAccessToken = useSelector((store) => store.user.accessToken);
@@ -23,8 +22,37 @@ const Login = () => {
     }
   }, [userAccessToken, navigate]);
 
-  const onFormSubmit = (event) => {
+  const onLoginFormSubmit = (event) => {
     event.preventDefault();
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    };
+
+    const url = API_URL('login');
+
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data);
+          const { id, accessToken } = data.response;
+          dispatch(loginSuccess({ email, id, accessToken }));
+        } else {
+          dispatch(user.actions.setAccessToken(null));
+          dispatch(user.actions.setUserId(null));
+          dispatch(user.actions.setError(data.response));
+        }
+      });
+  };
+
+  const onRegisterFormSubmit = (event) => {
+    event.preventDefault();
+
     const options = {
       method: 'POST',
       headers: {
@@ -33,7 +61,7 @@ const Login = () => {
       body: JSON.stringify({ firstName, lastName, email, mobilePhone, password })
     };
 
-    const url = mode === 'register' ? API_URL('register') : API_URL('login');
+    const url = API_URL('register');
 
     fetch(url, options)
       .then((response) => response.json())
@@ -41,7 +69,7 @@ const Login = () => {
         if (data.success) {
           console.log(data);
           const { id, accessToken } = data.response;
-          dispatch(loginSuccess({ firstName, lastName, id, accessToken }));
+          dispatch(loginSuccess({ email, id, accessToken }));
         } else {
           dispatch(user.actions.setAccessToken(null));
           dispatch(user.actions.setUserId(null));
@@ -54,9 +82,34 @@ const Login = () => {
     <OuterWrapper>
       <InnerWrapper>
         <FormWrapper>
+          <SecondHeaderLogIn>Log in</SecondHeaderLogIn>
+          <form onSubmit={onLoginFormSubmit}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-labelledby="email"
+              required />
+
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="off"
+              aria-labelledby="password"
+              required />
+
+            <button type="submit">Log in</button>
+          </form>
+
           <LineBeforeAndAfter>OR</LineBeforeAndAfter>
+
           <SecondHeaderLogIn>Fill in your information</SecondHeaderLogIn>
-          <form onSubmit={onFormSubmit}>
+          <form onSubmit={onRegisterFormSubmit}>
             <label htmlFor="firstName">First Name*</label>
             <input
               type="text"
@@ -102,25 +155,9 @@ const Login = () => {
               autoComplete="off"
               aria-labelledby="password"
               required />
-            <button type="submit">Complete Booking</button>
+            <button type="submit">Complete Registration</button>
           </form>
         </FormWrapper>
-        <Wrapper>
-          <label htmlFor="register">Register</label>
-          <input
-            type="radio"
-            id="register"
-            checked={mode === 'register'}
-            onChange={() => setMode('register')}
-            aria-labelledby="register" />
-          <label htmlFor="login">Login</label>
-          <input
-            type="radio"
-            id="login"
-            checked={mode === 'login'}
-            onChange={() => setMode('login')}
-            aria-labelledby="login" />
-        </Wrapper>
       </InnerWrapper>
     </OuterWrapper>
   );
@@ -128,4 +165,3 @@ const Login = () => {
 
 export const userReducer = Login.reducer;
 export default Login;
-

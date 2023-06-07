@@ -93,7 +93,7 @@ export const LineBeforeAndAfter = styled.span`
   &::after {
     content: '';
     position: absolute;
-    width: 18rem;
+    width: 16rem;
     height: 1px;
     background-color: var(--second-headings-font-color-two);
     top: 50%;
@@ -103,7 +103,7 @@ export const LineBeforeAndAfter = styled.span`
   &::before {
     right: 100%;
     margin-right: 10px; /* Adjust this value to control the distance between the line and the word */
-  }
+ }
 
   &::after {
     left: 100%;
