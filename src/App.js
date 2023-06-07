@@ -4,10 +4,12 @@ import Main from 'components/Main'
 import { Provider } from 'react-redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import user from 'reducers/user';
+import treatments from 'reducers/treatments';
 import WelcomePage from 'components/WelcomePage';
 
 const reducer = combineReducers({
-  user: user.reducer
+  user: user.reducer,
+  treatments: treatments.reducer
 })
 
 const store = configureStore({ reducer })
