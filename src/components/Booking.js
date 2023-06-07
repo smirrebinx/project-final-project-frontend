@@ -8,7 +8,7 @@ const Booking = () => {
 
   return (
     <CalendarContainer>
-      <Calendar onChange={onChange} value={value} />
+      <Calendar onChange={onChange} value={value} locale="en-GB" />
     </CalendarContainer>
   );
 }

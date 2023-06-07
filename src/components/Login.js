@@ -34,6 +34,7 @@ const Login = () => {
     };
 
     const url = API_URL('login');
+    console.log(url)
 
     fetch(url, options)
       .then((response) => response.json())
@@ -87,20 +88,20 @@ const Login = () => {
             <label htmlFor="email">Email</label>
             <input
               type="text"
-              id="email"
+              id="email-log-in"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              aria-labelledby="email"
+              aria-labelledby="email-log-in"
               required />
 
             <label htmlFor="password">Password</label>
             <input
               type="password"
-              id="password"
+              id="password-log-in"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="off"
-              aria-labelledby="password"
+              aria-labelledby="password-log-in"
               required />
 
             <button type="submit">Log in</button>
@@ -140,20 +141,20 @@ const Login = () => {
             <label htmlFor="email">Email*</label>
             <input
               type="text"
-              id="email"
+              id="email-register"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              aria-labelledby="email"
+              aria-labelledby="email-register"
               required />
 
             <label htmlFor="password">Password*</label>
             <input
               type="password"
-              id="password"
+              id="password-register"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="off"
-              aria-labelledby="password"
+              aria-labelledby="password-register"
               required />
             <button type="submit">Complete Registration</button>
           </form>
