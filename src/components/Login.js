@@ -1,68 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import user, { loginSuccess } from 'reducers/user';
 import { API_URL } from '../utils/urls';
-
-const OuterWrapper = styled.div`
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  justify-content: center;
-  text-align: center;
-`;
-
-const InnerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  border: 1px solid #94b1aa;
-  box-shadow: 4px 4px 8px #94b1aa;
-  padding: 10px;
-  margin: 120px;
-`;
-
-const FormWrapper = styled.div`
-  form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 30vw;
-    height: auto;
-    padding: 20px;
-  }
-  input {
-    display: flex;
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
-    width: 200px;
-    cursor: pointer;
-  }
-  button {
-    background-color: #568b7f;
-    border: none;
-    border-radius: 20px;
-    color: #fff;
-    padding: 10px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px 2px;
-    cursor: pointer;
-  }
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
+import { SecondHeaderLogIn, FormWrapper, InnerWrapper, OuterWrapper, Wrapper, LineBeforeAndAfter } from './LoginStyling';
 
 const Login = () => {
   const [firstName, setFirstName] = useState('');
@@ -112,49 +54,55 @@ const Login = () => {
     <OuterWrapper>
       <InnerWrapper>
         <FormWrapper>
+          <LineBeforeAndAfter>OR</LineBeforeAndAfter>
+          <SecondHeaderLogIn>Fill in your information</SecondHeaderLogIn>
           <form onSubmit={onFormSubmit}>
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName">First Name*</label>
             <input
               type="text"
               id="firstName"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              aria-labelledby="firstName" />
+              aria-labelledby="firstName"
+              required />
 
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name*</label>
             <input
               type="text"
               id="lastName"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              aria-labelledby="lastName" />
+              aria-labelledby="lastName"
+              required />
 
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              aria-labelledby="email" />
-
-            <label htmlFor="mobilePhone">Mobile Phone</label>
+            <label htmlFor="mobilePhone">Mobile Phone*</label>
             <input
               type="text"
               id="mobilePhone"
               value={mobilePhone}
               onChange={(e) => setMobilePhone(e.target.value)}
-              aria-labelledby="email" />
+              aria-labelledby="mobilePhone"
+              required />
 
-            <label htmlFor="password">Password</label>
+            <label htmlFor="email">Email*</label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-labelledby="email"
+              required />
+
+            <label htmlFor="password">Password*</label>
             <input
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
               autoComplete="off"
-              aria-labelledby="password" />
-            <button type="submit">Submit</button>
+              aria-labelledby="password"
+              required />
+            <button type="submit">Complete Booking</button>
           </form>
         </FormWrapper>
         <Wrapper>

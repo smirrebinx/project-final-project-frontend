@@ -1,14 +1,17 @@
 :root {
   --headings-font-family-one: 'PT Sans Narrow', sans-serif;
   --paragraph-font-family-one: 'PT Sans Narrow', sans-serif;
-  --second-headings-font-family-two: "Proxima Nova", cursive;
-  --paragraph-font-family-two: "Proxima Nova", serif;
   --border-color-one: #5b604e;
   --circle-border-color-one: #113125;
   --background-color-one: #E2AE94;
   --navbar-background-color-one: #697865;
   --navbar-color-one:#ffffff; 
   --navbar-button-color-one: #5b604d;
+
+  --second-headings-font-family-two: "Proxima Nova", cursive;
+  --paragraph-font-family-two: "Proxima Nova", serif;
+  --second-headings-font-color-two: #227d85;
+  --submit-button-color-two: #2E868B;
 }
 
 body {
