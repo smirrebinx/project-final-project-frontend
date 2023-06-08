@@ -1,6 +1,9 @@
-import React from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setItems } from 'reducers/treatments';
 import { Card, CardContainer, StyledSecondHeadingCards } from './CardStyling';
-// import treatments from 'reducers/treatments';
+import { API_URL } from '../utils/urls';
 // GET treatments from backend /treatments
 
 // POST click on treatment
@@ -8,19 +11,35 @@ import { Card, CardContainer, StyledSecondHeadingCards } from './CardStyling';
 // reducer treatments useState, map
 
 const Cards = () => {
-  const cardData = [
-    { icon: 'icon1.png', text: 'Cut' },
-    { icon: 'icon1.png', text: 'Wash' },
-    { icon: 'icon1.png', text: 'Cut & Wash' },
-    { icon: 'icon1.png', text: 'Styling' }
-  ];
+  const dispatch = useDispatch();
+  const treatments = useSelector((state) => state.treatments.items);
+
+  const url = API_URL('treatments');
+
+  useEffect(() => {
+    const fetchTreatments = async () => {
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          dispatch(setItems(data.treatments));
+        } else {
+          throw new Error('Failed to fetch treatments');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchTreatments();
+  }, [dispatch, url]);
 
   return (
     <CardContainer>
-      {cardData.map((card) => (
-        <Card key={card.id}>
-          <img src={card.icon} alt="Card Icon" />
-          <StyledSecondHeadingCards> {card.text}</StyledSecondHeadingCards>
+      {treatments.map((treatment) => (
+        <Card key={treatment._id}>
+          <img src={treatment.icon} alt="Card Icon" />
+          <StyledSecondHeadingCards> {treatment.text}</StyledSecondHeadingCards>
         </Card>
       ))}
     </CardContainer>
