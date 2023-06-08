@@ -34,7 +34,6 @@ const Login = () => {
     };
 
     const url = API_URL('login');
-    console.log(url)
 
     fetch(url, options)
       .then((response) => response.json())
