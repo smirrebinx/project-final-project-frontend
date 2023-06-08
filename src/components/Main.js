@@ -3,6 +3,7 @@ import { useNavigate, Routes, Route } from 'react-router-dom';
 import WelcomePage from './WelcomePage';
 import Login from './Login';
 import Booking from './Booking';
+import Cards from './Cards';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const Main = () => {
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/calendar" element={<Booking />} />
+        <Route path="/cards" element={<Cards />} />
       </Routes>
     </section>
   );
