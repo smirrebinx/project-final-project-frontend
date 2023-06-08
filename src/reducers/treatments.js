@@ -9,7 +9,7 @@ const treatments = createSlice({
   },
   reducers: {
     setItems: (store, action) => {
-      store.items = [...store.items, ...action.payload];
+      store.items = [... store.items, ... action.payload];
     },
     setTreatmentType: (store, action) => {
       store.treatmentType = action.payload
