@@ -1,14 +1,10 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from 'reducers/treatments';
 import { Card, CardContainer, StyledSecondHeadingCards } from './CardStyling';
 import { API_URL } from '../utils/urls';
-// GET treatments from backend /treatments
-
-// POST click on treatment
-
-// reducer treatments useState, map
 
 const Cards = () => {
   const dispatch = useDispatch();
@@ -39,11 +35,11 @@ const Cards = () => {
       {treatments.map((treatment) => (
         <Card key={treatment._id}>
           <img src={treatment.icon} alt="Card Icon" />
-          <StyledSecondHeadingCards> {treatment.text}</StyledSecondHeadingCards>
+          <StyledSecondHeadingCards>{treatment.cut || treatment.wash || treatment.cutAndWash || treatment.styling}</StyledSecondHeadingCards>
         </Card>
       ))}
     </CardContainer>
-  )
-}
+  );
+};
 
 export default Cards;
