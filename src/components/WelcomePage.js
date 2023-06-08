@@ -11,7 +11,7 @@ const WelcomePage = () => {
     <>
       <StickyNav ref={stickyRef} className={classNames({ sticky })}>
         <StyledLinkWrapper className="styled-link-wrapper">
-          <Link to="/login">
+          <Link to="/cards">
             <LogInButton>Book Treament</LogInButton>
           </Link>
         </StyledLinkWrapper>
