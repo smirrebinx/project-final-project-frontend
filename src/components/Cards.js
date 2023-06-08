@@ -10,8 +10,8 @@ import { Card, CardContainer, StyledSecondHeadingCards } from './CardStyling';
 const Cards = () => {
   const cardData = [
     { icon: 'icon1.png', text: 'Cut' },
-    { icon: 'icon1.png', text: 'Cut & Wash' },
     { icon: 'icon1.png', text: 'Wash' },
+    { icon: 'icon1.png', text: 'Cut & Wash' },
     { icon: 'icon1.png', text: 'Styling' }
   ];
 
