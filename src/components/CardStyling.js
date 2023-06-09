@@ -8,6 +8,8 @@ grid-gap: 2px;
 @media (min-width: 1024px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 10px;
+    width: 70%;
+    margin: 0 auto;
 }
 `;
 
@@ -34,4 +36,5 @@ font-weight: 600;
 font-size: 1rem;
 color: #4e585a;
 margin-top: 10px;
+text-decoration: none;
 `

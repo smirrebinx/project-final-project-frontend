@@ -42,7 +42,7 @@ const Cards = () => {
     <CardContainer>
       {treatments.map((treatment) => (
         <Card key={treatment._id}>
-          <Link to={`/booking?treatmentId=${treatment._id}`}>
+          <Link to={`/booking?treatmentId=${treatment._id}`} style={{ textDecoration: 'none' }}>
             <img src={treatment.icon} alt="Card Icon" />
             <StyledSecondHeadingCards>
               {treatment.cut || treatment.wash || treatment.cutAndWash || treatment.styling}
