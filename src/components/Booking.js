@@ -1,33 +1,29 @@
-// import React, { useState } from 'react';
-// import Calendar from 'react-calendar'
-// import 'react-calendar/dist/Calendar.css';
-// import { CalendarContainer } from './BookingStyling';
-
-// const Booking = () => {
-//   const [value, onChange] = useState(new Date());
-
-//   return (
-//     <CalendarContainer>
-//       <Calendar onChange={onChange} value={value} locale="en-GB" />
-//     </CalendarContainer>
-//   );
-// }
-
-// export default Booking;
-
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-
-import 'react-datepicker/dist/react-datepicker.css';
-
-// CSS Modules, react-datepicker-cssmodules.css
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { setPickedDate } from 'reducers/calendarBooking';
+import { CalendarContainer } from './BookingStyling';
 
 const Booking = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const dispatch = useDispatch();
+  const pickedDate = useSelector((store) => store.calendarBooking.pickedDate);
+  const userAccessToken = useSelector((store) => store.user.accessToken);
+
+  const handleDateChange = (date) => {
+    dispatch(setPickedDate(date));
+  };
+
+  useEffect(() => {
+    if (!userAccessToken) {
+      window.location.href = '/login';
+    }
+  }, [userAccessToken]);
+
   return (
-    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-    // <DatePicker selected={date} onChange={handleDateChange} showTimeSelect dateFormat="Pp" />
+    <CalendarContainer>
+      <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" />
+    </CalendarContainer>
   );
 };
 
