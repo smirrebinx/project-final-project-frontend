@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
@@ -36,27 +37,28 @@ const Cards = () => {
     fetchTreatments();
   }, [dispatch, url]);
 
-  const handleTreatmentClick = (treatment) => {
-    setSelectedTreatment(treatment);
-    setIsTreatmentSelected(true);
-  };
+const handleTreatmentClick = (treatmentId) => {
+  const clickedTreatment = treatments.find((t) => t._id === treatmentId);
+  setSelectedTreatment(clickedTreatment);
+  setIsTreatmentSelected(true);
+};
 
   if (isLoading) {
     return <Loading />; // Render the Loading component while loading
   }
 
-  if (isTreatmentSelected && selectedTreatment) {
-    const SelectedTreatmentText = treatments.find((treatment) => treatment._id === selectedTreatment._id).text;
-    return <div>{SelectedTreatmentText}</div>; // Display the selected treatment text
-  }
+if (isTreatmentSelected && selectedTreatment) {
+  const selectedTreatmentText = selectedTreatment.text;
+  return <div>{selectedTreatmentText} Information</div>; // Display the selected treatment text
+}
 
   return (
     <CardContainer>
       {treatments.map((treatment) => (
-        <Card key={treatment._id} onClick={() => handleTreatmentClick(treatment)}>
+       <Card key={treatment._id} onClick={() => handleTreatmentClick(treatment._id)}>
           <img src={treatment.icon} alt="Card Icon" />
           <StyledSecondHeadingCards>{treatment.cut || treatment.wash || treatment.cutAndWash || treatment.styling}</StyledSecondHeadingCards>
-        </Card>
+       </Card>
       ))}
     </CardContainer>
   );
