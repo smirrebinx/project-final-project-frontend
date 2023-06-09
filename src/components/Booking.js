@@ -3,7 +3,7 @@ import React, { useEffect, createContext, useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { CalendarContainer } from './BookingStyling';
+import { CalendarContainer, StyledHeaderBooking, StyledParagraphBooking } from './BookingStyling';
 
 // Create a new context for the picked date
 const PickedDateContext = createContext();
@@ -27,11 +27,11 @@ const Booking = () => {
   const renderMessage = () => {
     return (
       <>
-        <h1>Calendar</h1>
+        <StyledHeaderBooking>Calendar</StyledHeaderBooking>
         {userAccessToken ? (
-          <p>Pick a treatment date</p>
+          <StyledParagraphBooking>Pick a treatment date</StyledParagraphBooking>
         ) : (
-          <p>You will be redirected to another page to log in or register before you can pick a treatment date.</p>
+          <StyledParagraphBooking>You will be redirected to another page to log in or register before you can pick a treatment date.</StyledParagraphBooking>
         )}
       </>
     );
