@@ -28,6 +28,7 @@ const Main = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/calendar" element={<Booking />} />
         <Route path="/cards" element={<Cards />} />
+        <Route path="/booking" element={<Booking />} />
       </Routes>
     </section>
   );
