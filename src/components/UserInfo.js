@@ -1,15 +1,15 @@
-/* eslint-disable max-len */
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { usePickedDate } from './Booking';
 
 const UserInfo = () => {
-  const pickedDate = useSelector((state) => state.yourReduxSlice.pickedDate); // Replace 'yourReduxSlice' with the actual name of your Redux slice
+  const pickedDate = usePickedDate();
+
+  // Use the pickedDate value in the component
 
   return (
     <div>
-      <h2>Summary Page</h2>
-      <p>Picked Date: {pickedDate.toString()}</p>
-      {/* Add more content as needed */}
+      <h1>User Information</h1>
+      <p>Picked Date: {pickedDate}</p>
     </div>
   );
 };

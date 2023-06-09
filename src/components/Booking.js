@@ -1,30 +1,54 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+/* eslint-disable max-len */
+import React, { useEffect, createContext, useContext, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { setPickedDate } from 'reducers/calendarBooking';
 import { CalendarContainer } from './BookingStyling';
 
+// Create a new context for the picked date
+const PickedDateContext = createContext();
+
 const Booking = () => {
-  const dispatch = useDispatch();
-  const pickedDate = useSelector((store) => store.calendarBooking.pickedDate);
+  const [pickedDate, setPickedDate] = useState(new Date());
   const userAccessToken = useSelector((store) => store.user.accessToken);
 
   const handleDateChange = (date) => {
-    dispatch(setPickedDate(date));
+    setPickedDate(date);
   };
 
   useEffect(() => {
     if (!userAccessToken) {
-      window.location.href = '/login';
+      setTimeout(() => {
+        window.location.href = '/login';
+      }, 6000); // Wait for 6 seconds before redirecting to /login
     }
   }, [userAccessToken]);
 
+  const renderMessage = () => {
+    return (
+      <>
+        <h1>Calendar</h1>
+        {userAccessToken ? (
+          <p>Pick a treatment date</p>
+        ) : (
+          <p>You will be redirected to another page to log in or register before you can pick a treatment date</p>
+        )}
+      </>
+    );
+  };
+
   return (
     <CalendarContainer>
-      <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" />
+      {renderMessage()}
+      <PickedDateContext.Provider value={pickedDate}>
+        <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" />
+      </PickedDateContext.Provider>
     </CalendarContainer>
   );
 };
 
+// A custom hook to access the picked date from any component
+const usePickedDate = () => useContext(PickedDateContext);
+
 export default Booking;
+export { usePickedDate };
