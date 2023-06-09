@@ -31,7 +31,7 @@ const Booking = () => {
         {userAccessToken ? (
           <p>Pick a treatment date</p>
         ) : (
-          <p>You will be redirected to another page to log in or register before you can pick a treatment date</p>
+          <p>You will be redirected to another page to log in or register before you can pick a treatment date.</p>
         )}
       </>
     );
