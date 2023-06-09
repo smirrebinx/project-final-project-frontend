@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from 'reducers/treatments';
+import { Link } from 'react-router-dom';
 import { Card, CardContainer, StyledSecondHeadingCards } from './CardStyling';
 import { API_URL } from '../utils/urls';
 import Loading from './Loading';
@@ -23,14 +24,14 @@ const Cards = () => {
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
-          dispatch(setItems(data.treatments));
+          dispatch(setItems(data.treatments)); // Update the action call
         } else {
           throw new Error('Failed to fetch treatments');
         }
       } catch (error) {
         console.error(error);
       } finally {
-        setIsLoading(false); // Update loading state when finished
+        setIsLoading(false);
       }
     };
 
@@ -41,6 +42,7 @@ const handleTreatmentClick = (treatmentId) => {
   const clickedTreatment = treatments.find((t) => t._id === treatmentId);
   setSelectedTreatment(clickedTreatment);
   setIsTreatmentSelected(true);
+  console.log(clickedTreatment);
 };
 
   if (isLoading) {
@@ -52,16 +54,20 @@ if (isTreatmentSelected && selectedTreatment) {
   return <div>{selectedTreatmentText} Information</div>; // Display the selected treatment text
 }
 
-  return (
-    <CardContainer>
-      {treatments.map((treatment) => (
-       <Card key={treatment._id} onClick={() => handleTreatmentClick(treatment._id)}>
+return (
+  <CardContainer>
+    {treatments.map((treatment) => (
+      <Card key={treatment._id}>
+        <Link to="/booking" onClick={() => handleTreatmentClick(treatment._id)}>
           <img src={treatment.icon} alt="Card Icon" />
-          <StyledSecondHeadingCards>{treatment.cut || treatment.wash || treatment.cutAndWash || treatment.styling}</StyledSecondHeadingCards>
-       </Card>
-      ))}
-    </CardContainer>
-  );
+          <StyledSecondHeadingCards>
+            {treatment.cut || treatment.wash || treatment.cutAndWash || treatment.styling}
+          </StyledSecondHeadingCards>
+        </Link>
+      </Card>
+    ))}
+  </CardContainer>
+);
 };
 
 export default Cards;
