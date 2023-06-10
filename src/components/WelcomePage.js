@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Header from './Header';
 import useSticky from './useSticky';
 import { GoToTreatmentButton, StickyNav, StyledLinkWrapper } from './NavbarStyling';
+import Footer from './Footer';
 
 const WelcomePage = () => {
   const { sticky, stickyRef } = useSticky();
@@ -17,6 +18,7 @@ const WelcomePage = () => {
         </StyledLinkWrapper>
       </StickyNav>
       <Header />
+      <Footer />
     </>
 
   )

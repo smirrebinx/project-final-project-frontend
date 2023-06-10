@@ -8,6 +8,7 @@ import { API_URL } from '../utils/urls';
 import Loading from './Loading';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
+import Footer from './Footer';
 
 const Cards = () => {
   const { stickyRef } = useSticky();
@@ -58,6 +59,7 @@ const Cards = () => {
           </Card>
         ))}
       </CardContainer>
+      <Footer />
     </>
   );
 };
