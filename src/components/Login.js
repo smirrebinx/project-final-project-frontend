@@ -15,6 +15,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userAccessToken = useSelector((store) => store.user.accessToken);
+  const [isLoginForm, setIsLoginForm] = useState(null); // Initialize as null
 
   useEffect(() => {
     if (userAccessToken) {
@@ -25,57 +26,67 @@ const Login = () => {
   const onLoginFormSubmit = (event) => {
     event.preventDefault();
 
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    };
+    setIsLoginForm(true); // Update isLoginForm when login form is submitted
 
-    const url = API_URL('login');
+    // Check if it's the login form
+    if (isLoginForm) {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      };
 
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          console.log(data);
-          const { id, accessToken } = data.response;
-          dispatch(loginSuccess({ email, id, accessToken }));
-        } else {
-          dispatch(user.actions.setAccessToken(null));
-          dispatch(user.actions.setUserId(null));
-          dispatch(user.actions.setError(data.response));
-        }
-      });
+      const url = API_URL('login');
+
+      fetch(url, options)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            console.log(data);
+            const { id, accessToken } = data.response;
+            dispatch(loginSuccess({ email, id, accessToken }));
+          } else {
+            dispatch(user.actions.setAccessToken(null));
+            dispatch(user.actions.setUserId(null));
+            dispatch(user.actions.setError(data.response));
+          }
+        });
+    }
   };
 
   const onRegisterFormSubmit = (event) => {
     event.preventDefault();
 
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ firstName, lastName, email, mobilePhone, password })
-    };
+    setIsLoginForm(false); // Update isLoginForm when registration form is submitted
 
-    const url = API_URL('register');
+    // Check if it's the registration form
+    if (!isLoginForm) {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ firstName, lastName, email, mobilePhone, password })
+      };
 
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          console.log(data);
-          const { id, accessToken } = data.response;
-          dispatch(loginSuccess({ email, id, accessToken }));
-        } else {
-          dispatch(user.actions.setAccessToken(null));
-          dispatch(user.actions.setUserId(null));
-          dispatch(user.actions.setError(data.response));
-        }
-      });
+      const url = API_URL('register');
+
+      fetch(url, options)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            console.log(data);
+            const { id, accessToken } = data.response;
+            dispatch(loginSuccess({ email, id, accessToken }));
+          } else {
+            dispatch(user.actions.setAccessToken(null));
+            dispatch(user.actions.setUserId(null));
+            dispatch(user.actions.setError(data.response));
+          }
+        });
+    }
   };
 
   return (
@@ -163,5 +174,4 @@ const Login = () => {
   );
 };
 
-export const userReducer = Login.reducer;
 export default Login;
