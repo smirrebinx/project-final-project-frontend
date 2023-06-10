@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Header from './Header';
 import useSticky from './useSticky';
-import { LogInButton, StickyNav, StyledLinkWrapper } from './NavbarStyling';
+import { GoToTreatmentButton, StickyNav, StyledLinkWrapper } from './NavbarStyling';
 
 const WelcomePage = () => {
   const { sticky, stickyRef } = useSticky();
@@ -12,7 +12,7 @@ const WelcomePage = () => {
       <StickyNav ref={stickyRef} className={classNames({ sticky })}>
         <StyledLinkWrapper className="styled-link-wrapper">
           <Link to="/cards">
-            <LogInButton>Book Treatment</LogInButton>
+            <GoToTreatmentButton>Book Treatment</GoToTreatmentButton>
           </Link>
         </StyledLinkWrapper>
       </StickyNav>

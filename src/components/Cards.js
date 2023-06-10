@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 import { Card, CardContainer, StyledSecondHeadingCards } from './CardStyling';
 import { API_URL } from '../utils/urls';
 import Loading from './Loading';
+import useSticky from './useSticky';
+import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 
 const Cards = () => {
+  const { stickyRef } = useSticky();
   const dispatch = useDispatch();
   const treatments = useSelector((state) => state.treatments.items);
   const [isLoading, setIsLoading] = useState(true); // New loading state
@@ -39,18 +42,23 @@ const Cards = () => {
   }
 
   return (
-    <CardContainer>
-      {treatments.map((treatment) => (
-        <Card key={treatment._id}>
-          <Link to={`/booking?treatmentId=${treatment._id}`} style={{ textDecoration: 'none' }}>
-            <img src={treatment.icon} alt="Card Icon" />
-            <StyledSecondHeadingCards>
-              {treatment.cut || treatment.wash || treatment.cutAndWash || treatment.styling}
-            </StyledSecondHeadingCards>
-          </Link>
-        </Card>
-      ))}
-    </CardContainer>
+    <>
+      <StickyNavTwo ref={stickyRef}>
+        <StyledNavHeaderTwo>What Would You Like to Do?</StyledNavHeaderTwo>
+      </StickyNavTwo>
+      <CardContainer>
+        {treatments.map((treatment) => (
+          <Card key={treatment._id}>
+            <Link to={`/booking?treatmentId=${treatment._id}`} style={{ textDecoration: 'none' }}>
+              <img src={treatment.icon} alt="Card Icon" />
+              <StyledSecondHeadingCards>
+                {treatment.cut || treatment.wash || treatment.cutAndWash || treatment.styling}
+              </StyledSecondHeadingCards>
+            </Link>
+          </Card>
+        ))}
+      </CardContainer>
+    </>
   );
 };
 
