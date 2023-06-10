@@ -6,7 +6,7 @@ export const OuterWrapper = styled.div`
   width: 100%;
   justify-content: center;
   text-align: center;
-  /* border: solid black; */
+  margin-top: 6rem;
 `;
 
 export const InnerWrapper = styled.div`
@@ -14,7 +14,6 @@ export const InnerWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  /* border: solid green; */
 `;
 
 export const FormWrapper = styled.div`
@@ -26,7 +25,7 @@ export const FormWrapper = styled.div`
     width: 30vw;
     height: auto;
     padding: 20px;
-    /* border: solid blue; */
+
   }
   input {
     display: flex;
@@ -65,7 +64,6 @@ export const Wrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* border: solid red; */
 `;
 
 export const SecondHeaderLogIn = styled.h2`

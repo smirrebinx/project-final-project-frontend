@@ -6,8 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import user, { loginSuccess } from 'reducers/user';
 import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, InnerWrapper, OuterWrapper, LineBeforeAndAfter } from './LoginStyling';
+import useSticky from './useSticky';
+import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 
 const Login = () => {
+  const { stickyRef } = useSticky();
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -93,87 +96,92 @@ const Login = () => {
   };
 
   return (
-    <OuterWrapper>
-      <InnerWrapper>
-        <FormWrapper>
-          <SecondHeaderLogIn>Log in</SecondHeaderLogIn>
-          <form onSubmit={onLoginFormSubmit}>
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="email-log-in"
-              value={loginEmail}
-              onChange={(e) => setLoginEmail(e.target.value)}
-              aria-labelledby="email-log-in"
-              required />
+    <>
+      <StickyNavTwo ref={stickyRef}>
+        <StyledNavHeaderTwo>Log In or Register</StyledNavHeaderTwo>
+      </StickyNavTwo>
+      <OuterWrapper>
+        <InnerWrapper>
+          <FormWrapper>
+            <SecondHeaderLogIn>Log in</SecondHeaderLogIn>
+            <form onSubmit={onLoginFormSubmit}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                id="email-log-in"
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
+                aria-labelledby="email-log-in"
+                required />
 
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password-log-in"
-              value={loginPassword}
-              onChange={(e) => setLoginPassword(e.target.value)}
-              autoComplete="off"
-              aria-labelledby="password-log-in"
-              required />
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password-log-in"
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                autoComplete="off"
+                aria-labelledby="password-log-in"
+                required />
 
-            <button type="submit">Log in</button>
-          </form>
+              <button type="submit">Log in</button>
+            </form>
 
-          <LineBeforeAndAfter>OR</LineBeforeAndAfter>
+            <LineBeforeAndAfter>OR</LineBeforeAndAfter>
 
-          <SecondHeaderLogIn>Fill in your information</SecondHeaderLogIn>
-          <form onSubmit={onRegisterFormSubmit}>
-            <label htmlFor="firstName">First Name*</label>
-            <input
-              type="text"
-              id="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              aria-labelledby="firstName"
-              required />
+            <SecondHeaderLogIn>Fill in your information</SecondHeaderLogIn>
+            <form onSubmit={onRegisterFormSubmit}>
+              <label htmlFor="firstName">First Name*</label>
+              <input
+                type="text"
+                id="firstName"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                aria-labelledby="firstName"
+                required />
 
-            <label htmlFor="lastName">Last Name*</label>
-            <input
-              type="text"
-              id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              aria-labelledby="lastName"
-              required />
+              <label htmlFor="lastName">Last Name*</label>
+              <input
+                type="text"
+                id="lastName"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                aria-labelledby="lastName"
+                required />
 
-            <label htmlFor="mobilePhone">Mobile Phone*</label>
-            <input
-              type="text"
-              id="mobilePhone"
-              value={mobilePhone}
-              onChange={(e) => setMobilePhone(e.target.value)}
-              aria-labelledby="mobilePhone"
-              required />
+              <label htmlFor="mobilePhone">Mobile Phone*</label>
+              <input
+                type="text"
+                id="mobilePhone"
+                value={mobilePhone}
+                onChange={(e) => setMobilePhone(e.target.value)}
+                aria-labelledby="mobilePhone"
+                required />
 
-            <label htmlFor="registerEmail">Email*</label>
-            <input
-              type="text"
-              id="email-register"
-              value={registerEmail}
-              onChange={(e) => setRegisterEmail(e.target.value)}
-              aria-labelledby="email-register"
-              required />
+              <label htmlFor="registerEmail">Email*</label>
+              <input
+                type="text"
+                id="email-register"
+                value={registerEmail}
+                onChange={(e) => setRegisterEmail(e.target.value)}
+                aria-labelledby="email-register"
+                required />
 
-            <label htmlFor="registerPassword">Password*</label>
-            <input
-              type="password"
-              id="password-register"
-              value={registerPassword}
-              onChange={(e) => setRegisterPassword(e.target.value)}
-              autoComplete="off"
-              aria-labelledby="password-register"
-              required />
-            <button type="submit">Complete Registration</button>
-          </form>
-        </FormWrapper>
-      </InnerWrapper>
-    </OuterWrapper>
+              <label htmlFor="registerPassword">Password*</label>
+              <input
+                type="password"
+                id="password-register"
+                value={registerPassword}
+                onChange={(e) => setRegisterPassword(e.target.value)}
+                autoComplete="off"
+                aria-labelledby="password-register"
+                required />
+              <button type="submit">Complete Registration</button>
+            </form>
+          </FormWrapper>
+        </InnerWrapper>
+      </OuterWrapper>
+    </>
   );
 };
 
