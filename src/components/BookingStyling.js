@@ -25,15 +25,9 @@ export const CalendarContainer = styled.div`
     }
 `;
 
-export const StyledHeaderBooking = styled.h1`
+export const StyledParagraphBooking = styled.h2`
   font-weight: 600;
-  font-family: var(--headings-font-color-two);
-  text-align: center;
-`;
-
-export const StyledParagraphBooking = styled.h1`
-  font-weight: 400;
-  font-family: var(--paragraph-font-color-two);
   text-align: center;
   font-size: 1rem;
+  color: var(--second-headings-font-color-two);
 `;

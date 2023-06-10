@@ -3,12 +3,15 @@ import React, { useEffect, createContext, useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { CalendarContainer, StyledHeaderBooking, StyledParagraphBooking } from './BookingStyling';
+import { CalendarContainer, StyledParagraphBooking } from './BookingStyling';
+import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
+import useSticky from './useSticky';
 
 // Create a new context for the picked date
 const PickedDateContext = createContext();
 
 const Booking = () => {
+  const { stickyRef } = useSticky();
   const [pickedDate, setPickedDate] = useState(new Date());
   const userAccessToken = useSelector((store) => store.user.accessToken);
 
@@ -26,14 +29,19 @@ const Booking = () => {
 
   const renderMessage = () => {
     return (
-      <>
-        <StyledHeaderBooking>Calendar</StyledHeaderBooking>
-        {userAccessToken ? (
-          <StyledParagraphBooking>Pick a treatment date</StyledParagraphBooking>
-        ) : (
-          <StyledParagraphBooking>You will be redirected to another page to log in or register before you can pick a treatment date.</StyledParagraphBooking>
+      <div>
+        <StickyNavTwo ref={stickyRef}>
+          <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
+        </StickyNavTwo>
+        {!userAccessToken && (
+          <div>
+            <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
+            <StyledParagraphBooking>
+            You will be redirected to the log in/register page in a few seconds.
+            </StyledParagraphBooking>
+          </div>
         )}
-      </>
+      </div>
     );
   };
 
