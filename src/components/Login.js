@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,11 +8,13 @@ import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, InnerWrapper, OuterWrapper, LineBeforeAndAfter } from './LoginStyling';
 
 const Login = () => {
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
+  const [registerEmail, setRegisterEmail] = useState('');
   const [mobilePhone, setMobilePhone] = useState('');
-  const [password, setPassword] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userAccessToken = useSelector((store) => store.user.accessToken);
@@ -35,7 +38,7 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email: loginEmail, password: loginPassword })
       };
 
       const url = API_URL('login');
@@ -46,7 +49,7 @@ const Login = () => {
           if (data.success) {
             console.log(data);
             const { id, accessToken } = data.response;
-            dispatch(loginSuccess({ email, id, accessToken }));
+            dispatch(loginSuccess({ email: loginEmail, id, accessToken }));
           } else {
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setUserId(null));
@@ -68,7 +71,7 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ firstName, lastName, email, mobilePhone, password })
+        body: JSON.stringify({ firstName, lastName, email: registerEmail, mobilePhone, password: registerPassword })
       };
 
       const url = API_URL('register');
@@ -79,7 +82,7 @@ const Login = () => {
           if (data.success) {
             console.log(data);
             const { id, accessToken } = data.response;
-            dispatch(loginSuccess({ email, id, accessToken }));
+            dispatch(loginSuccess({ email: registerEmail, id, accessToken }));
           } else {
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setUserId(null));
@@ -99,8 +102,8 @@ const Login = () => {
             <input
               type="text"
               id="email-log-in"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={loginEmail}
+              onChange={(e) => setLoginEmail(e.target.value)}
               aria-labelledby="email-log-in"
               required />
 
@@ -108,8 +111,8 @@ const Login = () => {
             <input
               type="password"
               id="password-log-in"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={loginPassword}
+              onChange={(e) => setLoginPassword(e.target.value)}
               autoComplete="off"
               aria-labelledby="password-log-in"
               required />
@@ -148,21 +151,21 @@ const Login = () => {
               aria-labelledby="mobilePhone"
               required />
 
-            <label htmlFor="email">Email*</label>
+            <label htmlFor="registerEmail">Email*</label>
             <input
               type="text"
               id="email-register"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={registerEmail}
+              onChange={(e) => setRegisterEmail(e.target.value)}
               aria-labelledby="email-register"
               required />
 
-            <label htmlFor="password">Password*</label>
+            <label htmlFor="registerPassword">Password*</label>
             <input
               type="password"
               id="password-register"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={registerPassword}
+              onChange={(e) => setRegisterPassword(e.target.value)}
               autoComplete="off"
               aria-labelledby="password-register"
               required />
