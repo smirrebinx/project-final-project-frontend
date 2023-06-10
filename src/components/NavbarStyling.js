@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const DesktopNavItems = styled.div`
-display:block;
-`;
-
 export const Nav = styled.nav`
   position: relative;
   z-index: 1;
