@@ -100,13 +100,11 @@ export const StyledNavHeaderTwo = styled.h1`
   font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: 0.05em;
-  margin-top: 0; 
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-  @media (min-width: 1024px) {
+  /* @media (min-width: 1024px) {
    text-align: left;
-}
+} */
 `;
