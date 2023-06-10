@@ -23,6 +23,7 @@ export const StyledHeader = styled.h1`
 font-family: var(--headings-font-family-one);
 font-weight: 600;
 font-size: 4.875rem;
+letter-spacing: 0.05em;
 text-transform: uppercase;
 margin: 1.25rem;
 color: var(--circle-border-color-one);
@@ -30,6 +31,7 @@ color: var(--circle-border-color-one);
 export const StyledSecondHeader = styled.h2`
 font-weight: 400;
 font-size: 1.5rem;
+letter-spacing: 0.05em;
 font-family:var(--paragraph-font-family-one);
 text-transform: uppercase;
 margin: 1.5rem;
