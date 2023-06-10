@@ -4,6 +4,7 @@ import WelcomePage from './WelcomePage';
 import Login from './Login';
 import Booking from './Booking';
 import Cards from './Cards';
+import UserInfo from './UserInfo';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const Main = () => {
         <Route path="/calendar" element={<Booking />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/userinfo" element={<UserInfo />} />
       </Routes>
     </section>
   );
