@@ -7,6 +7,7 @@ export const OuterWrapper = styled.div`
   justify-content: center;
   text-align: center;
   margin-top: 6rem;
+  margin-bottom: 2rem;
 `;
 
 export const InnerWrapper = styled.div`

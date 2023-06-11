@@ -8,6 +8,7 @@ import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, InnerWrapper, OuterWrapper, LineBeforeAndAfter } from './LoginStyling';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
+import Footer from './Footer';
 
 const Login = () => {
   const { stickyRef } = useSticky();
@@ -181,6 +182,7 @@ const Login = () => {
           </FormWrapper>
         </InnerWrapper>
       </OuterWrapper>
+      <Footer />
     </>
   );
 };

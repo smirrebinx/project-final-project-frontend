@@ -6,6 +6,7 @@ import 'react-calendar/dist/Calendar.css';
 import { CalendarContainer, StyledParagraphBooking } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
+import Footer from './Footer';
 
 // Create a new context for the picked date
 const PickedDateContext = createContext();
@@ -46,12 +47,15 @@ const Booking = () => {
   };
 
   return (
-    <CalendarContainer>
-      {renderMessage()}
-      <PickedDateContext.Provider value={pickedDate}>
-        <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" />
-      </PickedDateContext.Provider>
-    </CalendarContainer>
+    <>
+      <CalendarContainer>
+        {renderMessage()}
+        <PickedDateContext.Provider value={pickedDate}>
+          <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" />
+        </PickedDateContext.Provider>
+      </CalendarContainer>
+      <Footer />
+    </>
   );
 };
 

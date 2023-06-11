@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePickedDate } from './Booking';
+import Footer from './Footer';
 
 const UserInfo = () => {
   const pickedDate = usePickedDate();
@@ -7,10 +8,12 @@ const UserInfo = () => {
   // Use the pickedDate value in the component
 
   return (
-    <div>
-      <h1>User Information</h1>
-      <p>Picked Date: {pickedDate}</p>
-    </div>
+    <>
+      <div>
+        <h1>User Information</h1>
+        <p>Picked Date: {pickedDate}</p>
+      </div><Footer />
+    </>
   );
 };
 
