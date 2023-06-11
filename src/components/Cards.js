@@ -51,6 +51,7 @@ const Cards = () => {
 
   // Find the selected treatment object
   const selectedTreatment = treatments.find((treatment) => treatment._id === selectedTreatmentId);
+  console.log('Selected Treatment:', selectedTreatment);
 
   return (
     <>

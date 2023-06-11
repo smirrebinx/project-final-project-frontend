@@ -9,8 +9,8 @@ import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import Footer from './Footer';
-import { InnerWrapper, OuterWrapper } from './GlobalStyling';
+// import Footer from './Footer';
+import { InnerWrapper, OuterWrapper, StyledLink } from './GlobalStyling';
 
 const Login = () => {
   const { sticky, stickyRef } = useSticky();
@@ -186,9 +186,26 @@ const Login = () => {
               <button type="submit">Complete Registration</button>
             </form>
           </FormWrapper>
+          {/* Display the message and links if the user is logged in or has registered */}
+          {userAccessToken || !isLoginForm ? (
+            <div>
+              <p>You are logged in! Choose an option:</p>
+              <ul>
+                <li>
+                  <StyledLink to="/treatments">Go to Treatments to choose Treatment</StyledLink>
+                </li>
+                <li>
+                  <StyledLink to="/booking">Go to Booking to pick a date</StyledLink>
+                </li>
+                <li>
+                  <StyledLink to="/userinfo">Go to User Information to see your booked treatment</StyledLink>
+                </li>
+              </ul>
+            </div>
+          ) : null}
         </InnerWrapper>
       </OuterWrapper>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

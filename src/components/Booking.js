@@ -22,6 +22,7 @@ const Booking = ({ location }) => {
 
   const handleDateChange = (date) => {
     setPickedDate(date);
+    console.log('Picked Date:', date);
   };
 
   return (
