@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 import user, { loginSuccess } from 'reducers/user';
 import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
@@ -12,7 +13,7 @@ import Footer from './Footer';
 import { InnerWrapper, OuterWrapper } from './GlobalStyling';
 
 const Login = () => {
-  const { stickyRef } = useSticky();
+  const { sticky, stickyRef } = useSticky();
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -99,7 +100,7 @@ const Login = () => {
 
   return (
     <>
-      <StickyNavTwo ref={stickyRef}>
+      <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>Log In or Register</StyledNavHeaderTwo>
       </StickyNavTwo>
       <OuterWrapper>

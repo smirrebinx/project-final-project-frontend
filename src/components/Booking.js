@@ -3,6 +3,7 @@ import React, { useEffect, createContext, useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import classNames from 'classnames';
 import { CalendarContainer, StyledParagraphBooking } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
@@ -12,7 +13,7 @@ import Footer from './Footer';
 const PickedDateContext = createContext();
 
 const Booking = () => {
-  const { stickyRef } = useSticky();
+  const { sticky, stickyRef } = useSticky();
   const [pickedDate, setPickedDate] = useState(new Date());
   const userAccessToken = useSelector((store) => store.user.accessToken);
 
@@ -31,7 +32,7 @@ const Booking = () => {
   const renderMessage = () => {
     return (
       <div>
-        <StickyNavTwo ref={stickyRef}>
+        <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
           <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
         </StickyNavTwo>
         {!userAccessToken && (

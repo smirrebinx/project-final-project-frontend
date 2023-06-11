@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from 'reducers/treatments';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { Card, CardContainer, StyledSecondHeadingCards } from './CardStyling';
 import { API_URL } from '../utils/urls';
 import Loading from './Loading';
@@ -11,7 +12,7 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import Footer from './Footer';
 
 const Cards = () => {
-  const { stickyRef } = useSticky();
+  const { sticky, stickyRef } = useSticky();
   const dispatch = useDispatch();
   const treatments = useSelector((state) => state.treatments.items);
   const [isLoading, setIsLoading] = useState(true); // New loading state
@@ -44,7 +45,7 @@ const Cards = () => {
 
   return (
     <>
-      <StickyNavTwo ref={stickyRef}>
+      <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>What Would You Like to Do?</StyledNavHeaderTwo>
       </StickyNavTwo>
       <CardContainer>
