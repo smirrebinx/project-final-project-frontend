@@ -1,10 +1,11 @@
 /* eslint-disable max-len */
-import React, { useEffect, createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import classNames from 'classnames';
-import { CalendarContainer, StyledParagraphBooking } from './BookingStyling';
+import { CalendarContainer } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
 import Footer from './Footer';
@@ -21,36 +22,19 @@ const Booking = () => {
     setPickedDate(date);
   };
 
-  useEffect(() => {
-    if (!userAccessToken) {
-      setTimeout(() => {
-        window.location.href = '/login';
-      }, 6000); // Wait for 6 seconds before redirecting to /login
-    }
-  }, [userAccessToken]);
-
-  const renderMessage = () => {
-    return (
-      <div>
+  return (
+    <>
+      <CalendarContainer>
         <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
           <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
         </StickyNavTwo>
         {!userAccessToken && (
           <div>
             <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
-            <StyledParagraphBooking>
-            You will be redirected to the log in/register page in a few seconds.
-            </StyledParagraphBooking>
+            <p>You need to log in to book a treatment.</p>
+            <Link to="/login">Log in</Link>
           </div>
         )}
-      </div>
-    );
-  };
-
-  return (
-    <>
-      <CalendarContainer>
-        {renderMessage()}
         <PickedDateContext.Provider value={pickedDate}>
           <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" />
         </PickedDateContext.Provider>
