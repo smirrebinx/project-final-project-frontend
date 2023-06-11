@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import user, { loginSuccess } from 'reducers/user';
 import { API_URL } from '../utils/urls';
-import { SecondHeaderLogIn, FormWrapper, InnerWrapper, OuterWrapper, LineBeforeAndAfter } from './LoginStyling';
+import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import Footer from './Footer';
+import { InnerWrapper, OuterWrapper } from './GlobalStyling';
 
 const Login = () => {
   const { stickyRef } = useSticky();
