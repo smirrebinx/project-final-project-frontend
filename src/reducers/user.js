@@ -11,6 +11,9 @@ const user = createSlice({
     setUserId: (store, action) => {
       store.userId = action.payload
     },
+    setEmail: (store, action) => {
+      store.email = action.payload
+    },
     setAccessToken: (store, action) => {
       store.accessToken = action.payload
     },
@@ -22,9 +25,15 @@ const user = createSlice({
       store.userId = id;
       store.accessToken = accessToken;
       store.error = null;
+    },
+    logout: (store) => {
+      store.userId = null;
+      store.email = null;
+      store.accessToken = null;
+      localStorage.removeItem('user');
     }
   }
 });
 
-export const { setUserId, setAccessToken, setError, loginSuccess } = user.actions;
+export const { setUserId, setAccessToken, setError, loginSuccess, logout } = user.actions;
 export default user;

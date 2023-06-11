@@ -40,7 +40,7 @@ const Booking = ({ location }) => {
         )}
         <PickedDateContext.Provider value={pickedDate}>
           <SelectedTreatmentIdContext.Provider value={selectedTreatmentId}>
-            <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" />
+            <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
           </SelectedTreatmentIdContext.Provider>
         </PickedDateContext.Provider>
       </CalendarContainer>

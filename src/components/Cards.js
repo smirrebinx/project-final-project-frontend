@@ -18,17 +18,20 @@ const Cards = () => {
   const dispatch = useDispatch();
   const treatments = useSelector((state) => state.treatments.items);
   const [isLoading, setIsLoading] = useState(true); // New loading state
+  const [treatmentItems, setTreatmentItems] = useState([]);
 
   const url = API_URL('treatments');
 
   useEffect(() => {
     const fetchTreatments = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(url); // Fetch treatments from the specified URL
         if (response.ok) {
           const data = await response.json(); // Extract the treatments data from the response
           console.log(data);
           dispatch(setItems(data.treatments)); // Update the state with the fetched treatments data
+          setTreatmentItems(data.treatments);
         } else {
           throw new Error('Failed to fetch treatments'); // Throw an error if the response is not OK
         }
@@ -37,7 +40,9 @@ const Cards = () => {
       } finally {
         setIsLoading(false); // Set the loading state to false, indicating the fetch process is complete
       }
+      setTreatmentItems([]);
     };
+    console.log(treatmentItems);
 
     fetchTreatments(); // Invoke the fetchTreatments function immediately after the component renders
   }, [dispatch, url]); // Re-run the effect if dispatch or url changes

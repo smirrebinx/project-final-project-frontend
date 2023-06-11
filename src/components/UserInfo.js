@@ -19,6 +19,7 @@ const UserInfo = () => {
   const mobilePhone = useSelector((state) => state.user.mobilePhone);
   const userAccessToken = useSelector((store) => store.user.accessToken);
   const bookedTreatments = useSelector((state) => state.user.bookedTreatments);
+  console.log(userAccessToken);
 
   return (
     <>

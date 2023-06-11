@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import user, { loginSuccess } from 'reducers/user';
 import { API_URL } from '../utils/urls';
@@ -22,15 +22,15 @@ const Login = () => {
   const [mobilePhone, setMobilePhone] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const userAccessToken = useSelector((store) => store.user.accessToken);
   const [isLoginForm, setIsLoginForm] = useState(null); // Initialize as null
 
-  useEffect(() => {
-    if (userAccessToken) {
-      navigate('/');
-    }
-  }, [userAccessToken, navigate]);
+  // useEffect(() => {
+  //   if (!userAccessToken) {
+  //     navigate('/');
+  //   }
+  // }, [userAccessToken, navigate]);
 
   const onLoginFormSubmit = (event) => {
     event.preventDefault();
@@ -57,6 +57,8 @@ const Login = () => {
             console.log('Login successful!');
             const { id, accessToken } = data.response;
             dispatch(loginSuccess({ email: loginEmail, id, accessToken }));
+            // dispatch(user.actions.setAccessToken(data.response.accessToken));
+            console.log(data.response);
           } else {
             console.log('Login failed:', data.response);
             dispatch(user.actions.setAccessToken(null));
@@ -92,6 +94,7 @@ const Login = () => {
             console.log('Registration successful!');
             const { id, accessToken } = data.response;
             dispatch(loginSuccess({ email: registerEmail, id, accessToken }));
+            alert('Your are registered, please log in.');
           } else {
             console.log('Registration failed:', data.response);
             dispatch(user.actions.setAccessToken(null));
@@ -187,7 +190,7 @@ const Login = () => {
             </form>
           </FormWrapper>
           {/* Display the message and links if the user is logged in or has registered */}
-          {userAccessToken || !isLoginForm ? (
+          {userAccessToken ? (
             <div>
               <p>You are logged in! Choose an option:</p>
               <ul>
