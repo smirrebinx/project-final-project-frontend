@@ -5,6 +5,7 @@ import Footer from './Footer';
 import useSticky from './useSticky';
 import { OuterWrapper } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
+import { FlexboxUserInfo, InnerWrapperUserInfo, ParagraphUserInfo, SecondHeaderUserInfo } from './UserInfoStyling';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
@@ -15,14 +16,23 @@ const UserInfo = () => {
   return (
     <>
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
-        <StyledNavHeaderTwo>Log In or Register</StyledNavHeaderTwo>
+        <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>
       </StickyNavTwo>
       <OuterWrapper>
-        <div>
-          <h1>User Information</h1>
-          <p>Picked Date: {pickedDate}</p>
-        </div><Footer />
+        <InnerWrapperUserInfo>
+          <SecondHeaderUserInfo>Your Contact Information</SecondHeaderUserInfo>
+          <ParagraphUserInfo>firstName</ParagraphUserInfo>
+          <ParagraphUserInfo>lastName</ParagraphUserInfo>
+          <ParagraphUserInfo>mobilePhone</ParagraphUserInfo>
+          <ParagraphUserInfo>registerEmail</ParagraphUserInfo>
+          <SecondHeaderUserInfo>Booked Treatments</SecondHeaderUserInfo>
+          <FlexboxUserInfo>
+            <ParagraphUserInfo>Picked Date: {pickedDate}</ParagraphUserInfo>
+            <ParagraphUserInfo>treatment</ParagraphUserInfo>
+          </FlexboxUserInfo>
+        </InnerWrapperUserInfo>
       </OuterWrapper>
+      <Footer />
     </>
   );
 };
