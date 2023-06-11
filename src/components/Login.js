@@ -192,7 +192,7 @@ const Login = () => {
               <p>You are logged in! Choose an option:</p>
               <ul>
                 <li>
-                  <StyledLink to="/treatments">Go to Treatments to choose Treatment</StyledLink>
+                  <StyledLink to="/cards">Go to Treatments to choose Treatment</StyledLink>
                 </li>
                 <li>
                   <StyledLink to="/booking">Go to Booking to pick a date</StyledLink>
