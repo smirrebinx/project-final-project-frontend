@@ -2,12 +2,11 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { usePickedDate } from './Booking';
 import Footer from './Footer';
 import useSticky from './useSticky';
-import { OuterWrapper } from './GlobalStyling';
+import { OuterWrapper, StyledLink } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { FlexboxUserInfo, InnerWrapperUserInfo, ParagraphUserInfo, SecondHeaderUserInfo } from './UserInfoStyling';
 
@@ -52,7 +51,7 @@ const UserInfo = () => {
           ) : (
             <div>
               <p>Please log in to see your user information and booked treatments.</p>
-              <Link to="/login">Log in</Link>
+              <StyledLink to="/login">Log in</StyledLink>
             </div>
           )}
         </InnerWrapperUserInfo>

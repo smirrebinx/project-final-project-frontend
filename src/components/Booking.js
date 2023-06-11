@@ -1,14 +1,14 @@
 /* eslint-disable max-len */
 import React, { createContext, useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import classNames from 'classnames';
-import { CalendarContainer } from './BookingStyling';
+import { CalendarContainer, StyledParagraphBooking } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
 import Footer from './Footer';
+import { StyledLink } from './GlobalStyling';
 
 // Create a new context for the picked date
 const PickedDateContext = createContext();
@@ -29,10 +29,10 @@ const Booking = () => {
           <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
         </StickyNavTwo>
         {!userAccessToken && (
-          <div>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
-            <p>You need to log in to book a treatment.</p>
-            <Link to="/login">Log in</Link>
+            <StyledParagraphBooking> You need to log in to book a treatment.</StyledParagraphBooking>
+            <StyledLink to="/login">Log in</StyledLink>
           </div>
         )}
         <PickedDateContext.Provider value={pickedDate}>

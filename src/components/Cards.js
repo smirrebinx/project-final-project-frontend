@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from 'reducers/treatments';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Card, CardContainer, StyledSecondHeadingCards } from './CardStyling';
 import { API_URL } from '../utils/urls';
@@ -10,6 +9,7 @@ import Loading from './Loading';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import Footer from './Footer';
+import { StyledLink } from './GlobalStyling';
 
 const Cards = () => {
   const { sticky, stickyRef } = useSticky();
@@ -51,18 +51,17 @@ const Cards = () => {
       <CardContainer>
         {treatments.map((treatment) => (
           <Card key={treatment._id}>
-            <Link
+            <StyledLink
               to={{
                 pathname: '/booking',
                 search: `?treatmentId=${treatment._id}`,
                 state: { treatmentId: treatment._id }
-              }}
-              style={{ textDecoration: 'none' }}>
+              }}>
               <img src={treatment.icon} alt="Card Icon" />
               <StyledSecondHeadingCards>
                 {treatment.cut || treatment.wash || treatment.cutAndWash || treatment.styling}
               </StyledSecondHeadingCards>
-            </Link>
+            </StyledLink>
           </Card>
         ))}
       </CardContainer>

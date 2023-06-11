@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const OuterWrapper = styled.div`
   display: flex;
@@ -15,4 +16,12 @@ export const InnerWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

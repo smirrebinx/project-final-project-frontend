@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const CalendarContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   max-width: 37.5rem;
   margin: auto;
   margin-top: 1.25rem;
@@ -25,9 +26,21 @@ export const CalendarContainer = styled.div`
     }
 `;
 
-export const StyledParagraphBooking = styled.h2`
+const glideInAnimation = keyframes`
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+export const StyledParagraphBooking = styled.p`
   font-weight: 600;
   text-align: center;
   font-size: 1rem;
   color: var(--second-headings-font-color-two);
+  animation: ${glideInAnimation} 1s forwards;
 `;
