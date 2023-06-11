@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +13,7 @@ import Footer from './Footer';
 import { StyledLink } from './GlobalStyling';
 
 const Cards = () => {
+  const [selectedTreatmentId, setSelectedTreatmentId] = useState(null); // State for selected treatment ID
   const { sticky, stickyRef } = useSticky();
   const dispatch = useDispatch();
   const treatments = useSelector((state) => state.treatments.items);
@@ -39,9 +41,16 @@ const Cards = () => {
     fetchTreatments();
   }, [dispatch, url]);
 
+  const handleTreatmentClick = (treatmentId) => {
+    setSelectedTreatmentId(treatmentId); // Set the selected treatment ID
+  };
+
   if (isLoading) {
     return <Loading />; // Render the Loading component while loading
   }
+
+  // Find the selected treatment object
+  const selectedTreatment = treatments.find((treatment) => treatment._id === selectedTreatmentId);
 
   return (
     <>
@@ -50,12 +59,14 @@ const Cards = () => {
       </StickyNavTwo>
       <CardContainer>
         {treatments.map((treatment) => (
-          <Card key={treatment._id}>
+          <Card
+            key={treatment._id}
+            onClick={() => handleTreatmentClick(treatment._id)}
+            className={classNames({ selected: treatment._id === selectedTreatmentId })}>
             <StyledLink
               to={{
                 pathname: '/booking',
-                search: `?treatmentId=${treatment._id}`,
-                state: { treatmentId: treatment._id }
+                state: { treatmentId: treatment._id } // Pass the treatment ID as state
               }}>
               <img src={treatment.icon} alt="Card Icon" />
               <StyledSecondHeadingCards>
@@ -65,6 +76,12 @@ const Cards = () => {
           </Card>
         ))}
       </CardContainer>
+      {selectedTreatment && (
+        <div>
+          <p>You have selected the {selectedTreatment.name} treatment.</p>
+          <StyledLink to="/booking">Go to booking</StyledLink>
+        </div>
+      )}
       <Footer />
     </>
   );

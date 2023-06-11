@@ -10,13 +10,15 @@ import useSticky from './useSticky';
 import Footer from './Footer';
 import { StyledLink } from './GlobalStyling';
 
-// Create a new context for the picked date
+// Create a new context for the picked date and selected treatment ID
 const PickedDateContext = createContext();
+const SelectedTreatmentIdContext = createContext();
 
-const Booking = () => {
+const Booking = ({ location }) => {
   const { sticky, stickyRef } = useSticky();
   const [pickedDate, setPickedDate] = useState(new Date());
   const userAccessToken = useSelector((store) => store.user.accessToken);
+  const selectedTreatmentId = location?.state?.treatmentId; // Get the selected treatment ID from location state
 
   const handleDateChange = (date) => {
     setPickedDate(date);
@@ -31,12 +33,14 @@ const Booking = () => {
         {!userAccessToken && (
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
-            <StyledParagraphBooking> You need to log in to book a treatment.</StyledParagraphBooking>
+            <StyledParagraphBooking> Please log in to book a treatment.</StyledParagraphBooking>
             <StyledLink to="/login">Log in</StyledLink>
           </div>
         )}
         <PickedDateContext.Provider value={pickedDate}>
-          <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" />
+          <SelectedTreatmentIdContext.Provider value={selectedTreatmentId}>
+            <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" />
+          </SelectedTreatmentIdContext.Provider>
         </PickedDateContext.Provider>
       </CalendarContainer>
       <Footer />
@@ -44,8 +48,9 @@ const Booking = () => {
   );
 };
 
-// A custom hook to access the picked date from any component
+// Custom hooks to access the picked date and selected treatment ID from any component
 const usePickedDate = () => useContext(PickedDateContext);
+const useSelectedTreatmentId = () => useContext(SelectedTreatmentIdContext);
 
 export default Booking;
-export { usePickedDate };
+export { usePickedDate, useSelectedTreatmentId };
