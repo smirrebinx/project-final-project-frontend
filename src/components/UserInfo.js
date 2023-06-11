@@ -1,4 +1,8 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable max-len */
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { usePickedDate } from './Booking';
 import Footer from './Footer';
@@ -10,8 +14,12 @@ import { FlexboxUserInfo, InnerWrapperUserInfo, ParagraphUserInfo, SecondHeaderU
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
   const pickedDate = usePickedDate();
-
-  // Use the pickedDate value in the component
+  const firstName = useSelector((state) => state.user.firstName);
+  const lastName = useSelector((state) => state.user.lastName);
+  const registerEmail = useSelector((state) => state.user.registerEmail);
+  const mobilePhone = useSelector((state) => state.user.mobilePhone);
+  const userAccessToken = useSelector((store) => store.user.accessToken);
+  const bookedTreatments = useSelector((state) => state.user.bookedTreatments);
 
   return (
     <>
@@ -20,16 +28,33 @@ const UserInfo = () => {
       </StickyNavTwo>
       <OuterWrapper>
         <InnerWrapperUserInfo>
-          <SecondHeaderUserInfo>Your Contact Information</SecondHeaderUserInfo>
-          <ParagraphUserInfo>firstName</ParagraphUserInfo>
-          <ParagraphUserInfo>lastName</ParagraphUserInfo>
-          <ParagraphUserInfo>mobilePhone</ParagraphUserInfo>
-          <ParagraphUserInfo>registerEmail</ParagraphUserInfo>
-          <SecondHeaderUserInfo>Booked Treatments</SecondHeaderUserInfo>
-          <FlexboxUserInfo>
-            <ParagraphUserInfo>Picked Date: {pickedDate}</ParagraphUserInfo>
-            <ParagraphUserInfo>treatment</ParagraphUserInfo>
-          </FlexboxUserInfo>
+          {userAccessToken ? (
+            <>
+              <SecondHeaderUserInfo>Your Contact Information</SecondHeaderUserInfo>
+              <ParagraphUserInfo>{firstName}</ParagraphUserInfo>
+              <ParagraphUserInfo>{lastName}</ParagraphUserInfo>
+              <ParagraphUserInfo>{mobilePhone}</ParagraphUserInfo>
+              <ParagraphUserInfo>{registerEmail}</ParagraphUserInfo>
+              <SecondHeaderUserInfo>Booked Treatments</SecondHeaderUserInfo>
+              <FlexboxUserInfo>
+                {bookedTreatments.length > 0 ? (
+                  bookedTreatments.map((treatment) => (
+                    <div key={treatment.id}>
+                      <ParagraphUserInfo>Picked Date: {pickedDate}</ParagraphUserInfo>
+                      <ParagraphUserInfo>{treatment.name}</ParagraphUserInfo>
+                    </div>
+                  ))
+                ) : (
+                  <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
+                )}
+              </FlexboxUserInfo>
+            </>
+          ) : (
+            <div>
+              <p>Please log in to see your user information and booked treatments.</p>
+              <Link to="/login">Log in</Link>
+            </div>
+          )}
         </InnerWrapperUserInfo>
       </OuterWrapper>
       <Footer />
