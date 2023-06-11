@@ -52,11 +52,13 @@ const Login = () => {
       fetch(url, options)
         .then((response) => response.json())
         .then((data) => {
+          console.log('Login response:', data);
           if (data.success) {
-            console.log(data);
+            console.log('Login successful!');
             const { id, accessToken } = data.response;
             dispatch(loginSuccess({ email: loginEmail, id, accessToken }));
           } else {
+            console.log('Login failed:', data.response);
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setUserId(null));
             dispatch(user.actions.setError(data.response));
@@ -85,11 +87,13 @@ const Login = () => {
       fetch(url, options)
         .then((response) => response.json())
         .then((data) => {
+          console.log('Registration response:', data);
           if (data.success) {
-            console.log(data);
+            console.log('Registration successful!');
             const { id, accessToken } = data.response;
             dispatch(loginSuccess({ email: registerEmail, id, accessToken }));
           } else {
+            console.log('Registration failed:', data.response);
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setUserId(null));
             dispatch(user.actions.setError(data.response));
