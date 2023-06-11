@@ -24,22 +24,23 @@ const Cards = () => {
   useEffect(() => {
     const fetchTreatments = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(url); // Fetch treatments from the specified URL
         if (response.ok) {
-          const data = await response.json();
-          dispatch(setItems(data.treatments)); // Update the action call
+          const data = await response.json(); // Extract the treatments data from the response
+          console.log(data);
+          dispatch(setItems(data.treatments)); // Update the state with the fetched treatments data
         } else {
-          throw new Error('Failed to fetch treatments');
+          throw new Error('Failed to fetch treatments'); // Throw an error if the response is not OK
         }
       } catch (error) {
-        console.error(error);
+        console.error(error); // Log any errors that occur during the fetch process
       } finally {
-        setIsLoading(false);
+        setIsLoading(false); // Set the loading state to false, indicating the fetch process is complete
       }
     };
 
-    fetchTreatments();
-  }, [dispatch, url]);
+    fetchTreatments(); // Invoke the fetchTreatments function immediately after the component renders
+  }, [dispatch, url]); // Re-run the effect if dispatch or url changes
 
   const handleTreatmentClick = (treatmentId) => {
     setSelectedTreatmentId(treatmentId); // Set the selected treatment ID
@@ -52,6 +53,7 @@ const Cards = () => {
   // Find the selected treatment object
   const selectedTreatment = treatments.find((treatment) => treatment._id === selectedTreatmentId);
   console.log('Selected Treatment:', selectedTreatment);
+  console.log(treatments);
 
   return (
     <>
@@ -64,14 +66,11 @@ const Cards = () => {
             key={treatment._id}
             onClick={() => handleTreatmentClick(treatment._id)}
             className={classNames({ selected: treatment._id === selectedTreatmentId })}>
-            <StyledLink
-              to={{
-                pathname: '/booking',
-                state: { treatmentId: treatment._id } // Pass the treatment ID as state
-              }}>
+            <StyledLink>
               <img src={treatment.icon} alt="Card Icon" />
               <StyledSecondHeadingCards>
-                {treatment.cut || treatment.wash || treatment.cutAndWash || treatment.styling}
+                {/* {treatment.cut || treatment.dye || treatment.cutAndDye || treatment.styling} */}
+                {treatment.name}
               </StyledSecondHeadingCards>
             </StyledLink>
           </Card>
