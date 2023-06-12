@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import Swal from 'sweetalert2';
 import user, { loginSuccess } from 'reducers/user';
 import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
@@ -57,13 +58,22 @@ const Login = () => {
             console.log('Login successful!');
             const { id, accessToken } = data.response;
             dispatch(loginSuccess({ email: loginEmail, id, accessToken }));
-            // dispatch(user.actions.setAccessToken(data.response.accessToken));
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: 'Your are successfully logged in.'
+            });
             console.log(data.response);
           } else {
             console.log('Login failed:', data.response);
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setUserId(null));
             dispatch(user.actions.setError(data.response));
+            Swal.fire({
+              icon: 'error',
+              title: 'Sorry',
+              text: 'We\'re sorry, something went wrong with the log in. Please, try again.'
+            });
           }
         });
     }
@@ -94,12 +104,21 @@ const Login = () => {
             console.log('Registration successful!');
             const { id, accessToken } = data.response;
             dispatch(loginSuccess({ email: registerEmail, id, accessToken }));
-            alert('Your are registered, please log in.');
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: 'Your are successfully registered, please log in.'
+            });
           } else {
             console.log('Registration failed:', data.response);
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setUserId(null));
             dispatch(user.actions.setError(data.response));
+            Swal.fire({
+              icon: 'error',
+              title: 'Sorry',
+              text: 'We\'re sorry, something went wrong with the registration. Please, try again.'
+            });
           }
         });
     }
