@@ -37,10 +37,31 @@ const glideInAnimation = keyframes`
   }
 `;
 
-export const StyledParagraphBooking = styled.p`
+export const StyledParagraphAnimation = styled.p`
   font-weight: 600;
   text-align: center;
   font-size: 1rem;
   color: var(--second-headings-font-color-two);
   animation: ${glideInAnimation} 1s forwards;
 `;
+
+export const StyledParagraphBooking = styled.p`
+  font-weight: 600;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--second-headings-font-color-two);
+  margin-top: 4rem;
+`;
+
+export const StyledButton = styled.button`
+    background-color: var(--submit-button-color-two);
+    border: none;
+    color: #fff;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 2px;
+    cursor: pointer;
+    width: 100%;
+  `;
