@@ -7,9 +7,9 @@ import classNames from 'classnames';
 import { usePickedDate } from './Booking';
 import Footer from './Footer';
 import useSticky from './useSticky';
-import { OuterWrapper, StyledLink } from './GlobalStyling';
+import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { FlexboxUserInfo, InnerWrapperUserInfo, ParagraphUserInfo, SecondHeaderUserInfo } from './UserInfoStyling';
+import { ParagraphUserInfo, SecondHeaderUserInfo } from './UserInfoStyling';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky(); // Using the custom hook to handle sticky behavior
@@ -28,7 +28,7 @@ const UserInfo = () => {
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>
       </StickyNavTwo>
       <OuterWrapper>
-        <InnerWrapperUserInfo>
+        <InnerWrapper>
           {userAccessToken ? ( // Checking if the user is logged in
             <>
               <SecondHeaderUserInfo>Your Contact Information</SecondHeaderUserInfo>
@@ -37,7 +37,7 @@ const UserInfo = () => {
               <ParagraphUserInfo>{mobilePhone}</ParagraphUserInfo>
               <ParagraphUserInfo>{registerEmail}</ParagraphUserInfo>
               <SecondHeaderUserInfo>Booked Treatments</SecondHeaderUserInfo>
-              <FlexboxUserInfo>
+              <InnerWrapper>
                 {bookedTreatments.length > 0 ? ( // Checking if there are booked treatments
                   bookedTreatments.map((treatment) => (
                     <div key={treatment.id}>
@@ -48,15 +48,15 @@ const UserInfo = () => {
                 ) : (
                   <ParagraphUserInfo>No booked treatments</ParagraphUserInfo> // Displaying a message if there are no booked treatments
                 )}
-              </FlexboxUserInfo>
+              </InnerWrapper>
             </>
           ) : (
             <div>
-              <p>Please log in to see your user information and booked treatments.</p>
-              <StyledLink to="/login">Log in</StyledLink> // Link to the login page
+              <StyledParagraphAnimation> Please log in to see your information and booked treatments.</StyledParagraphAnimation>
+              <StyledLink to="/login">Log in</StyledLink>
             </div>
           )}
-        </InnerWrapperUserInfo>
+        </InnerWrapper>
       </OuterWrapper>
       <Footer />
     </>

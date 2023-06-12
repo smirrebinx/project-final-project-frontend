@@ -6,12 +6,6 @@ export const InnerWrapperUserInfo = styled.div`
   text-align: center;
 `;
 
-export const FlexboxUserInfo = styled.div`
-  display: flex;
-  justify-content: center;
-  text-align: center;
-`;
-
 export const SecondHeaderUserInfo = styled.h2`
 font-family: var(--second-headings-font-family-two);
 font-weight: 600;
