@@ -188,24 +188,15 @@ const Login = () => {
                 required />
               <button type="submit">Complete Registration</button>
             </form>
+            {/* Display the message and links if the user is logged in or has registered */}
+            {userAccessToken ? (
+              <InnerWrapper>
+                <p>You are logged in! Choose an option:</p>
+                <StyledLink to="/booking">Go to Booking to pick a date</StyledLink>
+                <StyledLink to="/userinfo">Go to User Information to see your booked treatment</StyledLink>
+              </InnerWrapper>
+            ) : null}
           </FormWrapper>
-          {/* Display the message and links if the user is logged in or has registered */}
-          {userAccessToken ? (
-            <div>
-              <p>You are logged in! Choose an option:</p>
-              <ul>
-                <li>
-                  <StyledLink to="/cards">Go to Treatments to choose Treatment</StyledLink>
-                </li>
-                <li>
-                  <StyledLink to="/booking">Go to Booking to pick a date</StyledLink>
-                </li>
-                <li>
-                  <StyledLink to="/userinfo">Go to User Information to see your booked treatment</StyledLink>
-                </li>
-              </ul>
-            </div>
-          ) : null}
         </InnerWrapper>
       </OuterWrapper>
       {/* <Footer /> */}
