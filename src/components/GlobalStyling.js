@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const OuterWrapper = styled.div`
@@ -24,4 +24,23 @@ export const StyledLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const glideInAnimation = keyframes`
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+export const StyledParagraphAnimation = styled.p`
+  font-weight: 600;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--second-headings-font-color-two);
+  animation: ${glideInAnimation} 1s forwards;
 `;
