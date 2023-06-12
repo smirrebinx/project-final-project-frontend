@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import classNames from 'classnames';
-import { CalendarContainer, StyledButton, StyledParagraphAnimation, StyledParagraphBooking } from './BookingStyling';
+import { CalendarContainer, StyledButton, StyledParagraphBooking } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
 import Footer from './Footer';
-import { StyledLink } from './GlobalStyling';
+import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 
 const PickedDateContext = createContext();
 const SelectedTreatmentIdContext = createContext();
