@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 import React from 'react';
@@ -11,14 +12,14 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { FlexboxUserInfo, InnerWrapperUserInfo, ParagraphUserInfo, SecondHeaderUserInfo } from './UserInfoStyling';
 
 const UserInfo = () => {
-  const { sticky, stickyRef } = useSticky();
-  const pickedDate = usePickedDate();
-  const firstName = useSelector((state) => state.user.firstName);
-  const lastName = useSelector((state) => state.user.lastName);
-  const registerEmail = useSelector((state) => state.user.registerEmail);
-  const mobilePhone = useSelector((state) => state.user.mobilePhone);
-  const userAccessToken = useSelector((store) => store.user.accessToken);
-  const bookedTreatments = useSelector((state) => state.user.bookedTreatments);
+  const { sticky, stickyRef } = useSticky(); // Using the custom hook to handle sticky behavior
+  const pickedDate = usePickedDate(); // Using the custom hook to get the picked date
+  const firstName = useSelector((state) => state.user.firstName); // Accessing the first name from the Redux store
+  const lastName = useSelector((state) => state.user.lastName); // Accessing the last name from the Redux store
+  const registerEmail = useSelector((state) => state.user.registerEmail); // Accessing the registered email from the Redux store
+  const mobilePhone = useSelector((state) => state.user.mobilePhone); // Accessing the mobile phone number from the Redux store
+  const userAccessToken = useSelector((store) => store.user.accessToken); // Accessing the user's access token from the Redux store
+  const bookedTreatments = useSelector((state) => state.user.bookedTreatments); // Accessing the booked treatments from the Redux store
   console.log(userAccessToken);
 
   return (
@@ -28,7 +29,7 @@ const UserInfo = () => {
       </StickyNavTwo>
       <OuterWrapper>
         <InnerWrapperUserInfo>
-          {userAccessToken ? (
+          {userAccessToken ? ( // Checking if the user is logged in
             <>
               <SecondHeaderUserInfo>Your Contact Information</SecondHeaderUserInfo>
               <ParagraphUserInfo>{firstName}</ParagraphUserInfo>
@@ -37,22 +38,22 @@ const UserInfo = () => {
               <ParagraphUserInfo>{registerEmail}</ParagraphUserInfo>
               <SecondHeaderUserInfo>Booked Treatments</SecondHeaderUserInfo>
               <FlexboxUserInfo>
-                {bookedTreatments.length > 0 ? (
+                {bookedTreatments.length > 0 ? ( // Checking if there are booked treatments
                   bookedTreatments.map((treatment) => (
                     <div key={treatment.id}>
-                      <ParagraphUserInfo>Picked Date: {pickedDate}</ParagraphUserInfo>
-                      <ParagraphUserInfo>{treatment.name}</ParagraphUserInfo>
+                      <ParagraphUserInfo>Picked Date: {pickedDate}</ParagraphUserInfo> // Displaying the picked date
+                      <ParagraphUserInfo>{treatment.name}</ParagraphUserInfo> // Displaying the treatment name
                     </div>
                   ))
                 ) : (
-                  <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
+                  <ParagraphUserInfo>No booked treatments</ParagraphUserInfo> // Displaying a message if there are no booked treatments
                 )}
               </FlexboxUserInfo>
             </>
           ) : (
             <div>
               <p>Please log in to see your user information and booked treatments.</p>
-              <StyledLink to="/login">Log in</StyledLink>
+              <StyledLink to="/login">Log in</StyledLink> // Link to the login page
             </div>
           )}
         </InnerWrapperUserInfo>

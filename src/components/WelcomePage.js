@@ -7,6 +7,7 @@ import { GoToTreatmentButton, StickyNav, StyledLinkWrapper } from './NavbarStyli
 import Footer from './Footer';
 
 const WelcomePage = () => {
+  // Hook to track sticky behavior of navigation
   const { sticky, stickyRef } = useSticky();
   return (
     <>

@@ -10,8 +10,9 @@ import useSticky from './useSticky';
 import Footer from './Footer';
 import { StyledLink } from './GlobalStyling';
 
-// Create a new context for the picked date and selected treatment ID
+// Create a new context for the picked date
 const PickedDateContext = createContext();
+// Create a new context for the selected treatment ID
 const SelectedTreatmentIdContext = createContext();
 
 const Booking = ({ location }) => {
@@ -27,10 +28,13 @@ const Booking = ({ location }) => {
 
   return (
     <>
+      {/* Calendar container */}
       <CalendarContainer>
+        {/* Sticky navigation bar */}
         <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
           <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
         </StickyNavTwo>
+        {/* Display login message if user is not logged in */}
         {!userAccessToken && (
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
@@ -38,12 +42,16 @@ const Booking = ({ location }) => {
             <StyledLink to="/login">Log in</StyledLink>
           </div>
         )}
+        {/* Provide the picked date through context */}
         <PickedDateContext.Provider value={pickedDate}>
+          {/* Provide the selected treatment ID through context */}
           <SelectedTreatmentIdContext.Provider value={selectedTreatmentId}>
+            {/* Calendar component */}
             <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
           </SelectedTreatmentIdContext.Provider>
         </PickedDateContext.Provider>
       </CalendarContainer>
+      {/* Footer component */}
       <Footer />
     </>
   );
