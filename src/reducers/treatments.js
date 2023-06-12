@@ -11,7 +11,7 @@ const treatments = createSlice({
   },
   reducers: {
     setItems: (store, action) => {
-      store.items = [...store.items, ...action.payload]; // Update the items array with the payload
+      store.items = action.payload;
     },
     setTreatmentType: (store, action) => {
       store.treatmentType = action.payload; // Update the treatmentType with the payload
