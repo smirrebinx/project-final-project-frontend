@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, batch } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import Swal from 'sweetalert2';
-import user, { loginSuccess } from 'reducers/user';
+import user from 'reducers/user';
 import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
 import useSticky from './useSticky';
@@ -52,8 +52,14 @@ const Login = () => {
           console.log('Login response:', data);
           if (data.success) {
             console.log('Login successful!');
-            const { id, accessToken } = data.response;
-            dispatch(loginSuccess({ email: loginEmail, id, accessToken }));
+            batch(() => {
+              dispatch(user.actions.setFirstName(data.response.firstName));
+              dispatch(user.actions.setLastName(data.response.lastName));
+              dispatch(user.actions.setMobilePhone(data.response.mobilePhone));
+              dispatch(user.actions.setEmail(data.response.email));
+              dispatch(user.actions.setAccessToken(data.response.accessToken));
+              dispatch(user.actions.setUserId(data.response.userId));
+            })
             Swal.fire({
               icon: 'success',
               title: 'Success!',
@@ -100,8 +106,14 @@ const Login = () => {
           console.log('Registration response:', data);
           if (data.success) {
             console.log('Registration successful!');
-            const { id, accessToken } = data.response;
-            dispatch(loginSuccess({ email: registerEmail, id, accessToken }));
+            batch(() => {
+              dispatch(user.actions.setFirstName(data.response.firstName));
+              dispatch(user.actions.setLastName(data.response.lastName));
+              dispatch(user.actions.setMobilePhone(data.response.mobilePhone));
+              dispatch(user.actions.setEmail(data.response.email));
+              dispatch(user.actions.setAccessToken(data.response.accessToken));
+              dispatch(user.actions.setUserId(data.response.userId));
+            })
             Swal.fire({
               icon: 'success',
               title: 'Success!',
