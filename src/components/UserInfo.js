@@ -17,7 +17,7 @@ const UserInfo = () => {
   const lastName = useSelector((state) => state.user.lastName);
   const registerEmail = useSelector((state) => state.user.registerEmail);
   const mobilePhone = useSelector((state) => state.user.mobilePhone);
-  const userAccessToken = useSelector((store) => store.user.accessToken || localStorage.getItem('accessToken'));
+  const userAccessToken = useSelector((state) => state.user.accessToken || localStorage.getItem('accessToken'));
   const bookedTreatments = useSelector((state) => state.user.bookedTreatments);
 
   return (
