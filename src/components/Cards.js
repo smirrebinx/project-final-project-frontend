@@ -19,7 +19,6 @@ const Cards = () => {
   const dispatch = useDispatch();
   const treatments = useSelector((state) => state.treatments.items);
   const [isLoading, setIsLoading] = useState(true); // New loading state
-  const [treatmentItems, setTreatmentItems] = useState([]);
 
   const url = API_URL('treatments');
 
@@ -32,7 +31,6 @@ const Cards = () => {
           const data = await response.json(); // Extract the treatments data from the response
           console.log(data);
           dispatch(setItems(data.treatments)); // Update the state with the fetched treatments data
-          setTreatmentItems(data.treatments);
         } else {
           throw new Error('Failed to fetch treatments'); // Throw an error if the response is not OK
         }
@@ -41,9 +39,7 @@ const Cards = () => {
       } finally {
         setIsLoading(false); // Set the loading state to false, indicating the fetch process is complete
       }
-      setTreatmentItems([]);
     };
-    console.log(treatmentItems);
 
     fetchTreatments(); // Invoke the fetchTreatments function immediately after the component renders
   }, [dispatch, url]); // Re-run the effect if dispatch or url changes
@@ -83,7 +79,6 @@ const Cards = () => {
             <StyledLink>
               <img src={treatment.icon} alt="Card Icon" />
               <StyledSecondHeadingCards>
-                {/* {treatment.cut || treatment.dye || treatment.cutAndDye || treatment.styling} */}
                 {treatment.name}
               </StyledSecondHeadingCards>
             </StyledLink>
