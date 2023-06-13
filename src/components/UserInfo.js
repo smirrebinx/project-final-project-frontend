@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
-/* eslint-disable */
+// UserInfo.js
+
 import React from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
@@ -13,17 +14,10 @@ import LogoutButton from './Logout';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
-  const pickedDate = usePickedDate();
+  const [pickedDate] = usePickedDate(); // Get the pickedDate from the hook
 
   // Retrieve user information from the Redux store
-  const firstName = useSelector((state) => state.user.firstName);
-  const lastName = useSelector((state) => state.user.lastName);
-  const registerEmail = useSelector((state) => state.user.email);
-  const mobilePhone = useSelector((state) => state.user.mobilePhone);
-
-  // Retrieve the user access token from the Redux store or local storage
-  const userAccessToken = useSelector((state) => state.user.accessToken || localStorage.getItem('accessToken'));
-
+  const user = useSelector((state) => state.user);
   const bookedTreatments = useSelector((state) => state.user.bookedTreatments);
 
   return (
@@ -39,14 +33,14 @@ const UserInfo = () => {
       {/* Outer wrapper */}
       <OuterWrapper>
         <InnerWrapper>
-          {userAccessToken ? (
+          {user.accessToken ? (
             <>
               {/* Display user contact information */}
               <SecondHeaderUserInfo>Your Contact Information</SecondHeaderUserInfo>
-              <ParagraphUserInfo>{firstName}</ParagraphUserInfo>
-              <ParagraphUserInfo>{lastName}</ParagraphUserInfo>
-              <ParagraphUserInfo>{mobilePhone}</ParagraphUserInfo>
-              <ParagraphUserInfo>{registerEmail}</ParagraphUserInfo>
+              <ParagraphUserInfo>{user.firstName}</ParagraphUserInfo>
+              <ParagraphUserInfo>{user.lastName}</ParagraphUserInfo>
+              <ParagraphUserInfo>{user.mobilePhone}</ParagraphUserInfo>
+              <ParagraphUserInfo>{user.email}</ParagraphUserInfo>
 
               {/* Display booked treatments */}
               <SecondHeaderUserInfo>Booked Treatments</SecondHeaderUserInfo>
@@ -55,7 +49,7 @@ const UserInfo = () => {
                   // Map through booked treatments and display the details
                   bookedTreatments.map((treatment) => (
                     <div key={treatment.id}>
-                      <ParagraphUserInfo>Picked Date: {pickedDate}</ParagraphUserInfo>
+                      <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo>
                       <ParagraphUserInfo>{treatment.name}</ParagraphUserInfo>
                     </div>
                   ))
@@ -68,7 +62,7 @@ const UserInfo = () => {
           ) : (
             // Display message if user is not logged in
             <div>
-              <StyledParagraphAnimation> Please log in to see your information and booked treatments.</StyledParagraphAnimation>
+              <StyledParagraphAnimation>Please log in to see your information and booked treatments.</StyledParagraphAnimation>
               <StyledLink to="/login">Log in</StyledLink>
             </div>
           )}
