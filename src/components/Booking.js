@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setAccessToken } from 'reducers/user';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import classNames from 'classnames';
@@ -16,8 +17,20 @@ const SelectedTreatmentIdContext = createContext();
 const Booking = ({ location }) => {
   const { sticky, stickyRef } = useSticky();
   const [pickedDate, setPickedDate] = useState(new Date());
-  const userAccessToken = useSelector((store) => store.user.accessToken);
+
+  // Access the access token from Redux store
+  const accessToken = useSelector((store) => store.user.accessToken);
+
   const selectedTreatmentId = location?.state?.treatmentId;
+  const dispatch = useDispatch();
+
+  // Check for the access token in local storage and update Redux store when the component mounts
+  useEffect(() => {
+    const storedAccessToken = localStorage.getItem('accessToken');
+    if (storedAccessToken) {
+      dispatch(setAccessToken(storedAccessToken));
+    }
+  }, [dispatch]);
 
   const handleDateChange = (date) => {
     setPickedDate(date);
@@ -39,14 +52,14 @@ const Booking = ({ location }) => {
         <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
           <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
         </StickyNavTwo>
-        {!userAccessToken && (
+        {!accessToken && (
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
             <StyledParagraphAnimation> Please log in to book a treatment.</StyledParagraphAnimation>
             <StyledLink to="/login">Log in</StyledLink>
           </div>
         )}
-        {userAccessToken && (
+        {accessToken && (
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
             {pickedDate && (
