@@ -4,7 +4,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
-import { usePickedDate } from './Booking';
+// import { usePickedDate } from './Booking';
 import Footer from './Footer';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
@@ -14,7 +14,7 @@ import LogoutButton from './Logout';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
-  const [pickedDate] = usePickedDate(); // Get the pickedDate from the hook
+  // const [pickedDate] = usePickedDate(); // Get the pickedDate from the hook
 
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
@@ -49,7 +49,7 @@ const UserInfo = () => {
                   // Map through booked treatments and display the details
                   bookedTreatments.map((treatment) => (
                     <div key={treatment.id}>
-                      <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo>
+                      {/* <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo> */}
                       <ParagraphUserInfo>{treatment.name}</ParagraphUserInfo>
                     </div>
                   ))
