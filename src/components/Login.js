@@ -53,6 +53,9 @@ const Login = () => {
           if (data.success) {
             console.log('Login successful!');
             batch(() => {
+              // const { accessToken } = data.response;
+              // dispatch(user.actions.loginSuccess({ accessToken }));
+              localStorage.setItem('accessToken', data.response.accessToken);
               dispatch(user.actions.setFirstName(data.response.firstName));
               dispatch(user.actions.setLastName(data.response.lastName));
               dispatch(user.actions.setMobilePhone(data.response.mobilePhone));
@@ -107,6 +110,8 @@ const Login = () => {
           if (data.success) {
             console.log('Registration successful!');
             batch(() => {
+              // const { accessToken } = data.response;
+              // dispatch(user.actions.loginSuccess({ accessToken }));
               dispatch(user.actions.setFirstName(data.response.firstName));
               dispatch(user.actions.setLastName(data.response.lastName));
               dispatch(user.actions.setMobilePhone(data.response.mobilePhone));
