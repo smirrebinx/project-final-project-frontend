@@ -61,7 +61,8 @@ const Login = () => {
             Swal.fire({
               icon: 'success',
               title: 'Success!',
-              text: 'Your are successfully logged in.'
+              text: 'Your are successfully logged in.',
+              confirmButtonColor: 'var(--submit-button-color-two)'
             });
             console.log(data.response);
           } else {
@@ -72,7 +73,8 @@ const Login = () => {
             Swal.fire({
               icon: 'error',
               title: 'Sorry',
-              text: 'We\'re sorry, something went wrong with the log in. Please, try again.'
+              text: 'We\'re sorry, something went wrong with the log in. Please, try again.',
+              confirmButtonColor: 'var(--submit-button-color-two)'
             });
           }
         });
@@ -107,7 +109,8 @@ const Login = () => {
             Swal.fire({
               icon: 'success',
               title: 'Success!',
-              text: 'Your are successfully registered, please log in.'
+              text: 'Your are successfully registered, please log in.',
+              confirmButtonColor: 'var(--submit-button-color-two)'
             });
           } else {
             console.log('Registration failed:', data.response);
@@ -117,7 +120,8 @@ const Login = () => {
             Swal.fire({
               icon: 'error',
               title: 'Sorry',
-              text: 'We\'re sorry, something went wrong with the registration. Please, try again.'
+              text: 'We\'re sorry, something went wrong with the registration. Please, try again.',
+              confirmButtonColor: 'var(--submit-button-color-two)'
             });
           }
         });
