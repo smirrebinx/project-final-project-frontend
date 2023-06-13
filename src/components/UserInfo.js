@@ -38,7 +38,7 @@ const UserInfo = () => {
               <ParagraphUserInfo>{registerEmail}</ParagraphUserInfo>
               <SecondHeaderUserInfo>Booked Treatments</SecondHeaderUserInfo>
               <InnerWrapper>
-                {bookedTreatments.length > 0 ? ( // Checking if there are booked treatments
+                {bookedTreatments && bookedTreatments.length > 0 ? ( // Checking if there are booked treatments
                   bookedTreatments.map((treatment) => (
                     <div key={treatment.id}>
                       <ParagraphUserInfo>Picked Date: {pickedDate}</ParagraphUserInfo> // Displaying the picked date
