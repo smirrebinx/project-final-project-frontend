@@ -16,6 +16,7 @@ export const FooterContainer = styled.div`
 `;
 
 export const StyledFooterHeaderTwo = styled.h3`
+  display: flex;
   color: var(--second-headings-font-color-two);
   font-family: var(--headings-font-family-two);
   font-size: 1rem;
