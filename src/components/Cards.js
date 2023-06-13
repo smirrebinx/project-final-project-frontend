@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from 'reducers/treatments';
 import classNames from 'classnames';
-import { Card, CardContainer, StyledSecondHeadingCards } from './CardStyling';
+import Swal from 'sweetalert2';
+import { Card, CardContainer, CardSelected, StyledParagraphBookingCards, StyledSecondHeadingCards } from './CardStyling';
 import { API_URL } from '../utils/urls';
 import Loading from './Loading';
 import useSticky from './useSticky';
@@ -49,6 +50,14 @@ const Cards = () => {
 
   const handleTreatmentClick = (treatmentId) => {
     setSelectedTreatmentId(treatmentId); // Set the selected treatment ID
+
+    // Pop up
+    Swal.fire({
+      icon: 'success',
+      title: 'Treatment',
+      html: `<p>You have selected the ${treatments.find((treatment) => treatment._id === treatmentId).name} treatment.</p>`,
+      confirmButtonColor: 'var(--submit-button-color-two)'
+    });
   };
 
   if (isLoading) {
@@ -83,8 +92,8 @@ const Cards = () => {
       </CardContainer>
       {selectedTreatment && (
         <InnerWrapper>
-          <p>You have selected the {selectedTreatment.name} treatment.</p>
-          <StyledLink to="/booking">Go to booking</StyledLink>
+          <StyledParagraphBookingCards>Confirm your booking or choose another card</StyledParagraphBookingCards>
+          <CardSelected type="button"><StyledLink to="/booking">Confirm {selectedTreatment.name}</StyledLink></CardSelected>
         </InnerWrapper>
       )}
       <Footer />
