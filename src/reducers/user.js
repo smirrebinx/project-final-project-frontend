@@ -23,15 +23,18 @@ const user = createSlice({
     },
     loginSuccess: (store, action) => {
       const { id, accessToken } = action.payload;
-      store.userId = id; // Update the userId with the payload's id
-      store.accessToken = accessToken; // Update the accessToken with the payload's accessToken
-      store.error = null; // Clear the error message
+      store.userId = id;
+      store.accessToken = accessToken;
+      store.error = null;
+
+      // Store the access token in local storage
+      localStorage.setItem('accessToken', accessToken);
     },
     logout: (store) => {
       store.userId = null; // Clear the userId
       store.email = null; // Clear the email
       store.accessToken = null; // Clear the accessToken
-      localStorage.removeItem('user'); // Remove user data from local storage
+      localStorage.removeItem('accessToken'); // Remove access token from local storage
     }
   }
 });

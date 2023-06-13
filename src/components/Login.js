@@ -23,15 +23,11 @@ const Login = () => {
   const [mobilePhone, setMobilePhone] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  const userAccessToken = useSelector((store) => store.user.accessToken);
+  // Check if the access token exists in the Redux store. If it doesn't, it retrieves the access token from local storage.
+  // If the user has previously logged in and their access token is stored in local storage, they will be able to access
+  // authenticated routes without the need for a new login within the same session.
+  const userAccessToken = useSelector((store) => store.user.accessToken || localStorage.getItem('accessToken'));
   const [isLoginForm, setIsLoginForm] = useState(null); // Initialize as null
-
-  // useEffect(() => {
-  //   if (!userAccessToken) {
-  //     navigate('/');
-  //   }
-  // }, [userAccessToken, navigate]);
 
   const onLoginFormSubmit = (event) => {
     event.preventDefault();
