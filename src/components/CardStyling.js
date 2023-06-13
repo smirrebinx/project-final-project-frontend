@@ -4,7 +4,7 @@ export const CardContainer = styled.div`
   display: grid;
   grid-gap: 10px;
   margin-top: 5rem;
-
+  
   @media (min-width: 480px) {
     grid-template-columns: repeat(2, minmax(100px, 1fr));
   }
@@ -85,15 +85,3 @@ export const StyledParagraphBookingCards = styled.p`
   }
 `;
 
-// export const StyledButtonCards = styled.button`
-//     background-color: var(--submit-button-color-two);
-//     border: none;
-//     color: #fff;
-//     padding: 10px 30px;
-//     text-align: center;
-//     text-decoration: none;
-//     display: inline-block;
-//     margin: 10px 2px;
-//     cursor: pointer;
-//     width: 100%;
-//   `
