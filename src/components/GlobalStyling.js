@@ -44,3 +44,18 @@ export const StyledParagraphAnimation = styled.p`
   color: var(--second-headings-font-color-two);
   animation: ${glideInAnimation} 1s forwards;
 `;
+
+export const CardReview = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 300px;
+height: 150px;
+padding: 10px;
+margin: 0 auto;
+box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.1), 0 0 1px 0 rgba(0, 0, 0, 0.06);
+justify-content: center;
+background-color: #fff;
+border-radius: 3px;
+border: 1px solid rgba(0, 0, 0, 0.1);
+`;
