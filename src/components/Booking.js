@@ -8,6 +8,7 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
 import Footer from './Footer';
 import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
+import LogoutButton from './Logout';
 
 const PickedDateContext = createContext();
 const SelectedTreatmentIdContext = createContext();
@@ -33,6 +34,7 @@ const Booking = ({ location }) => {
 
   return (
     <>
+      <LogoutButton>Log Out</LogoutButton>
       <CalendarContainer>
         <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
           <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>

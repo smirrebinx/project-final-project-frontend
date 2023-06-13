@@ -10,6 +10,7 @@ import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { ParagraphUserInfo, SecondHeaderUserInfo } from './UserInfoStyling';
+import LogoutButton from './Logout';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky(); // Using the custom hook to handle sticky behavior
@@ -24,6 +25,7 @@ const UserInfo = () => {
 
   return (
     <>
+      <LogoutButton>Log Out</LogoutButton>
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>
       </StickyNavTwo>
