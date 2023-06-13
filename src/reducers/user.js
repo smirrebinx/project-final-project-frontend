@@ -12,6 +12,15 @@ const user = createSlice({
     setUserId: (store, action) => {
       store.userId = action.payload; // Update the userId with the payload
     },
+    setFirstName: (store, action) => {
+      store.firstName = action.payload; // Update the firstName with the payload
+    },
+    setLastName: (store, action) => {
+      store.lastName = action.payload; // Update the lastName with the payload
+    },
+    setMobilePhone: (store, action) => {
+      store.mobilePhone = action.payload; // Update the mobilePhone with the payload
+    },
     setEmail: (store, action) => {
       store.email = action.payload; // Update the email with the payload
     },
@@ -22,10 +31,8 @@ const user = createSlice({
       store.error = action.payload; // Update the error with the payload
     },
     loginSuccess: (store, action) => {
-      const { id, accessToken } = action.payload;
-      store.userId = id;
+      const { accessToken } = action.payload;
       store.accessToken = accessToken;
-      store.error = null;
 
       // Store the access token in local storage
       localStorage.setItem('accessToken', accessToken);
