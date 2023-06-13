@@ -66,7 +66,7 @@ export const StyledSecondHeadingCards = styled.h2`
 font-family: var(--paragraph-font-family-two);
 text-align: center;
 font-weight: 600;
-font-size: 1rem;
+font-size: 1.2rem;
 letter-spacing: 0.05em;
 color: #4e585a;
 margin-top: 10px;
@@ -75,8 +75,14 @@ text-decoration: none;
 
 export const StyledParagraphBookingCards = styled.p`
   text-align: center;
-  font-size: 1rem;
-  margin-top: 4rem;
+  font-size: 1.2rem;
+  font-family: var(--paragraph-font-family-two);
+  margin: 1rem;
+
+
+    @media (min-width: 1024px) {
+      margin-top: 0;
+  }
 `;
 
 // export const StyledButtonCards = styled.button`

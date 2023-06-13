@@ -11,7 +11,7 @@ import Loading from './Loading';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import Footer from './Footer';
-import { InnerWrapper, StyledLink } from './GlobalStyling';
+import { StyledLink } from './GlobalStyling';
 
 const Cards = () => {
   const [selectedTreatmentId, setSelectedTreatmentId] = useState(null); // State for selected treatment ID
@@ -91,10 +91,10 @@ const Cards = () => {
         ))}
       </CardContainer>
       {selectedTreatment && (
-        <InnerWrapper>
+        <>
           <StyledParagraphBookingCards>Confirm your booking or choose another card</StyledParagraphBookingCards>
           <CardSelected type="button"><StyledLink to="/booking">Confirm {selectedTreatment.name}</StyledLink></CardSelected>
-        </InnerWrapper>
+        </>
       )}
       <Footer />
     </>
