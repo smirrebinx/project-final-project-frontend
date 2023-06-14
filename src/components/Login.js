@@ -1,8 +1,7 @@
-/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { useDispatch, useSelector, batch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import Swal from 'sweetalert2';
 import user from 'reducers/user';
@@ -31,7 +30,6 @@ const Login = () => {
 
   const onLoginFormSubmit = (event) => {
     event.preventDefault();
-
     setIsLoginForm(true); // Update isLoginForm when login form is submitted
 
     // Check if it's the login form
@@ -88,7 +86,6 @@ const Login = () => {
 
   const onRegisterFormSubmit = (event) => {
     event.preventDefault();
-
     setIsLoginForm(false); // Update isLoginForm when registration form is submitted
 
     // Check if it's the registration form
@@ -148,94 +145,92 @@ const Login = () => {
       </StickyNavTwo>
       <OuterWrapper>
         <InnerWrapper>
-          <FormWrapper>
-            <SecondHeaderLogIn>Log in</SecondHeaderLogIn>
-            <form onSubmit={onLoginFormSubmit}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email-log-in"
-                value={loginEmail}
-                onChange={(e) => setLoginEmail(e.target.value)}
-                aria-labelledby="email-log-in"
-                required />
+          {userAccessToken ? (
+            <>
+              <p>You are logged in! Choose an option:</p>
+              <StyledLink to="/booking">Go to Booking to pick a date</StyledLink>
+              <StyledLink to="/userinfo">Go to User Information to see your booked treatment</StyledLink>
+            </>
+          ) : (
+            <FormWrapper>
+              <SecondHeaderLogIn>Log in</SecondHeaderLogIn>
+              <form onSubmit={onLoginFormSubmit}>
+                <label htmlFor="email">Email</label>
+                <input
+                  type="text"
+                  id="email-log-in"
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                  aria-labelledby="email-log-in"
+                  required />
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password-log-in"
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
+                  autoComplete="off"
+                  aria-labelledby="password-log-in"
+                  required />
 
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password-log-in"
-                value={loginPassword}
-                onChange={(e) => setLoginPassword(e.target.value)}
-                autoComplete="off"
-                aria-labelledby="password-log-in"
-                required />
+                <button type="submit">Log in</button>
+              </form>
 
-              <button type="submit">Log in</button>
-            </form>
+              <LineBeforeAndAfter>OR</LineBeforeAndAfter>
 
-            <LineBeforeAndAfter>OR</LineBeforeAndAfter>
+              <SecondHeaderLogIn>Fill in your information</SecondHeaderLogIn>
+              <form onSubmit={onRegisterFormSubmit}>
+                <label htmlFor="firstName">First Name*</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  aria-labelledby="firstName"
+                  required />
 
-            <SecondHeaderLogIn>Fill in your information</SecondHeaderLogIn>
-            <form onSubmit={onRegisterFormSubmit}>
-              <label htmlFor="firstName">First Name*</label>
-              <input
-                type="text"
-                id="firstName"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                aria-labelledby="firstName"
-                required />
+                <label htmlFor="lastName">Last Name*</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  aria-labelledby="lastName"
+                  required />
 
-              <label htmlFor="lastName">Last Name*</label>
-              <input
-                type="text"
-                id="lastName"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                aria-labelledby="lastName"
-                required />
+                <label htmlFor="mobilePhone">Mobile Phone*</label>
+                <input
+                  type="text"
+                  id="mobilePhone"
+                  value={mobilePhone}
+                  onChange={(e) => setMobilePhone(e.target.value)}
+                  aria-labelledby="mobilePhone"
+                  required />
 
-              <label htmlFor="mobilePhone">Mobile Phone*</label>
-              <input
-                type="text"
-                id="mobilePhone"
-                value={mobilePhone}
-                onChange={(e) => setMobilePhone(e.target.value)}
-                aria-labelledby="mobilePhone"
-                required />
+                <label htmlFor="registerEmail">Email*</label>
+                <input
+                  type="text"
+                  id="email-register"
+                  value={registerEmail}
+                  onChange={(e) => setRegisterEmail(e.target.value)}
+                  aria-labelledby="email-register"
+                  required />
 
-              <label htmlFor="registerEmail">Email*</label>
-              <input
-                type="text"
-                id="email-register"
-                value={registerEmail}
-                onChange={(e) => setRegisterEmail(e.target.value)}
-                aria-labelledby="email-register"
-                required />
-
-              <label htmlFor="registerPassword">Password*</label>
-              <input
-                type="password"
-                id="password-register"
-                value={registerPassword}
-                onChange={(e) => setRegisterPassword(e.target.value)}
-                autoComplete="off"
-                aria-labelledby="password-register"
-                required />
-              <button type="submit">Complete Registration</button>
-            </form>
-            {/* Display the message and links if the user is logged in or has registered */}
-            {userAccessToken ? (
-              <InnerWrapper>
-                <p>You are logged in! Choose an option:</p>
-                <StyledLink to="/booking">Go to Booking to pick a date</StyledLink>
-                <StyledLink to="/userinfo">Go to User Information to see your booked treatment</StyledLink>
-              </InnerWrapper>
-            ) : null}
-          </FormWrapper>
+                <label htmlFor="registerPassword">Password*</label>
+                <input
+                  type="password"
+                  id="password-register"
+                  value={registerPassword}
+                  onChange={(e) => setRegisterPassword(e.target.value)}
+                  autoComplete="off"
+                  aria-labelledby="password-register"
+                  required />
+                <button type="submit">Complete Registration</button>
+              </form>
+            </FormWrapper>
+          )}
         </InnerWrapper>
       </OuterWrapper>
-      {/* <Footer /> */}
     </>
   );
 };
