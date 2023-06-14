@@ -1,99 +1,86 @@
-/* eslint-disable max-len */
-/* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setItems } from 'reducers/treatments';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setAccessToken } from 'reducers/user';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import classNames from 'classnames';
-import Swal from 'sweetalert2';
-import { Card, CardContainer, CardSelected, StyledParagraphBookingCards, StyledSecondHeadingCards } from './CardStyling';
-import { API_URL } from '../utils/urls';
-import Loading from './Loading';
-import useSticky from './useSticky';
+import { CalendarContainer, StyledButton, StyledParagraphBooking } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
+import useSticky from './useSticky';
 import Footer from './Footer';
-import { StyledLink } from './GlobalStyling';
+import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
+import LogoutButton from './Logout';
 
-const Cards = () => {
-  const [selectedTreatmentId, setSelectedTreatmentId] = useState(null); // State for selected treatment ID
+const PickedDateContext = createContext();
+const SelectedTreatmentIdContext = createContext();
+
+const Booking = ({ location }) => {
   const { sticky, stickyRef } = useSticky();
+  const [pickedDate, setPickedDate] = useState(new Date());
+
+  // Access the access token from Redux store
+  const accessToken = useSelector((store) => store.user.accessToken);
+
+  const selectedTreatmentId = location?.state?.treatmentId;
   const dispatch = useDispatch();
-  const treatments = useSelector((state) => state.treatments.items);
-  const [isLoading, setIsLoading] = useState(true); // New loading state
 
-  const url = API_URL('treatments');
-
+  // Check for the access token in local storage and update Redux store when the component mounts
   useEffect(() => {
-    const fetchTreatments = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(url); // Fetch treatments from the specified URL
-        if (response.ok) {
-          const data = await response.json(); // Extract the treatments data from the response
-          console.log(data);
-          dispatch(setItems(data.treatments)); // Update the state with the fetched treatments data
-        } else {
-          throw new Error('Failed to fetch treatments'); // Throw an error if the response is not OK
-        }
-      } catch (error) {
-        console.error(error); // Log any errors that occur during the fetch process
-      } finally {
-        setIsLoading(false); // Set the loading state to false, indicating the fetch process is complete
-      }
-    };
+    const storedAccessToken = localStorage.getItem('accessToken');
+    if (storedAccessToken) {
+      dispatch(setAccessToken(storedAccessToken));
+    }
+  }, [dispatch]);
 
-    fetchTreatments(); // Invoke the fetchTreatments function immediately after the component renders
-  }, [dispatch, url]); // Re-run the effect if dispatch or url changes
-
-  const handleTreatmentClick = (treatmentId) => {
-    setSelectedTreatmentId(treatmentId); // Set the selected treatment ID
-
-    // Pop up
-    Swal.fire({
-      icon: 'success',
-      title: 'Treatment',
-      html: `<p>You have selected the ${treatments.find((treatment) => treatment._id === treatmentId).name} treatment.</p>`,
-      confirmButtonColor: 'var(--submit-button-color-two)'
-    });
+  const handleDateChange = (date) => {
+    setPickedDate(date);
+    console.log('Picked Date:', date);
   };
 
-  if (isLoading) {
-    return <Loading />; // Render the Loading component while loading
-  }
+  const handleConfirmDate = () => {
+    // Perform any necessary actions before redirecting to UserInfo
+    // Example: Save the picked date to a database or Redux store
 
-  // Find the selected treatment object
-  const selectedTreatment = treatments.find((treatment) => treatment._id === selectedTreatmentId);
-  console.log('Selected Treatment:', selectedTreatment);
-  console.log(treatments);
+    // Redirect to UserInfo page
+    window.location.href = '/userinfo';
+  };
 
   return (
     <>
-      <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
-        <StyledNavHeaderTwo>What Would You Like to Do?</StyledNavHeaderTwo>
-      </StickyNavTwo>
-      <CardContainer>
-        {treatments.map((treatment) => (
-          <Card
-            key={treatment._id}
-            onClick={() => handleTreatmentClick(treatment._id)}
-            className={classNames({ selected: treatment._id === selectedTreatmentId })}>
-            <StyledLink>
-              <img src={treatment.icon} alt="Card Icon" />
-              <StyledSecondHeadingCards>
-                {treatment.name}
-              </StyledSecondHeadingCards>
-            </StyledLink>
-          </Card>
-        ))}
-      </CardContainer>
-      {selectedTreatment && (
-        <>
-          <StyledParagraphBookingCards>Confirm your booking or choose another card</StyledParagraphBookingCards>
-          <CardSelected type="button"><StyledLink to="/booking">Confirm {selectedTreatment.name}</StyledLink></CardSelected>
-        </>
-      )}
+      <LogoutButton>Log Out</LogoutButton>
+      <CalendarContainer>
+        <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
+          <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
+        </StickyNavTwo>
+        {!accessToken && (
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
+            <StyledParagraphAnimation> Please log in to book a treatment.</StyledParagraphAnimation>
+            <StyledLink to="/login">Log in</StyledLink>
+          </div>
+        )}
+        {accessToken && (
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
+            {pickedDate && (
+              <p>Selected Date: {pickedDate.toLocaleDateString('en-GB')}</p>
+            )}
+            <StyledButton type="submit" onClick={handleConfirmDate}>Confirm Date</StyledButton>
+          </div>
+        )}
+        <PickedDateContext.Provider value={pickedDate}>
+          <SelectedTreatmentIdContext.Provider value={selectedTreatmentId}>
+            <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
+          </SelectedTreatmentIdContext.Provider>
+        </PickedDateContext.Provider>
+      </CalendarContainer>
       <Footer />
     </>
   );
 };
 
-export default Cards;
+const usePickedDate = () => useContext(PickedDateContext);
+const useSelectedTreatmentId = () => useContext(SelectedTreatmentIdContext);
+
+export default Booking;
+export { usePickedDate, useSelectedTreatmentId };
