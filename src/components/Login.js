@@ -9,7 +9,6 @@ import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-// import Footer from './Footer';
 import { InnerWrapper, OuterWrapper, StyledLink } from './GlobalStyling';
 
 const Login = () => {

@@ -49,10 +49,12 @@ export const CardReview = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+font-family: var(--paragraph-font-family-one);
+font-size: 1.2rem;
 width: 300px;
-height: 150px;
-padding: 10px;
-margin: 0 auto;
+height: 100px;
+padding: 2rem 2rem 3rem;
+margin: 1rem auto;
 box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.1), 0 0 1px 0 rgba(0, 0, 0, 0.06);
 justify-content: center;
 background-color: #fff;

@@ -5,7 +5,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 // import { usePickedDate } from './Booking';
-import Footer from './Footer';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
@@ -68,9 +67,6 @@ const UserInfo = () => {
           )}
         </InnerWrapper>
       </OuterWrapper>
-
-      {/* Footer */}
-      <Footer />
     </>
   );
 };

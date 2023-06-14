@@ -10,7 +10,6 @@ import { API_URL } from '../utils/urls';
 import Loading from './Loading';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import Footer from './Footer';
 import { StyledLink } from './GlobalStyling';
 
 const Cards = () => {
@@ -96,7 +95,6 @@ const Cards = () => {
           </>
         )}
       </div>
-      <Footer />
     </>
   );
 };

@@ -7,7 +7,6 @@ import classNames from 'classnames';
 import { CalendarContainer, StyledButton, StyledParagraphBooking } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
-import Footer from './Footer';
 import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import LogoutButton from './Logout';
 
@@ -74,7 +73,6 @@ const Booking = ({ location }) => {
           </SelectedTreatmentIdContext.Provider>
         </PickedDateContext.Provider>
       </CalendarContainer>
-      <Footer />
     </>
   );
 };
