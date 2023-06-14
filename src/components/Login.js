@@ -25,14 +25,14 @@ const Login = () => {
   // If the user has previously logged in and their access token is stored in local storage, they will be able to access
   // authenticated routes without the need for a new login within the same session.
   const userAccessToken = useSelector((store) => store.user.accessToken || localStorage.getItem('accessToken'));
-  const [isLoginForm, setIsLoginForm] = useState(null); // Initialize as null
+  // const [isLoginForm, setIsLoginForm] = useState(null); // Initialize as null
 
   const onLoginFormSubmit = (event) => {
     event.preventDefault();
-    setIsLoginForm(true); // Update isLoginForm when login form is submitted
+    // setIsLoginForm(true); // Update isLoginForm when login form is submitted
 
     // Check if it's the login form
-    if (isLoginForm) {
+    if (event.target.id === 'login-form') {
       const options = {
         method: 'POST',
         headers: {
@@ -85,10 +85,10 @@ const Login = () => {
 
   const onRegisterFormSubmit = (event) => {
     event.preventDefault();
-    setIsLoginForm(false); // Update isLoginForm when registration form is submitted
+    // setIsLoginForm(false); // Update isLoginForm when registration form is submitted
 
     // Check if it's the registration form
-    if (!isLoginForm) {
+    if (event.target.id === 'register-form') {
       const options = {
         method: 'POST',
         headers: {
@@ -153,7 +153,7 @@ const Login = () => {
           ) : (
             <FormWrapper>
               <SecondHeaderLogIn>Log in</SecondHeaderLogIn>
-              <form onSubmit={onLoginFormSubmit}>
+              <form id="login-form" onSubmit={onLoginFormSubmit}>
                 <label htmlFor="email">Email</label>
                 <input
                   type="text"
@@ -176,9 +176,8 @@ const Login = () => {
               </form>
 
               <LineBeforeAndAfter>OR</LineBeforeAndAfter>
-
               <SecondHeaderLogIn>Fill in your information</SecondHeaderLogIn>
-              <form onSubmit={onRegisterFormSubmit}>
+              <form id="register-form" onSubmit={onRegisterFormSubmit}>
                 <label htmlFor="firstName">First Name*</label>
                 <input
                   type="text"
