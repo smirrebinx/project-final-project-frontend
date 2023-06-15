@@ -17,7 +17,9 @@ const UserInfo = () => {
 
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
-  const bookedTreatments = useSelector((state) => state.user.bookedTreatments);
+  // const bookedTreatments = useSelector((state) => state.user.bookedTreatments);
+  const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
+  console.log(bookedTreatment);
 
   return (
     <>
@@ -51,14 +53,12 @@ const UserInfo = () => {
               <StyledFieldset>
                 <StyledLegend>Upcoming bookings</StyledLegend>
                 <InnerWrapper>
-                  {bookedTreatments && bookedTreatments.length > 0 ? (
-                    // Map through booked treatments and display the details
-                    bookedTreatments.map((treatment) => (
-                      <div key={treatment.id}>
-                        {/* <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo> */}
-                        <ParagraphUserInfo>{treatment.name}</ParagraphUserInfo>
-                      </div>
-                    ))
+                  {bookedTreatment ? (
+                  // Map through booked treatments and display the details
+                    <div>
+                      {/* <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo> */}
+                      <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
+                    </div>
                   ) : (
                     // Display message if no treatments are booked
                     <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
