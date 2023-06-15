@@ -88,7 +88,7 @@ export const StickyNavTwo = styled(Nav)`
 `;
 
 export const StyledNavHeaderTwo = styled.h1`
-  text-shadow: 2px 2px 2px rgba(255, 255, 255); /* Adjust the shadow values as per your preference */
+  text-shadow: 1px 1px 1px rgba(255, 255, 255); 
   font-family: var(--headings-font-family-two);
   font-size: 1.3rem;
   font-weight: 400;
