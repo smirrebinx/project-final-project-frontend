@@ -118,7 +118,7 @@ const Login = () => {
             Swal.fire({
               icon: 'success',
               title: 'Success!',
-              text: 'Your are successfully registered, please log in.',
+              text: 'Your are successfully registered, and logged in.',
               confirmButtonColor: 'var(--submit-button-color-two)'
             });
           } else {
