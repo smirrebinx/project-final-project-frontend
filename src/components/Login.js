@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector, batch } from 'react-redux';
 import classNames from 'classnames';
 import Swal from 'sweetalert2';
-import user from 'reducers/user';
+import { user, logout } from 'reducers/user';
 import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
 import useSticky from './useSticky';
@@ -26,6 +26,18 @@ const Login = () => {
   // authenticated routes without the need for a new login within the same session.
   const userAccessToken = useSelector((store) => store.user.accessToken || localStorage.getItem('accessToken'));
   // const [isLoginForm, setIsLoginForm] = useState(null); // Initialize as null
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      dispatch(logout());
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [dispatch]);
 
   const onLoginFormSubmit = (event) => {
     event.preventDefault();
