@@ -9,6 +9,7 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
 import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 
+// Create contexts for picked date and selected treatment ID
 const PickedDateContext = createContext();
 const SelectedTreatmentIdContext = createContext();
 
@@ -32,23 +33,21 @@ const Booking = ({ location }) => {
 
   const handleDateChange = (date) => {
     setPickedDate(date);
-    console.log('Picked Date:', date);
   };
 
   const handleConfirmDate = () => {
-    // Perform any necessary actions before redirecting to UserInfo
-    // Example: Save the picked date to a database or Redux store
-
     // Redirect to UserInfo page
     window.location.href = '/userinfo';
   };
 
   return (
     <CalendarContainer>
+      {/* Sticky navigation */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
       </StickyNavTwo>
       {!accessToken && (
+        // Display login prompt if not logged in
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
           <StyledParagraphAnimation> Please log in to book a treatment.</StyledParagraphAnimation>
@@ -56,16 +55,20 @@ const Booking = ({ location }) => {
         </div>
       )}
       {accessToken && (
+        // Display booking options if logged in
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
           {pickedDate && (
+            // Display selected date if available
             <p>Selected Date: {pickedDate.toLocaleDateString('en-GB')}</p>
           )}
           <StyledButton type="submit" onClick={handleConfirmDate}>Confirm Date</StyledButton>
         </div>
       )}
+      {/* Provide picked date and selected treatment ID through contexts */}
       <PickedDateContext.Provider value={pickedDate}>
         <SelectedTreatmentIdContext.Provider value={selectedTreatmentId}>
+          {/* Calendar component for date selection */}
           <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
         </SelectedTreatmentIdContext.Provider>
       </PickedDateContext.Provider>
@@ -73,6 +76,7 @@ const Booking = ({ location }) => {
   );
 };
 
+// Custom hooks for accessing picked date and selected treatment ID
 const usePickedDate = () => useContext(PickedDateContext);
 const useSelectedTreatmentId = () => useContext(SelectedTreatmentIdContext);
 

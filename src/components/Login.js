@@ -46,12 +46,8 @@ const Login = () => {
       fetch(url, options)
         .then((response) => response.json())
         .then((data) => {
-          console.log('Login response:', data);
           if (data.success) {
-            console.log('Login successful!');
             batch(() => {
-              // const { accessToken } = data.response;
-              // dispatch(user.actions.loginSuccess({ accessToken }));
               localStorage.setItem('accessToken', data.response.accessToken);
               dispatch(user.actions.setFirstName(data.response.firstName));
               dispatch(user.actions.setLastName(data.response.lastName));
@@ -66,9 +62,7 @@ const Login = () => {
               text: 'Your are successfully logged in.',
               confirmButtonColor: 'var(--submit-button-color-two)'
             });
-            console.log(data.response);
           } else {
-            console.log('Login failed:', data.response);
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setUserId(null));
             dispatch(user.actions.setError(data.response));
@@ -85,7 +79,6 @@ const Login = () => {
 
   const onRegisterFormSubmit = (event) => {
     event.preventDefault();
-    // setIsLoginForm(false); // Update isLoginForm when registration form is submitted
 
     // Check if it's the registration form
     if (event.target.id === 'register-form') {
@@ -102,12 +95,8 @@ const Login = () => {
       fetch(url, options)
         .then((response) => response.json())
         .then((data) => {
-          console.log('Registration response:', data);
           if (data.success) {
-            console.log('Registration successful!');
             batch(() => {
-              // const { accessToken } = data.response;
-              // dispatch(user.actions.loginSuccess({ accessToken }));
               dispatch(user.actions.setFirstName(data.response.firstName));
               dispatch(user.actions.setLastName(data.response.lastName));
               dispatch(user.actions.setMobilePhone(data.response.mobilePhone));
@@ -122,7 +111,6 @@ const Login = () => {
               confirmButtonColor: 'var(--submit-button-color-two)'
             });
           } else {
-            console.log('Registration failed:', data.response);
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setUserId(null));
             dispatch(user.actions.setError(data.response));

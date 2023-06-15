@@ -30,16 +30,16 @@ export const StickyNav = styled(Nav)`
 `;
 
 export const GoToTreatmentButton = styled.button`
-display: flex;
-background-color: var(--navbar-button-color-one);
-padding: 0.8rem;
-border: none;
-color: var(--navbar-color-one);
-text-transform: uppercase;
-font-family: var(--paragraph-font-family-one);
-font-size: 1rem;
-letter-spacing: 0.05em;
-cursor: pointer;
+  display: flex;
+  background-color: var(--navbar-button-color-one);
+  padding: 0.8rem;
+  border: none;
+  color: var(--navbar-color-one);
+  text-transform: uppercase;
+  font-family: var(--paragraph-font-family-one);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
 `;
 
 export const StyledLinkWrapper = styled.div.attrs({
@@ -50,9 +50,8 @@ export const StyledLinkWrapper = styled.div.attrs({
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  
 
-   & > a {
+  & > a {
     text-decoration: none;
     cursor: pointer;
     color: var(--navbar-color-one);
@@ -64,7 +63,7 @@ export const StyledLinkWrapper = styled.div.attrs({
 
 export const StickyNavTwo = styled(Nav)`
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -79,7 +78,6 @@ export const StickyNavTwo = styled(Nav)`
   color: var(--navbar-color-one);
   margin-top: 2rem;
 
-
   &.sticky {
     position: fixed;
     top: 0;
@@ -87,7 +85,7 @@ export const StickyNavTwo = styled(Nav)`
 
   @media (min-width: 1024px) {
     width: 80%;
-}
+  }
 `;
 
 export const StyledNavHeaderTwo = styled.h1`
@@ -100,7 +98,4 @@ export const StyledNavHeaderTwo = styled.h1`
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-  /* @media (min-width: 1024px) {
-   text-align: left;
-} */
 `;

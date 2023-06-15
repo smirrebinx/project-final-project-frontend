@@ -32,6 +32,7 @@ const Main = () => {
 
   return (
     <>
+      {/* Display user icon with click event to scroll to logout */}
       <button
         type="button"
         onClick={handleScrollToLogout}
@@ -39,6 +40,7 @@ const Main = () => {
         <img src={svgIcon} alt="SVG Icon" />
       </button>
       <Routes>
+        {/* Define routes for different pages */}
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/calendar" element={<Booking />} />
@@ -46,9 +48,11 @@ const Main = () => {
         <Route path="/booking" element={<Booking />} />
         <Route path="/userinfo" element={<UserInfo />} />
       </Routes>
+      {/* Display logout component if showLogout state is true */}
       {showLogout && (
         <Logout handleCloseLogout={handleCloseLogout} handleLogout={handleLogout} />
       )}
+      {/* Hidden div to mark the position of logout component */}
       <div ref={logoutRef} style={{ display: 'none' }}>Log out</div>
     </>
   );

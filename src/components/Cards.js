@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import treatments, { setSelectedTreatment } from 'reducers/treatments';
@@ -17,6 +18,7 @@ import iconHairDye from '../assets/cardsvgs/brush_FILL0_wght100_GRAD0_opsz48.svg
 import iconHaircutDye from '../assets/cardsvgs/your_trips_FILL0_wght100_GRAD0_opsz48.svg';
 import iconHairStyling from '../assets/cardsvgs/auto_fix_FILL0_wght100_GRAD0_opsz48.svg';
 
+// Function to get the appropriate treatment icon based on the treatment name
 const getTreatmentIcon = (treatmentName) => {
   switch (treatmentName) {
     case 'Haircut':
@@ -49,7 +51,6 @@ const Cards = () => {
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
-          console.log(data); // Log the fetched data
           dispatch(treatments.actions.setItems(data.treatments));
         } else {
           throw new Error('Failed to fetch treatments');
@@ -64,8 +65,7 @@ const Cards = () => {
     fetchTreatments();
   }, [dispatch, url]);
 
-  // const selectedTreatment = allTreatments.find((treatment) => treatment._id === selectedTreatmentId);
-
+  // Handler for when a treatment card is clicked
   const handleTreatmentClick = (treatmentId) => {
     const selectedTreatment = allTreatments.find((treatment) => treatment._id === treatmentId);
     setSelectedTreatmentId(treatmentId);

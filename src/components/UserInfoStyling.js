@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Flexbox = styled.div`
-display: flex;
-`
+  display: flex;
+`;
 
 export const FlexboxUserInfo = styled.div`
   display: flex;
@@ -12,18 +12,18 @@ export const FlexboxUserInfo = styled.div`
 `;
 
 export const SecondHeaderUserInfo = styled.h2`
-font-family: var(--second-headings-font-family-two);
-font-weight: 600;
-font-size: 1rem;
-text-transform: uppercase;
-color: var(--second-headings-font-color-two);
-text-align: left;
+  font-family: var(--second-headings-font-family-two);
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--second-headings-font-color-two);
+  text-align: left;
 `;
 
 export const ParagraphUserInfo = styled.p`
-font-family: var(--second-headings-font-family-two);
-font-size: 1.1rem;
-text-align: left;
+  font-family: var(--second-headings-font-family-two);
+  font-size: 1.1rem;
+  text-align: left;
 `;
 
 export const StyledLegend = styled.legend`
@@ -35,5 +35,5 @@ export const StyledLegend = styled.legend`
 `;
 
 export const StyledFieldset = styled.fieldset`
-margin-top: 2rem;
+  margin-top: 2rem;
 `;

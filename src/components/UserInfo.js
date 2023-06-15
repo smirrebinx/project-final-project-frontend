@@ -15,7 +15,6 @@ const UserInfo = () => {
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
-  console.log(bookedTreatment);
 
   return (
     <>
@@ -50,6 +49,7 @@ const UserInfo = () => {
                 <InnerWrapper>
                   {bookedTreatment ? (
                     <FlexboxUserInfo>
+                      {/* Picked date hardcoded placeholder */}
                       <ParagraphUserInfo>Picked Date: Saturday, June 17</ParagraphUserInfo>
                       <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
                     </FlexboxUserInfo>
