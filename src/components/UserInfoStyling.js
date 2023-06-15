@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-export const InnerWrapperUserInfo = styled.div`
+export const FlexboxUserInfo = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   text-align: center;
 `;
 
@@ -17,5 +18,18 @@ text-align: left;
 
 export const ParagraphUserInfo = styled.p`
 font-family: var(--second-headings-font-family-two);
+font-size: 1.1rem;
 text-align: left;
+`;
+
+export const StyledLegend = styled.legend`
+  font-family: var(--second-headings-font-family-two);
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--second-headings-font-color-two);
+`;
+
+export const StyledFieldset = styled.fieldset`
+margin-top: 2rem;
 `;

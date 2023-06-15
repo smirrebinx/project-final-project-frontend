@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 // UserInfo.js
 
@@ -8,7 +9,7 @@ import classNames from 'classnames';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { ParagraphUserInfo, SecondHeaderUserInfo } from './UserInfoStyling';
+import { FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledLegend } from './UserInfoStyling';
 import LogoutButton from './Logout';
 
 const UserInfo = () => {
@@ -35,28 +36,38 @@ const UserInfo = () => {
           {user.accessToken ? (
             <>
               {/* Display user contact information */}
-              <SecondHeaderUserInfo>Your Contact Information</SecondHeaderUserInfo>
-              <ParagraphUserInfo>{user.firstName}</ParagraphUserInfo>
-              <ParagraphUserInfo>{user.lastName}</ParagraphUserInfo>
-              <ParagraphUserInfo>{user.mobilePhone}</ParagraphUserInfo>
-              <ParagraphUserInfo>{user.email}</ParagraphUserInfo>
-
+              <StyledFieldset>
+                <StyledLegend>User information</StyledLegend>
+                <div className="flex">
+                  <div className="image">
+                    <img src="../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg" alt="" />
+                  </div>
+                  <FlexboxUserInfo className="user">
+                    <ParagraphUserInfo>First name: {user.firstName}</ParagraphUserInfo>
+                    <ParagraphUserInfo>Last name: {user.lastName}</ParagraphUserInfo>
+                    <ParagraphUserInfo>Phone: {user.mobilePhone}</ParagraphUserInfo>
+                    <ParagraphUserInfo>Email: {user.email}</ParagraphUserInfo>
+                  </FlexboxUserInfo>
+                </div>
+              </StyledFieldset>
               {/* Display booked treatments */}
-              <SecondHeaderUserInfo>Booked Treatments</SecondHeaderUserInfo>
-              <InnerWrapper>
-                {bookedTreatments && bookedTreatments.length > 0 ? (
-                  // Map through booked treatments and display the details
-                  bookedTreatments.map((treatment) => (
-                    <div key={treatment.id}>
-                      {/* <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo> */}
-                      <ParagraphUserInfo>{treatment.name}</ParagraphUserInfo>
-                    </div>
-                  ))
-                ) : (
-                  // Display message if no treatments are booked
-                  <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
-                )}
-              </InnerWrapper>
+              <StyledFieldset>
+                <StyledLegend>Upcoming bookings</StyledLegend>
+                <InnerWrapper>
+                  {bookedTreatments && bookedTreatments.length > 0 ? (
+                    // Map through booked treatments and display the details
+                    bookedTreatments.map((treatment) => (
+                      <div key={treatment.id}>
+                        {/* <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo> */}
+                        <ParagraphUserInfo>{treatment.name}</ParagraphUserInfo>
+                      </div>
+                    ))
+                  ) : (
+                    // Display message if no treatments are booked
+                    <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
+                  )}
+                </InnerWrapper>
+              </StyledFieldset>
             </>
           ) : (
             // Display message if user is not logged in
