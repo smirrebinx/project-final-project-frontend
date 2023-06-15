@@ -1,5 +1,5 @@
-/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from 'reducers/treatments';
@@ -77,7 +77,8 @@ const Cards = () => {
                   onClick={() => handleTreatmentClick(treatment._id)}
                   className={classNames({ selected: treatment._id === selectedTreatmentId })}>
                   <StyledLink>
-                    <img src={treatment.icon} alt="Card Icon" />
+                    {/* Update the image source to use the SVG file from the frontend */}
+                    <img src={`/assets/cardsvgs/icon${treatment._id}.svg`} alt="Card Icon" />
                     <StyledSecondHeadingCards>{treatment.name}</StyledSecondHeadingCards>
                   </StyledLink>
                 </Card>
