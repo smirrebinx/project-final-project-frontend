@@ -62,3 +62,6 @@ border-radius: 3px;
 border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
+export const StyledAvatarLoginOut = styled.div`
+display: flex;
+`

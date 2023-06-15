@@ -11,6 +11,7 @@ import Cards from './Cards';
 import UserInfo from './UserInfo';
 import Logout from './Logout';
 import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
+import { StyledAvatarLoginOut } from './GlobalStyling';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,9 @@ const Main = () => {
         type="button"
         onClick={handleScrollToLogout}
         style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
-        <img src={svgIcon} alt="SVG Icon" />
+        <StyledAvatarLoginOut>
+          <img src={svgIcon} alt="SVG Icon" />
+        </StyledAvatarLoginOut>
       </button>
       <Routes>
         {/* Define routes for different pages */}
