@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledLegend } from './UserInfoStyling';
+import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledAvatar, StyledFieldset, StyledImage, StyledLegend } from './UserInfoStyling';
 import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 
 const UserInfo = () => {
@@ -32,9 +32,9 @@ const UserInfo = () => {
               <StyledFieldset>
                 <StyledLegend>User information</StyledLegend>
                 <Flexbox className="flex">
-                  <div className="image">
-                    <img src={svgIcon} alt="SVG Icon" />
-                  </div>
+                  <StyledAvatar>
+                    <StyledImage src={svgIcon} alt="SVG Icon" />
+                  </StyledAvatar>
                   <FlexboxUserInfo className="user">
                     <ParagraphUserInfo>First name: {user.firstName}</ParagraphUserInfo>
                     <ParagraphUserInfo>Last name: {user.lastName}</ParagraphUserInfo>
@@ -48,11 +48,11 @@ const UserInfo = () => {
                 <StyledLegend>Upcoming bookings</StyledLegend>
                 <InnerWrapper>
                   {bookedTreatment ? (
-                    <FlexboxUserInfo>
+                    <>
                       {/* Picked date hardcoded placeholder */}
                       <ParagraphUserInfo>Picked Date: Saturday, June 17</ParagraphUserInfo>
                       <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
-                    </FlexboxUserInfo>
+                    </>
                   ) : (
                     // Display message if no treatments are booked
                     <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>

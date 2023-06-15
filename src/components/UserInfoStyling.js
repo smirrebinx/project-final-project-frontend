@@ -23,7 +23,6 @@ export const SecondHeaderUserInfo = styled.h2`
 export const ParagraphUserInfo = styled.p`
   font-family: var(--second-headings-font-family-two);
   font-size: 1.1rem;
-  text-align: left;
 `;
 
 export const StyledLegend = styled.legend`
@@ -37,3 +36,12 @@ export const StyledLegend = styled.legend`
 export const StyledFieldset = styled.fieldset`
   margin-top: 2rem;
 `;
+
+export const StyledAvatar = styled.div`
+border: transparent;
+`
+export const StyledImage = styled.img`
+width: 10rem;
+margin: 2rem;
+opacity: 0.5;
+`
