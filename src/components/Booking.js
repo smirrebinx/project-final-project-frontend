@@ -8,7 +8,6 @@ import { CalendarContainer, StyledButton, StyledParagraphBooking } from './Booki
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
 import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
-import LogoutButton from './Logout';
 
 const PickedDateContext = createContext();
 const SelectedTreatmentIdContext = createContext();
@@ -45,35 +44,32 @@ const Booking = ({ location }) => {
   };
 
   return (
-    <>
-      <LogoutButton>Log Out</LogoutButton>
-      <CalendarContainer>
-        <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
+    <CalendarContainer>
+      <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
+        <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
+      </StickyNavTwo>
+      {!accessToken && (
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
-        </StickyNavTwo>
-        {!accessToken && (
-          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
-            <StyledParagraphAnimation> Please log in to book a treatment.</StyledParagraphAnimation>
-            <StyledLink to="/login">Log in</StyledLink>
-          </div>
-        )}
-        {accessToken && (
-          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
-            {pickedDate && (
-              <p>Selected Date: {pickedDate.toLocaleDateString('en-GB')}</p>
-            )}
-            <StyledButton type="submit" onClick={handleConfirmDate}>Confirm Date</StyledButton>
-          </div>
-        )}
-        <PickedDateContext.Provider value={pickedDate}>
-          <SelectedTreatmentIdContext.Provider value={selectedTreatmentId}>
-            <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
-          </SelectedTreatmentIdContext.Provider>
-        </PickedDateContext.Provider>
-      </CalendarContainer>
-    </>
+          <StyledParagraphAnimation> Please log in to book a treatment.</StyledParagraphAnimation>
+          <StyledLink to="/login">Log in</StyledLink>
+        </div>
+      )}
+      {accessToken && (
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
+          {pickedDate && (
+            <p>Selected Date: {pickedDate.toLocaleDateString('en-GB')}</p>
+          )}
+          <StyledButton type="submit" onClick={handleConfirmDate}>Confirm Date</StyledButton>
+        </div>
+      )}
+      <PickedDateContext.Provider value={pickedDate}>
+        <SelectedTreatmentIdContext.Provider value={selectedTreatmentId}>
+          <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
+        </SelectedTreatmentIdContext.Provider>
+      </PickedDateContext.Provider>
+    </CalendarContainer>
   );
 };
 
