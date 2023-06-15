@@ -1,11 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
-// UserInfo.js
-
 import React from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
-// import { usePickedDate } from './Booking';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
@@ -14,11 +11,9 @@ import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
-  // const [pickedDate] = usePickedDate(); // Get the pickedDate from the hook
 
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
-  // const bookedTreatments = useSelector((state) => state.user.bookedTreatments);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
   console.log(bookedTreatment);
 
@@ -30,7 +25,6 @@ const UserInfo = () => {
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>
       </StickyNavTwo>
 
-      {/* Outer wrapper */}
       <OuterWrapper>
         <InnerWrapper>
           {user.accessToken ? (
@@ -55,11 +49,10 @@ const UserInfo = () => {
                 <StyledLegend>Upcoming bookings</StyledLegend>
                 <InnerWrapper>
                   {bookedTreatment ? (
-                  // Map through booked treatments and display the details
-                    <div>
-                      {/* <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo> */}
+                    <FlexboxUserInfo>
+                      <ParagraphUserInfo>Picked Date: Saturday, June 17</ParagraphUserInfo>
                       <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
-                    </div>
+                    </FlexboxUserInfo>
                   ) : (
                     // Display message if no treatments are booked
                     <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
@@ -69,10 +62,10 @@ const UserInfo = () => {
             </>
           ) : (
             // Display message if user is not logged in
-            <div>
+            <FlexboxUserInfo>
               <StyledParagraphAnimation>Please log in to see your information and booked treatments.</StyledParagraphAnimation>
               <StyledLink to="/login">Log in</StyledLink>
-            </div>
+            </FlexboxUserInfo>
           )}
         </InnerWrapper>
       </OuterWrapper>
