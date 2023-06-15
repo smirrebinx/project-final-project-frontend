@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Flexbox = styled.div`
+display: flex;
+`
+
 export const FlexboxUserInfo = styled.div`
   display: flex;
   flex-direction: column;

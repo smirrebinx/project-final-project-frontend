@@ -9,7 +9,8 @@ import classNames from 'classnames';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledLegend } from './UserInfoStyling';
+import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledLegend } from './UserInfoStyling';
+import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
@@ -37,9 +38,9 @@ const UserInfo = () => {
               {/* Display user contact information */}
               <StyledFieldset>
                 <StyledLegend>User information</StyledLegend>
-                <div className="flex">
+                <Flexbox className="flex">
                   <div className="image">
-                    <img src="../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg" alt="" />
+                    <img src={svgIcon} alt="SVG Icon" />
                   </div>
                   <FlexboxUserInfo className="user">
                     <ParagraphUserInfo>First name: {user.firstName}</ParagraphUserInfo>
@@ -47,7 +48,7 @@ const UserInfo = () => {
                     <ParagraphUserInfo>Phone: {user.mobilePhone}</ParagraphUserInfo>
                     <ParagraphUserInfo>Email: {user.email}</ParagraphUserInfo>
                   </FlexboxUserInfo>
-                </div>
+                </Flexbox>
               </StyledFieldset>
               {/* Display booked treatments */}
               <StyledFieldset>
