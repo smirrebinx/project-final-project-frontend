@@ -12,13 +12,13 @@ const Logout = ({ handleCloseLogout, handleLogout }) => {
         position: 'fixed',
         top: 0,
         left: 0,
-        width: '100%',
-        height: '100%',
+        margin: '1rem',
         background: 'rgba(0, 0, 0, 0.5)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 9999
+        zIndex: 9999,
+        border: '1px solid rgba(0, 0, 0, 0.1)'
       }}>
       <div style={{ background: 'white', padding: '16px' }}>
         <p>Are you sure you want to log out?</p>
