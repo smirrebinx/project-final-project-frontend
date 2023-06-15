@@ -1,11 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
-// UserInfo.js
-
 import React from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
-// import { usePickedDate } from './Booking';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
@@ -14,13 +11,14 @@ import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
-  // const [pickedDate] = usePickedDate(); // Get the pickedDate from the hook
 
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
   // const bookedTreatments = useSelector((state) => state.user.bookedTreatments);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
+  const pickedDate = useSelector((state) => state.calendarBooking.bookedDate);
   console.log(bookedTreatment);
+  console.log(pickedDate);
 
   return (
     <>
@@ -57,7 +55,7 @@ const UserInfo = () => {
                   {bookedTreatment ? (
                   // Map through booked treatments and display the details
                     <div>
-                      {/* <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo> */}
+                      <ParagraphUserInfo>Picked Date: {pickedDate.toLocaleDateString('en-GB')}</ParagraphUserInfo>
                       <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
                     </div>
                   ) : (

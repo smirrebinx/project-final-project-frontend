@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAccessToken } from 'reducers/user';
+import { setBookedDate } from 'reducers/calendarBooking';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import classNames from 'classnames';
@@ -9,17 +10,15 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
 import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 
-const PickedDateContext = createContext();
 const SelectedTreatmentIdContext = createContext();
 
-const Booking = ({ location }) => {
+const Booking = () => {
   const { sticky, stickyRef } = useSticky();
   const [pickedDate, setPickedDate] = useState(new Date());
+  const bookedDate = useSelector((state) => state.calendarBooking.bookedDate);
 
   // Access the access token from Redux store
   const accessToken = useSelector((store) => store.user.accessToken);
-
-  const selectedTreatmentId = location?.state?.treatmentId;
   const dispatch = useDispatch();
 
   // Check for the access token in local storage and update Redux store when the component mounts
@@ -32,12 +31,17 @@ const Booking = ({ location }) => {
 
   const handleDateChange = (date) => {
     setPickedDate(date);
-    console.log('Picked Date:', date);
+    dispatch(setBookedDate(date));
   };
 
+  useEffect(() => {
+    console.log(pickedDate);
+  }, [pickedDate]);
+
+  console.log('Picked Date:', pickedDate);
+
   const handleConfirmDate = () => {
-    // Perform any necessary actions before redirecting to UserInfo
-    // Example: Save the picked date to a database or Redux store
+    dispatch(setBookedDate(pickedDate));
 
     // Redirect to UserInfo page
     window.location.href = '/userinfo';
@@ -51,7 +55,7 @@ const Booking = ({ location }) => {
       {!accessToken && (
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
-          <StyledParagraphAnimation> Please log in to book a treatment.</StyledParagraphAnimation>
+          <StyledParagraphAnimation>Please log in to book a treatment.</StyledParagraphAnimation>
           <StyledLink to="/login">Log in</StyledLink>
         </div>
       )}
@@ -59,22 +63,20 @@ const Booking = ({ location }) => {
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
           {pickedDate && (
-            <p>Selected Date: {pickedDate.toLocaleDateString('en-GB')}</p>
+            <>
+              <p>Selected Date: {pickedDate.toLocaleDateString('en-GB')}</p>
+              <p>Booked Date: {bookedDate && bookedDate.toLocaleDateString('en-GB')}</p>
+            </>
           )}
           <StyledButton type="submit" onClick={handleConfirmDate}>Confirm Date</StyledButton>
         </div>
       )}
-      <PickedDateContext.Provider value={pickedDate}>
-        <SelectedTreatmentIdContext.Provider value={selectedTreatmentId}>
-          <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
-        </SelectedTreatmentIdContext.Provider>
-      </PickedDateContext.Provider>
+      <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
     </CalendarContainer>
   );
 };
 
-const usePickedDate = () => useContext(PickedDateContext);
 const useSelectedTreatmentId = () => useContext(SelectedTreatmentIdContext);
 
 export default Booking;
-export { usePickedDate, useSelectedTreatmentId };
+export { useSelectedTreatmentId };
