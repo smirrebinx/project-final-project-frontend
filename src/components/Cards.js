@@ -5,12 +5,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from 'reducers/treatments';
 import classNames from 'classnames';
 import Swal from 'sweetalert2';
-import { Card, CardContainer, CardSelected, StyledParagraphBookingCards, StyledSecondHeadingCards } from './CardStyling';
+import { Card, CardContainer, CardIconContainer, CardSelected, StyledParagraphBookingCards, StyledSecondHeadingCards } from './CardStyling';
 import { API_URL } from '../utils/urls';
 import Loading from './Loading';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { StyledLink } from './GlobalStyling';
+
+import iconHaircut from '../assets/cardsvgs/cut_FILL0_wght100_GRAD0_opsz40.svg';
+import iconHairDye from '../assets/cardsvgs/brush_FILL0_wght100_GRAD0_opsz48.svg';
+import iconHaircutDye from '../assets/cardsvgs/your_trips_FILL0_wght100_GRAD0_opsz48.svg';
+import iconHairStyling from '../assets/cardsvgs/auto_fix_FILL0_wght100_GRAD0_opsz48.svg';
+
+const getTreatmentIcon = (treatmentName) => {
+  switch (treatmentName) {
+    case 'Haircut':
+      return iconHaircut;
+    case 'Hair Dye':
+      return iconHairDye;
+    case 'Haircut and Dye':
+      return iconHaircutDye;
+    case 'Hair styling':
+      return iconHairStyling;
+    default:
+      return null; // Return a default icon or handle unknown treatment names
+  }
+};
 
 const Cards = () => {
   const [selectedTreatmentId, setSelectedTreatmentId] = useState(null);
@@ -29,6 +49,7 @@ const Cards = () => {
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
+          console.log(data); // Log the fetched data
           dispatch(setItems(data.treatments));
         } else {
           throw new Error('Failed to fetch treatments');
@@ -77,8 +98,9 @@ const Cards = () => {
                   onClick={() => handleTreatmentClick(treatment._id)}
                   className={classNames({ selected: treatment._id === selectedTreatmentId })}>
                   <StyledLink>
-                    {/* Update the image source to use the SVG file from the frontend */}
-                    <img src={`/assets/cardsvgs/icon${treatment._id}.svg`} alt="Card Icon" />
+                    <CardIconContainer>
+                      <img src={getTreatmentIcon(treatment.name)} alt="Card Icon" />
+                    </CardIconContainer>
                     <StyledSecondHeadingCards>{treatment.name}</StyledSecondHeadingCards>
                   </StyledLink>
                 </Card>

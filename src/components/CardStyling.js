@@ -45,6 +45,13 @@ cursor: pointer;
   }
 `;
 
+export const CardIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+`;
+
 export const CardSelected = styled.div`
 display: flex;
 flex-direction: column;
