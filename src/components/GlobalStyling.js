@@ -7,15 +7,15 @@ export const OuterWrapper = styled.div`
   width: 100%;
   justify-content: center;
   text-align: center;
-  margin-top: 6rem;
+  margin-top: 4rem;
   margin-bottom: 2rem;
 `;
 
 export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: center;
+  margin-top: 4rem;
 `;
 
 export const StyledLink = styled(Link)`
