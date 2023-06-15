@@ -75,7 +75,6 @@ export const StickyNavTwo = styled(Nav)`
   width: 100%;
   transition: top 0.3s ease-in-out;
   background-color: var(--navbar-background-color-two);
-  color: var(--navbar-color-one);
   margin-top: 2rem;
 
   &.sticky {
@@ -89,7 +88,7 @@ export const StickyNavTwo = styled(Nav)`
 `;
 
 export const StyledNavHeaderTwo = styled.h1`
-  color: var(--navbar-color-one);
+  text-shadow: 2px 2px 2px rgba(255, 255, 255); /* Adjust the shadow values as per your preference */
   font-family: var(--headings-font-family-two);
   font-size: 1.3rem;
   font-weight: 400;
