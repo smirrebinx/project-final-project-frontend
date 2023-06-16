@@ -22,8 +22,26 @@ const Logout = ({ handleCloseLogout, handleLogout }) => {
       }}>
       <div style={{ background: 'white', padding: '16px' }}>
         <p>Are you sure you want to log out?</p>
-        <button style={{ cursor: 'pointer', background: 'transparent', padding: '0.4rem', border: '2px solid var(--submit-button-color-two)', borderRadius: '0.25rem', margin: '1rem' }} type="button" onClick={handleLogoutClick}>Log out</button>
-        <button style={{ cursor: 'pointer', background: 'transparent', padding: '0.4rem', border: '2px solid var(--submit-button-color-two)', borderRadius: '0.25rem', margin: '1rem' }} type="button" onClick={handleCloseLogout}>Cancel</button>
+        <button
+          style={{ cursor: 'pointer',
+            background: 'transparent',
+            padding: '0.4rem',
+            border: '2px solid var(--submit-button-color-two)',
+            borderRadius: '0.25rem',
+            margin: '1rem' }}
+          type="button"
+          onClick={handleLogoutClick}>Log out
+        </button>
+        <button
+          style={{ cursor: 'pointer',
+            background: 'transparent',
+            padding: '0.4rem',
+            border: '2px solid var(--submit-button-color-two)',
+            borderRadius: '0.25rem',
+            margin: '1rem' }}
+          type="button"
+          onClick={handleCloseLogout}>Cancel
+        </button>
       </div>
     </div>
   );
