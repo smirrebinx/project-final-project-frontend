@@ -40,6 +40,19 @@ const MainWithUserInfo = () => {
     localStorage.setItem('userReduxState', JSON.stringify(store.getState()));
   }, [userAccessToken]);
 
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      // Dispatch the logout action when the browser is closed or reloaded
+      store.dispatch(user.actions.logout());
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   return <Main />;
 };
 
