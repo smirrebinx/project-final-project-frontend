@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -13,12 +12,15 @@ const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
 
   // Retrieve user information from the Redux store
+  // const userAccessToken = useSelector((state) => state.user.accessToken);
   const user = useSelector((state) => state.user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
 
+  // Check if the user is logged in
+  const isUserLoggedIn = !!user.accessToken;
+
   return (
     <>
-
       {/* Sticky navigation header */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>
@@ -26,7 +28,7 @@ const UserInfo = () => {
 
       <OuterWrapper>
         <InnerWrapper>
-          {user.accessToken ? (
+          {isUserLoggedIn ? (
             <>
               {/* Display user contact information */}
               <StyledFieldset>
@@ -61,7 +63,7 @@ const UserInfo = () => {
               </StyledFieldset>
             </>
           ) : (
-            // Display message if user is not logged in
+          // Display message if user is not logged in
             <FlexboxUserInfo>
               <StyledParagraphAnimation>Please log in to see your information and booked treatments.</StyledParagraphAnimation>
               <StyledLink to="/login">Log in</StyledLink>
