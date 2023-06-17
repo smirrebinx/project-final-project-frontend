@@ -66,7 +66,7 @@ flex-direction: column;
 align-items: center;
 font-family: var(--paragraph-font-family-one);
 font-size: 1.4rem;
-width: 35vh;
+width: 30vh;
 height: auto;
 padding: 2rem 2rem 3rem;
 margin: 1rem auto;
