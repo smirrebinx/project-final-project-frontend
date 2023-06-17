@@ -6,14 +6,19 @@ export const FormWrapper = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 30vw;
+    width: 80vw;
     height: auto;
     padding: 1.25rem;
+    margin: 0 auto;
+
+    @media (min-width: 1024px) {
+      width: 30vw;
+    }
   }
 
   input {
     display: flex;
-    margin: 0.3125rem;
+    margin: 0.3125rem auto;
     padding: 0.625rem;
     width: 100%;
     height: 1.5rem;
@@ -25,6 +30,11 @@ export const FormWrapper = styled.div`
     border-color: rgb(208 215 217);
     background-color: rgb(244 246 246);
     color: rgb(48 56 57);
+
+    @media (min-width: 1024px) {
+    margin: 0.3125rem;
+    padding: 0.625rem;
+  }
   }
 
   button {
@@ -51,9 +61,14 @@ export const Wrapper = styled.div`
 export const SecondHeaderLogIn = styled.h2`
   font-family: var(--second-headings-font-family-two);
   font-weight: 600;
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: var(--second-headings-font-color-two);
-  text-align: left;
+
+  
+  @media (min-width: 1024px) {
+    text-align: left;
+  }
 `;
 
 export const LineBeforeAndAfter = styled.span`
@@ -65,11 +80,15 @@ export const LineBeforeAndAfter = styled.span`
   &::after {
     content: '';
     position: absolute;
-    width: 16rem;
+    width: 7rem;
     height: 0.0625rem;
     background-color: var(--second-headings-font-color-two);
     top: 50%;
     transform: translateY(-50%);
+
+    @media (min-width: 1024px) {
+    width: 16rem;
+  }
   }
 
   &::before {

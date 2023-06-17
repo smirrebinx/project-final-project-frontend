@@ -7,8 +7,12 @@ export const OuterWrapper = styled.div`
   width: 100%;
   justify-content: center;
   text-align: center;
-  margin-top: 6rem;
+  margin-top: 0;
   margin-bottom: 2rem;
+
+  @media (min-width: 1024px) {
+    margin-top: 6rem;
+  }
 `;
 
 export const InnerWrapper = styled.div`
@@ -20,6 +24,8 @@ export const InnerWrapper = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
+  width: 70%;
+  margin: 0 auto;
 
   &:hover {
     text-decoration: underline;
