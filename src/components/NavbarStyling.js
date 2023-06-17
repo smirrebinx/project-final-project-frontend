@@ -1,38 +1,49 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-  position: relative;
-  z-index: 1;
-
-  @media screen and (max-width: 768px) {
     min-width: 0;
     max-width: 100%;
     box-sizing: content-box;
     margin: 0;
     overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    z-index: 1;
+
+  @media screen and (max-width: 1024px) {
+    min-width: 0;
+    max-width: 100%;
   }
 `;
 
 export const StickyNav = styled(Nav)`
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
   height: 3rem;
   padding: 0 2rem;
-  width: 100%;
   transition: top 0.3s ease-in-out;
   background-color: var(--navbar-background-color-one);
   color: var(--navbar-color-one);
+  
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
 
   &.sticky {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
   }
 `;
 
 export const GoToTreatmentButton = styled.button`
   display: flex;
   background-color: var(--navbar-button-color-one);
-  padding: 0.8rem;
+  padding: 1rem;
   border: none;
   color: var(--navbar-color-one);
   text-transform: uppercase;
@@ -70,7 +81,6 @@ export const StickyNavTwo = styled(Nav)`
   top: 0.875rem;
   left: 50%;
   transform: translateX(-50%);
-  height: 3.5rem;
   padding: 0 2rem;
   width: 100%;
   transition: top 0.3s ease-in-out;
