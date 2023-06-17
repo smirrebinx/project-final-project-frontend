@@ -14,9 +14,9 @@ justify-content: center;
 align-items: center;
 
 @media screen and (max-width: 768px) {
-    max-width: 17.375rem;
+    max-width: 50vh;
     height: auto;
-    margin: 2rem auto;
+    margin: 1rem 1rem auto;
   }
 `
 export const StyledHeader = styled.h1`
