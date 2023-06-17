@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import treatments, { setSelectedTreatment } from 'reducers/treatments';
 import classNames from 'classnames';
 import Swal from 'sweetalert2';
-import { Card, CardContainer, CardIconContainer, CardSelected, StyledParagraphBookingCards, StyledSecondHeadingCards } from './CardStyling';
+import { Card, CardContainer, CardIconContainer, CardSelected, StyledParagraphBookingCards, StyledSecondHeadingCards } from './CardsStyling';
 import { API_URL } from '../utils/urls';
 import Loading from './Loading';
 import useSticky from './useSticky';

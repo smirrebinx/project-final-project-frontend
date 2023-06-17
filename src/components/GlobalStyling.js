@@ -50,7 +50,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 font-family: var(--paragraph-font-family-one);
-font-size: 1.2rem;
+font-size: 1.4rem;
 width: 300px;
 height: 100px;
 padding: 2rem 2rem 3rem;
@@ -60,8 +60,25 @@ justify-content: center;
 background-color: #fff;
 border-radius: 3px;
 border: 1px solid rgba(0, 0, 0, 0.1);
+
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, minmax(13.9375rem, 1fr));
+    max-width: 70%;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    width: 300px;
+    height: 100px;
+  }
 `;
 
 export const StyledAvatarLoginOut = styled.div`
-display: flex;
-`
+  display: grid;
+  justify-content: end;
+  align-content: start;
+  position: relative;
+
+   /* @media (min-width: 1024px) {
+      margin-right: 10rem;
+   } */
+`;

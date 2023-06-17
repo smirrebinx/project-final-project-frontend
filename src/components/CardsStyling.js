@@ -3,17 +3,11 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
   display: grid;
   grid-gap: 1rem;
-  margin-top: 5rem;
-  
-  @media (min-width: 30rem) {
-    grid-template-columns: repeat(2, minmax(6.25rem, 1fr));
-  }
+  margin: 4rem auto;
+  grid-template-columns: repeat(2, minmax(2rem, 1fr));
 
-  @media (min-width: 48rem) {
+  @media (min-width: 1024px) {
     grid-template-columns: repeat(4, minmax(13.9375rem, 1fr));
-  }
-
-  @media (min-width: 64rem) {
     max-width: 70%;
     margin: 0 auto;
   }
@@ -38,7 +32,7 @@ export const Card = styled.div`
     transform: translateY(-0.125rem);
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 1024px) {
     width: 10.625rem;
     height: 6.875rem;
     margin: 10rem auto;
@@ -61,12 +55,17 @@ export const CardSelected = styled.div`
   height: 6.875rem;
   padding: 1rem;
   margin: 0 auto;
+  font-size: 1.3rem;
   box-shadow: 0.0625rem 0.0625rem 0.4375rem 0 rgba(0, 0, 0, 0.1), 0 0 0.0625rem 0 rgba(0, 0, 0, 0.06);
   justify-content: center;
   background-color: #fff;
   border-radius: 0.1875rem;
   border: 0.3125rem solid var(--submit-button-color-two);
   cursor: pointer;
+
+    @media (min-width: 1024px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const StyledSecondHeadingCards = styled.h2`
@@ -75,18 +74,19 @@ export const StyledSecondHeadingCards = styled.h2`
   font-weight: 600;
   font-size: 1.2rem;
   letter-spacing: 0.05em;
-  color: #4e585a;
+  color: #4E5A58;
   margin-top: 0.625rem;
   text-decoration: none;
 `;
 
 export const StyledParagraphBookingCards = styled.p`
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-family: var(--paragraph-font-family-two);
   margin: 1rem;
 
-  @media (min-width: 64rem) {
+  @media (min-width: 1024px) {
     margin-top: 0;
+    font-size: 1.2rem;
   }
 `;
