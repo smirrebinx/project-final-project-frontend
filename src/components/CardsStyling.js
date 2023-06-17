@@ -9,8 +9,8 @@ export const CardContainer = styled.div`
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, minmax(2rem, 1fr));
-    max-width: 50%;
-    margin: 0 auto;
+    width: 60%;
+    margin: 6rem auto;
   }
 `;
 
@@ -37,7 +37,7 @@ export const Card = styled.div`
   @media (min-width: 1024px) {
     width: 10.625rem;
     height: 6.875rem;
-    margin: 10rem auto;
+    margin: 0 2rem;
   }
 `;
 
@@ -45,7 +45,7 @@ export const CardIconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.625rem;
+  margin: 0.625rem;
 `;
 
 export const CardSelected = styled.div`
@@ -53,6 +53,7 @@ export const CardSelected = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   width: 10.625rem;
   height: 6.875rem;
   padding: 1rem;
@@ -67,6 +68,7 @@ export const CardSelected = styled.div`
 
     @media (min-width: 1024px) {
     font-size: 1.2rem;
+    margin-top: 1rem;
   }
 `;
 
