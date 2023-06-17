@@ -48,15 +48,14 @@ const Booking = ({ location }) => {
       </StickyNavTwo>
       {!accessToken && (
         // Display login prompt if not logged in
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
+        <div>
           <StyledParagraphAnimation> Please log in to book a treatment.</StyledParagraphAnimation>
           <StyledLink to="/login">Log in</StyledLink>
         </div>
       )}
       {accessToken && (
         // Display booking options if logged in
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <div>
           <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
           {pickedDate && (
             // Display selected date if available

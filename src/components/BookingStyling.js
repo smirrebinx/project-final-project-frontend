@@ -20,6 +20,17 @@ export const CalendarContainer = styled.div`
     color: var(--second-headings-font-color-two);
   }
 
+  .react-calendar {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+
+     @media (min-width: 1024px) {
+    width: 25rem;
+    height: auto;
+  }
+}
+
   .react-calendar__navigation__label {
     font-weight: bold;
     color: #000;

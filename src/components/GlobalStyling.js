@@ -7,7 +7,7 @@ export const OuterWrapper = styled.div`
   width: 100%;
   justify-content: center;
   text-align: center;
-  margin-top: 0;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 
   @media (min-width: 1024px) {
@@ -49,6 +49,11 @@ export const StyledParagraphAnimation = styled.p`
   font-size: 1rem;
   color: var(--second-headings-font-color-two);
   animation: ${glideInAnimation} 1s forwards;
+  margin-top: 3rem;
+
+  @media (min-width: 1024px) {
+    margin-top: 4rem;
+  }
 `;
 
 export const CardReview = styled.div`
