@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledAvatar, StyledFieldset, StyledImage, StyledLegend } from './UserInfoStyling';
+import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledImage, StyledLegend } from './UserInfoStyling';
 import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 
 const UserInfo = () => {
@@ -31,10 +31,8 @@ const UserInfo = () => {
               {/* Display user contact information */}
               <StyledFieldset>
                 <StyledLegend>User information</StyledLegend>
-                <Flexbox className="flex">
-                  <StyledAvatar>
-                    <StyledImage src={svgIcon} alt="SVG Icon" />
-                  </StyledAvatar>
+                <Flexbox>
+                  <StyledImage src={svgIcon} alt="SVG Icon" />
                   <FlexboxUserInfo className="user">
                     <ParagraphUserInfo>First name: {user.firstName}</ParagraphUserInfo>
                     <ParagraphUserInfo>Last name: {user.lastName}</ParagraphUserInfo>
@@ -46,18 +44,16 @@ const UserInfo = () => {
               {/* Display booked treatments */}
               <StyledFieldset>
                 <StyledLegend>Upcoming bookings</StyledLegend>
-                <InnerWrapper>
-                  {bookedTreatment ? (
-                    <>
-                      {/* Picked date hardcoded placeholder */}
-                      <ParagraphUserInfo>Picked Date: Saturday, June 17</ParagraphUserInfo>
-                      <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
-                    </>
-                  ) : (
-                    // Display message if no treatments are booked
-                    <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
-                  )}
-                </InnerWrapper>
+                {bookedTreatment ? (
+                  <>
+                    {/* Picked date hardcoded placeholder */}
+                    <ParagraphUserInfo>Picked Date: Saturday, June 17</ParagraphUserInfo>
+                    <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
+                  </>
+                ) : (
+                  // Display message if no treatments are booked
+                  <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
+                )}
               </StyledFieldset>
             </>
           ) : (

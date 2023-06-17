@@ -43,12 +43,10 @@ export const StyledFieldset = styled.fieldset`
 
    @media (min-width: 1024px) {
     margin-top: 2rem;
+    width: 25rem;
   }
 `;
 
-export const StyledAvatar = styled.div`
-border: transparent;
-`
 export const StyledImage = styled.img`
 width: 10rem;
 margin: 2rem;

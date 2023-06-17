@@ -3,23 +3,24 @@ import { Link } from 'react-router-dom';
 
 export const OuterWrapper = styled.div`
   display: flex;
-  height: 100vh;
-  width: 100vh;
   justify-content: center;
   text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 2rem auto;
 
   @media (min-width: 1024px) {
-    margin-top: 6rem;
+     height: 100vh;
+     width: 100vh;
+     margin-top: 6rem;
   }
 `;
 
 export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-top: 2rem;
+  margin: 2rem;
+  width: 20rem;
 
   @media (min-width: 1024px) {
     margin-top: 6rem;
@@ -29,7 +30,9 @@ export const InnerWrapper = styled.div`
 export const StyledLink = styled(Link)`
   text-decoration: none;
   width: 70%;
-  margin: 0 auto;
+  margin: 1rem auto;
+  font-size: 1.3rem;
+  font-family: var(--paragraph-font-family-two);
 
   &:hover {
     text-decoration: underline;
@@ -96,4 +99,16 @@ export const StyledAvatarLoginOut = styled.div`
    /* @media (min-width: 1024px) {
       margin-right: 10rem;
    } */
+`;
+
+export const StyledParagraph = styled.p`
+  text-align: center;
+  font-size: 1.3rem;
+  font-family: var(--paragraph-font-family-two);
+  margin: 1rem;
+
+  @media (min-width: 1024px) {
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
 `;

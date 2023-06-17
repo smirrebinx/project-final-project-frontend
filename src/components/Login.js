@@ -9,7 +9,7 @@ import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { InnerWrapper, OuterWrapper, StyledLink } from './GlobalStyling';
+import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraph } from './GlobalStyling';
 
 const Login = () => {
   const { sticky, stickyRef } = useSticky();
@@ -134,7 +134,7 @@ const Login = () => {
         <InnerWrapper>
           {userAccessToken ? (
             <>
-              <p>You are logged in! Choose an option:</p>
+              <StyledParagraph>You are logged in! Choose an option:</StyledParagraph>
               <StyledLink to="/booking">Go to Booking to pick a date</StyledLink>
               <StyledLink to="/userinfo">Go to User Information to see your booked treatment</StyledLink>
             </>
