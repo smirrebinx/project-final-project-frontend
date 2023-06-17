@@ -5,10 +5,11 @@ export const CardContainer = styled.div`
   grid-gap: 1rem;
   margin: 4rem auto;
   grid-template-columns: repeat(2, minmax(2rem, 1fr));
+  width: 95%;
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, minmax(13.9375rem, 1fr));
-    max-width: 70%;
+    grid-template-columns: repeat(4, minmax(2rem, 1fr));
+    max-width: 50%;
     margin: 0 auto;
   }
 `;
@@ -21,7 +22,8 @@ export const Card = styled.div`
   height: 8.125rem;
   padding: 1rem;
   margin: 0 auto;
-  box-shadow: 0.0625rem 0.0625rem 0.4375rem 0 rgba(0, 0, 0, 0.1), 0 0 0.0625rem 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0.0625rem 0.0625rem 0.4375rem 0
+   rgba(0, 0, 0, 0.1), 0 0 0.0625rem 0 rgba(0, 0, 0, 0.06);
   justify-content: center;
   background-color: #fff;
   border-radius: 0.1875rem;

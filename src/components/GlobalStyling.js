@@ -19,7 +19,11 @@ export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-top: 6rem;
+  margin-top: 2rem;
+
+  @media (min-width: 1024px) {
+    margin-top: 6rem;
+  }
 `;
 
 export const StyledLink = styled(Link)`

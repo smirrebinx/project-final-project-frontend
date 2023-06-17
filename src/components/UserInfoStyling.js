@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const Flexbox = styled.div`
   display: flex;
+  flex-direction: column;
+
+   @media (min-width: 1024px) {
+    flex-direction: row;
+  }
 `;
 
 export const FlexboxUserInfo = styled.div`
@@ -35,6 +40,10 @@ export const StyledLegend = styled.legend`
 
 export const StyledFieldset = styled.fieldset`
   margin-top: 2rem;
+
+   @media (min-width: 1024px) {
+    margin-top: 2rem;
+  }
 `;
 
 export const StyledAvatar = styled.div`

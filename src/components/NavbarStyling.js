@@ -83,7 +83,7 @@ export const StickyNavTwo = styled(Nav)`
   }
 
   @media (min-width: 1024px) {
-    width: 80%;
+    width: 65%;
   }
 `;
 
