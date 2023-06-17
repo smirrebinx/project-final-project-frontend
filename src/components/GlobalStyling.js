@@ -51,8 +51,8 @@ flex-direction: column;
 align-items: center;
 font-family: var(--paragraph-font-family-one);
 font-size: 1.4rem;
-width: 300px;
-height: 100px;
+width: 35vh;
+height: auto;
 padding: 2rem 2rem 3rem;
 margin: 1rem auto;
 box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.1), 0 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -67,8 +67,8 @@ border: 1px solid rgba(0, 0, 0, 0.1);
     max-width: 70%;
     margin: 0 auto;
     font-size: 1.2rem;
-    width: 300px;
-    height: 100px;
+    width: 18.75rem;
+    height: 6.25rem;
   }
 `;
 
