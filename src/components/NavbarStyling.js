@@ -78,29 +78,36 @@ export const StickyNavTwo = styled(Nav)`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0.875rem;
+  top: 3rem;
   left: 50%;
   transform: translateX(-50%);
   padding: 0 2rem;
-  width: 100%;
   transition: top 0.3s ease-in-out;
   background-color: var(--navbar-background-color-two);
-  margin-top: 2rem;
+  width: 85%;
 
   &.sticky {
     position: fixed;
     top: 0;
+    width: 65%;
   }
 
   @media (min-width: 1024px) {
     width: 65%;
+
+    &.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
   }
+  }
+
 `;
 
 export const StyledNavHeaderTwo = styled.h1`
-  text-shadow: 1px 1px 1px rgba(255, 255, 255); 
   font-family: var(--headings-font-family-two);
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  text-align: center;
   font-weight: 400;
   letter-spacing: 0.05em;
   margin: 0 auto;

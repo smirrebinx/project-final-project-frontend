@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const OuterWrapper = styled.div`
   display: flex;
   height: 100vh;
-  width: 100%;
+  width: 100vh;
   justify-content: center;
   text-align: center;
   margin-top: 2rem;
