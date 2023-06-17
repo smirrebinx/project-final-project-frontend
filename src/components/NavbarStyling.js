@@ -67,7 +67,7 @@ export const StickyNavTwo = styled(Nav)`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0;
+  top: 0.875rem;
   left: 50%;
   transform: translateX(-50%);
   height: 3.5rem;
