@@ -19,7 +19,7 @@ export const InnerWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 2rem;
+  margin: 2rem auto;
   width: 20rem;
 
   @media (min-width: 1024px) {
