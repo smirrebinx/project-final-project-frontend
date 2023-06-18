@@ -39,7 +39,7 @@ const Main = () => {
         onClick={handleScrollToLogout}
         style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
         <StyledAvatarLoginOut>
-          <img src={svgIcon} alt="SVG Icon" />
+          <img src={svgIcon} alt="SVG Icon user avatar" />
         </StyledAvatarLoginOut>
       </button>
       <Routes>

@@ -184,7 +184,7 @@ const Login = () => {
                 onClick={handleClick}
                 style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
                 <StyledQuestionIcon>
-                  <StyledQuestionImage src={svgIcon} alt="SVG Icon" />
+                  <StyledQuestionImage src={svgIcon} alt="Question mark" />
                 </StyledQuestionIcon>
               </button>
               {showValidationInfo && <ValidationInfo onClose={handleClose} />}
