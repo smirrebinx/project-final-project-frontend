@@ -14,6 +14,9 @@ const UserInfo = () => {
 
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
+
+  // Log the user object
+  console.log('User:', user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
 
   return (
