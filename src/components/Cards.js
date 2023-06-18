@@ -90,6 +90,7 @@ const Cards = () => {
           // Display loading animation while treatments are being loaded
           <InnerWrapper>
             <Loading loader={isLoading} />
+            <span>Loading...</span>
           </InnerWrapper>
         ) : (
           <>
