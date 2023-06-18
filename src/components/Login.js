@@ -149,7 +149,7 @@ const Login = () => {
           {userAccessToken ? (
             <>
               <StyledParagraph>You are logged in! Choose an option:</StyledParagraph>
-              <StyledLink to="/booking">Go to Booking to pick a date</StyledLink>
+              <StyledLink to="/booktreatment">Go to Booking to pick a date</StyledLink>
               <StyledLink to="/userinfo">Go to User Information to see your booked treatment</StyledLink>
             </>
           ) : (
