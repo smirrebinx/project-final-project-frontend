@@ -101,6 +101,17 @@ export const StyledAvatarLoginOut = styled.div`
    } */
 `;
 
+export const StyledQuestionImage = styled.img`
+width: 2rem;
+opacity: 0.5;
+`;
+
+export const StyledQuestionIcon = styled.div`
+  display: flex;
+  justify-content: start;
+  align-content: start;
+`;
+
 export const StyledParagraph = styled.p`
   text-align: center;
   font-size: 1.3rem;

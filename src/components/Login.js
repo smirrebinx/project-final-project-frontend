@@ -9,7 +9,9 @@ import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraph } from './GlobalStyling';
+import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraph, StyledQuestionIcon, StyledQuestionImage } from './GlobalStyling';
+import svgIcon from '../assets/help_FILL0_wght400_GRAD0_opsz48.svg';
+import ValidationInfo from './ValidationInfo';
 
 const Login = () => {
   const { sticky, stickyRef } = useSticky();
@@ -21,6 +23,18 @@ const Login = () => {
   const [mobilePhone, setMobilePhone] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const dispatch = useDispatch();
+  const [showValidationInfo, setShowValidationInfo] = useState(false);
+
+  // Handles the validation information when clicking the question mark icon
+  const handleClick = () => {
+    setShowValidationInfo(true);
+  };
+
+  // Handles the cancel button in the validation information div
+  const handleClose = () => {
+    setShowValidationInfo(false);
+  };
+
   // Check if the access token exists in the Redux store. If it doesn't, it retrieves the access token from local storage.
   // If the user has previously logged in and their access token is stored in local storage, they will be able to access
   // authenticated routes without the need for a new login within the same session.
@@ -165,6 +179,15 @@ const Login = () => {
 
               <LineBeforeAndAfter>OR</LineBeforeAndAfter>
               <SecondHeaderLogIn>Fill in your information</SecondHeaderLogIn>
+              <button
+                type="button"
+                onClick={handleClick}
+                style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
+                <StyledQuestionIcon>
+                  <StyledQuestionImage src={svgIcon} alt="SVG Icon" />
+                </StyledQuestionIcon>
+              </button>
+              {showValidationInfo && <ValidationInfo onClose={handleClose} />}
               <form id="register-form" onSubmit={onRegisterFormSubmit}>
                 <label htmlFor="firstName">First Name*</label>
                 <input
@@ -192,6 +215,7 @@ const Login = () => {
                   onChange={(e) => setMobilePhone(e.target.value)}
                   aria-labelledby="mobilePhone"
                   pattern="[0-9]+"
+                  placeholder="07XXXXXXXX"
                   required />
 
                 <label htmlFor="registerEmail">Email*</label>
