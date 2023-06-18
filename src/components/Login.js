@@ -191,6 +191,7 @@ const Login = () => {
                   value={mobilePhone}
                   onChange={(e) => setMobilePhone(e.target.value)}
                   aria-labelledby="mobilePhone"
+                  pattern="[0-9]+"
                   required />
 
                 <label htmlFor="registerEmail">Email*</label>
