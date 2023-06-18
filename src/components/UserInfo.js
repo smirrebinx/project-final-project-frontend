@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -14,11 +13,16 @@ const UserInfo = () => {
 
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
+
+  // Log the user object
+  console.log('User:', user);
+
+  // Retrieve user information from the Redux store
+  const { accessToken, firstName, lastName, mobilePhone, email } = useSelector((state) => state.user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
 
   return (
     <>
-
       {/* Sticky navigation header */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>
@@ -26,7 +30,7 @@ const UserInfo = () => {
 
       <OuterWrapper>
         <InnerWrapper>
-          {user.accessToken ? (
+          {accessToken ? (
             <>
               {/* Display user contact information */}
               <StyledFieldset>
@@ -34,10 +38,10 @@ const UserInfo = () => {
                 <Flexbox>
                   <StyledImage src={svgIcon} alt="SVG Icon" />
                   <FlexboxUserInfo className="user">
-                    <ParagraphUserInfo>First name: {user.firstName}</ParagraphUserInfo>
-                    <ParagraphUserInfo>Last name: {user.lastName}</ParagraphUserInfo>
-                    <ParagraphUserInfo>Phone: {user.mobilePhone}</ParagraphUserInfo>
-                    <ParagraphUserInfo>Email: {user.email}</ParagraphUserInfo>
+                    <ParagraphUserInfo>First name: {firstName}</ParagraphUserInfo>
+                    <ParagraphUserInfo>Last name: {lastName}</ParagraphUserInfo>
+                    <ParagraphUserInfo>Phone: {mobilePhone}</ParagraphUserInfo>
+                    <ParagraphUserInfo>Email: {email}</ParagraphUserInfo>
                   </FlexboxUserInfo>
                 </Flexbox>
               </StyledFieldset>

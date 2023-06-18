@@ -15,42 +15,42 @@ const user = createSlice({
     pickedDate: null // Add pickedDate property
   },
   reducers: {
-    setUserId: (store, action) => {
-      store.userId = action.payload; // Update the userId with the payload
+    setUserId: (state, action) => {
+      state.userId = action.payload; // Update the userId with the payload
     },
-    setFirstName: (store, action) => {
-      store.firstName = action.payload; // Update the firstName with the payload
+    setFirstName: (state, action) => {
+      state.firstName = action.payload; // Update the firstName with the payload
     },
-    setLastName: (store, action) => {
-      store.lastName = action.payload; // Update the lastName with the payload
+    setLastName: (state, action) => {
+      state.lastName = action.payload; // Update the lastName with the payload
     },
-    setMobilePhone: (store, action) => {
-      store.mobilePhone = action.payload; // Update the mobilePhone with the payload
+    setMobilePhone: (state, action) => {
+      state.mobilePhone = action.payload; // Update the mobilePhone with the payload
     },
-    setEmail: (store, action) => {
-      store.email = action.payload; // Update the email with the payload
+    setEmail: (state, action) => {
+      state.email = action.payload; // Update the email with the payload
     },
-    setAccessToken: (store, action) => {
-      store.accessToken = action.payload; // Update the accessToken with the payload
+    setAccessToken: (state, action) => {
+      state.accessToken = action.payload; // Update the accessToken with the payload
     },
-    setError: (store, action) => {
-      store.error = action.payload; // Update the error with the payload
+    setError: (state, action) => {
+      state.error = action.payload; // Update the error with the payload
     },
-    setPickedDate: (store, action) => {
-      store.pickedDate = action.payload; // Update the pickedDate with the payload
+    setPickedDate: (state, action) => {
+      state.pickedDate = action.payload; // Update the pickedDate with the payload
     },
-    loginSuccess: (store, action) => {
+    loginSuccess: (state, action) => {
       const { accessToken } = action.payload;
-      store.accessToken = accessToken;
+      state.accessToken = accessToken;
 
       // Store the access token in local storage
       localStorage.setItem('accessToken', accessToken);
     },
-    logout: (store) => {
-      store.userId = null; // Clear the userId
-      store.email = null; // Clear the email
-      store.accessToken = null; // Clear the accessToken
-      store.pickedDate = null; // Clear the pickedDate
+    logout: (state) => {
+      state.userId = null; // Clear the userId
+      state.email = null; // Clear the email
+      state.accessToken = null; // Clear the accessToken
+      state.pickedDate = null; // Clear the pickedDate
       localStorage.removeItem('accessToken'); // Remove access token from local storage
     }
   }
