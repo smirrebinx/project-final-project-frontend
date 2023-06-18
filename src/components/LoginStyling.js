@@ -38,9 +38,8 @@ export const FormWrapper = styled.div`
   }
 
   button {
-    background-color: var(--submit-button-color-two);
-    border: none;
-    color: #fff;
+    background-color: #fff;
+    border: solid 0.2rem var(--submit-button-color-two);
     padding: 0.625rem 1.875rem;
     text-align: center;
     text-decoration: none;
