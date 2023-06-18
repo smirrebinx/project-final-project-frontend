@@ -49,8 +49,7 @@ const UserInfo = () => {
                 <StyledLegend>Upcoming bookings</StyledLegend>
                 {bookedTreatment ? (
                   <>
-                    {/* Picked date hardcoded placeholder */}
-                    <ParagraphUserInfo>Picked Date: Saturday, June 17</ParagraphUserInfo>
+                    <ParagraphUserInfo>Picked Date:</ParagraphUserInfo>
                     <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
                   </>
                 ) : (
