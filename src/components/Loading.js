@@ -42,12 +42,12 @@ const Loading = ({ loader }) => {
   if (loader) {
     return (
       <Player
-        src="https://assets10.lottiefiles.com/packages/lf20_jookyeva.json"
+        src="https://assets2.lottiefiles.com/packages/lf20_60VYWWdg3U.json"
         className="lottie"
         loop
         autoplay
         speed={1}
-        style={{ height: '37.5rem', width: '37.5rem' }}
+        style={{ height: '30rem', width: '30rem' }}
         aria-label="Loading" />
     );
   }
