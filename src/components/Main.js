@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, { useRef, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { animateScroll } from 'react-scroll';
 import user from 'reducers/user';
 import WelcomePage from './WelcomePage';
@@ -19,6 +19,9 @@ const Main = () => {
   const [showLogout, setShowLogout] = useState(false);
 
   const [pickedDate, setPickedDate] = useState(null);
+
+  // Access the picked date from the Redux store
+  const bookedTreatmentDate = useSelector((state) => state.treatments.bookedTreatmentDate);
 
   const handleDateChange = (date) => {
     setPickedDate(date);
@@ -54,7 +57,7 @@ const Main = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/booktreatment" element={<Booking onDateChange={handleDateChange} />} />
         <Route path="/treatment" element={<Cards />} />
-        <Route path="/userinfo" element={<UserInfo pickedDate={pickedDate} />} />
+        <Route path="/userinfo" element={<UserInfo pickedDate={bookedTreatmentDate || pickedDate} />} />
       </Routes>
       {/* Display logout component if showLogout state is true */}
       {showLogout && <Logout handleCloseLogout={handleCloseLogout} handleLogout={handleLogout} />}
