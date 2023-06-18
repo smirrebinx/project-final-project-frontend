@@ -18,6 +18,12 @@ const Main = () => {
   const logoutRef = useRef(null);
   const [showLogout, setShowLogout] = useState(false);
 
+  const [pickedDate, setPickedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setPickedDate(date);
+  };
+
   const handleLogout = () => {
     dispatch(user.actions.logout());
   };
@@ -46,17 +52,16 @@ const Main = () => {
         {/* Define routes for different pages */}
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/calendar" element={<Booking />} />
-        <Route path="/cards" element={<Cards />} />
-        <Route path="/booking" element={<Booking />} />
-        <Route path="/userinfo" element={<UserInfo />} />
+        <Route path="/booktreatment" element={<Booking onDateChange={handleDateChange} />} />
+        <Route path="/treatment" element={<Cards />} />
+        <Route path="/userinfo" element={<UserInfo pickedDate={pickedDate} />} />
       </Routes>
       {/* Display logout component if showLogout state is true */}
-      {showLogout && (
-        <Logout handleCloseLogout={handleCloseLogout} handleLogout={handleLogout} />
-      )}
+      {showLogout && <Logout handleCloseLogout={handleCloseLogout} handleLogout={handleLogout} />}
       {/* Hidden div to mark the position of logout component */}
-      <div ref={logoutRef} style={{ display: 'none' }}>Log out</div>
+      <div ref={logoutRef} style={{ display: 'none' }}>
+        Log out
+      </div>
     </>
   );
 };

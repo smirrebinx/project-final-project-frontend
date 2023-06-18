@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setAccessToken } from 'reducers/user';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -9,18 +11,17 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
 import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 
-// Create contexts for picked date and selected treatment ID
+// Create context for picked date
 const PickedDateContext = createContext();
-const SelectedTreatmentIdContext = createContext();
 
-const Booking = ({ location }) => {
+const Booking = ({ onDateChange }) => {
   const { sticky, stickyRef } = useSticky();
+  const navigate = useNavigate();
   const [pickedDate, setPickedDate] = useState(new Date());
 
   // Access the access token from Redux store
   const accessToken = useSelector((store) => store.user.accessToken);
 
-  const selectedTreatmentId = location?.state?.treatmentId;
   const dispatch = useDispatch();
 
   // Check for the access token in local storage and update Redux store when the component mounts
@@ -33,11 +34,11 @@ const Booking = ({ location }) => {
 
   const handleDateChange = (date) => {
     setPickedDate(date);
+    onDateChange(date); // Call the onDateChange prop function
   };
 
   const handleConfirmDate = () => {
-    // Redirect to UserInfo page
-    window.location.href = '/userinfo';
+    navigate('/userinfo', { state: { pickedDate } });
   };
 
   return (
@@ -49,7 +50,9 @@ const Booking = ({ location }) => {
       {!accessToken && (
         // Display login prompt if not logged in
         <div>
-          <StyledParagraphAnimation> Please log in to book a treatment.</StyledParagraphAnimation>
+          <StyledParagraphAnimation>
+            Please log in to book a treatment.
+          </StyledParagraphAnimation>
           <StyledLink to="/login">Log in</StyledLink>
         </div>
       )}
@@ -61,23 +64,22 @@ const Booking = ({ location }) => {
             // Display selected date if available
             <p>Selected Date: {pickedDate.toLocaleDateString('en-GB')}</p>
           )}
-          <StyledButton type="submit" onClick={handleConfirmDate}>Confirm Date</StyledButton>
+          <StyledButton type="submit" onClick={handleConfirmDate}>
+            Confirm Date
+          </StyledButton>
         </div>
       )}
-      {/* Provide picked date and selected treatment ID through contexts */}
+      {/* Provide picked date through context */}
       <PickedDateContext.Provider value={pickedDate}>
-        <SelectedTreatmentIdContext.Provider value={selectedTreatmentId}>
-          {/* Calendar component for date selection */}
-          <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
-        </SelectedTreatmentIdContext.Provider>
+        {/* Calendar component for date selection */}
+        <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
       </PickedDateContext.Provider>
     </CalendarContainer>
   );
 };
 
-// Custom hooks for accessing picked date and selected treatment ID
+// Custom hook for accessing picked date
 const usePickedDate = () => useContext(PickedDateContext);
-const useSelectedTreatmentId = () => useContext(SelectedTreatmentIdContext);
 
 export default Booking;
-export { usePickedDate, useSelectedTreatmentId };
+export { usePickedDate };

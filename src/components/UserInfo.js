@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -9,19 +8,17 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledImage, StyledLegend } from './UserInfoStyling';
 import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 
-const UserInfo = () => {
+const UserInfo = ({ pickedDate }) => {
   const { sticky, stickyRef } = useSticky();
 
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
-
-  // Log the user object
-  console.log('User:', user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
+
+  console.log('Picked Date:', pickedDate); // Add this console log
 
   return (
     <>
-
       {/* Sticky navigation header */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>
@@ -44,14 +41,12 @@ const UserInfo = () => {
                   </FlexboxUserInfo>
                 </Flexbox>
               </StyledFieldset>
-              {/* Display booked treatments */}
+              {/* Display picked date and booked treatments */}
               <StyledFieldset>
                 <StyledLegend>Upcoming bookings</StyledLegend>
+                <ParagraphUserInfo>Treatment Date: {pickedDate?.toLocaleDateString('en-GB')}</ParagraphUserInfo>
                 {bookedTreatment ? (
-                  <>
-                    <ParagraphUserInfo>Picked Date:</ParagraphUserInfo>
-                    <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
-                  </>
+                  <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
                 ) : (
                   // Display message if no treatments are booked
                   <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
