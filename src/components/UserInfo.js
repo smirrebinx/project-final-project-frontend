@@ -8,14 +8,12 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledImage, StyledLegend } from './UserInfoStyling';
 import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 
-const UserInfo = ({ pickedDate }) => {
+const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
 
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
-
-  console.log('Picked Date:', pickedDate); // Add this console log
 
   return (
     <>
@@ -44,7 +42,7 @@ const UserInfo = ({ pickedDate }) => {
               {/* Display picked date and booked treatments */}
               <StyledFieldset>
                 <StyledLegend>Upcoming bookings</StyledLegend>
-                <ParagraphUserInfo>Treatment Date: {pickedDate?.toLocaleDateString('en-GB')}</ParagraphUserInfo>
+                <ParagraphUserInfo>Treatment Date: </ParagraphUserInfo>
                 {bookedTreatment ? (
                   <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
                 ) : (

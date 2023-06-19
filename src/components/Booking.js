@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { setAccessToken } from 'reducers/user';
+import { useSelector, useDispatch, batch } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
+import user, { setAccessToken } from 'reducers/user';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import classNames from 'classnames';
@@ -10,14 +10,18 @@ import { CalendarContainer, StyledButton, StyledParagraphBooking } from './Booki
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
 import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
+import { API_URL } from '../utils/urls';
 
 // Create context for picked date
 const PickedDateContext = createContext();
 
-const Booking = ({ onDateChange }) => {
+const Booking = () => {
   const { sticky, stickyRef } = useSticky();
-  const navigate = useNavigate();
+  const userAccessToken = useSelector((store) => store.user.accessToken || localStorage.getItem('accessToken'));
+  console.log(userAccessToken);
+  // const navigate = useNavigate();
   const [pickedDate, setPickedDate] = useState(new Date());
+  // const [pickedDate, setPickedDate] = useState([]);
 
   // Access the access token from Redux store
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -34,11 +38,34 @@ const Booking = ({ onDateChange }) => {
 
   const handleDateChange = (date) => {
     setPickedDate(date);
-    onDateChange(date); // Call the onDateChange prop function
+    // onDateChange(date); // Call the onDateChange prop function
   };
 
   const handleConfirmDate = () => {
-    navigate('/userinfo', { state: { pickedDate } });
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ pickedDate })
+    };
+
+    const url = API_URL('booktreatment');
+
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          batch(() => {
+            console.log(data.response)
+            dispatch(user.actions.setPickedDate(data.response.pickedDate));
+            dispatch(user.actions.setAccessToken(data.response.accessToken));
+          })
+        } else {
+          dispatch(user.actions.setError(data.response));
+        }
+      });
+    // navigate('/userinfo', { state: { pickedDate } });
   };
 
   return (
@@ -62,7 +89,8 @@ const Booking = ({ onDateChange }) => {
           <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
           {pickedDate && (
             // Display selected date if available
-            <p>Selected Date: {pickedDate.toLocaleDateString('en-GB')}</p>
+            <p> Selected Date: {pickedDate.toLocaleDateString('en-GB')}
+            </p>
           )}
           <StyledButton type="submit" onClick={handleConfirmDate}>
             Confirm Date

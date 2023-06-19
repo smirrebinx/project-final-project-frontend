@@ -18,7 +18,7 @@ const Main = () => {
   const logoutRef = useRef(null);
   const [showLogout, setShowLogout] = useState(false);
 
-  const [pickedDate, setPickedDate] = useState(null);
+  const [pickedDate, setPickedDate] = useState([]);
 
   // Access the picked date from the Redux store
   const bookedTreatmentDate = useSelector((state) => state.treatments.bookedTreatmentDate);
