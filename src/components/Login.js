@@ -41,7 +41,7 @@ const Login = () => {
   const userAccessToken = useSelector((store) => store.user.accessToken || localStorage.getItem('accessToken'));
   // const [isLoginForm, setIsLoginForm] = useState(null); // Initialize as null
 
-  const onLoginFormSubmit = (event) => {
+  const onLoginFormSubmit = async (event) => {
     event.preventDefault();
     // setIsLoginForm(true); // Update isLoginForm when login form is submitted
 
@@ -57,41 +57,46 @@ const Login = () => {
 
       const url = API_URL('login');
 
-      fetch(url, options)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            batch(() => {
-              localStorage.setItem('accessToken', data.response.accessToken);
-              dispatch(user.actions.setFirstName(data.response.firstName));
-              dispatch(user.actions.setLastName(data.response.lastName));
-              dispatch(user.actions.setMobilePhone(data.response.mobilePhone));
-              dispatch(user.actions.setEmail(data.response.email));
-              dispatch(user.actions.setAccessToken(data.response.accessToken));
-              dispatch(user.actions.setUserId(data.response.userId));
-            })
-            Swal.fire({
-              icon: 'success',
-              title: 'Success!',
-              text: 'Your are successfully logged in.',
-              confirmButtonColor: 'var(--submit-button-color-two)'
-            });
-          } else {
-            dispatch(user.actions.setAccessToken(null));
-            dispatch(user.actions.setUserId(null));
-            dispatch(user.actions.setError(data.response));
-            Swal.fire({
-              icon: 'error',
-              title: 'Sorry',
-              text: 'We\'re sorry, something went wrong with the log in. Please, try again.',
-              confirmButtonColor: 'var(--submit-button-color-two)'
-            });
-          }
-        });
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+
+        if (data.success) {
+          batch(() => {
+            localStorage.setItem('accessToken', data.response.accessToken);
+            dispatch(user.actions.setFirstName(data.response.firstName));
+            dispatch(user.actions.setLastName(data.response.lastName));
+            dispatch(user.actions.setMobilePhone(data.response.mobilePhone));
+            dispatch(user.actions.setEmail(data.response.email));
+            dispatch(user.actions.setAccessToken(data.response.accessToken));
+            dispatch(user.actions.setUserId(data.response.userId));
+          });
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Your are successfully logged in.',
+            confirmButtonColor: 'var(--submit-button-color-two)'
+          });
+        } else {
+          dispatch(user.actions.setAccessToken(null));
+          dispatch(user.actions.setUserId(null));
+          dispatch(user.actions.setError(data.response));
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Sorry',
+            text: 'We\'re sorry, something went wrong with the log in. Please, try again.',
+            confirmButtonColor: 'var(--submit-button-color-two)'
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
-  const onRegisterFormSubmit = (event) => {
+  const onRegisterFormSubmit = async (event) => {
     event.preventDefault();
 
     // Check if it's the registration form
@@ -106,36 +111,41 @@ const Login = () => {
 
       const url = API_URL('register');
 
-      fetch(url, options)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            batch(() => {
-              dispatch(user.actions.setFirstName(data.response.firstName));
-              dispatch(user.actions.setLastName(data.response.lastName));
-              dispatch(user.actions.setMobilePhone(data.response.mobilePhone));
-              dispatch(user.actions.setEmail(data.response.email));
-              dispatch(user.actions.setAccessToken(data.response.accessToken));
-              dispatch(user.actions.setUserId(data.response.userId));
-            })
-            Swal.fire({
-              icon: 'success',
-              title: 'Success!',
-              text: 'Your are successfully registered, and logged in.',
-              confirmButtonColor: 'var(--submit-button-color-two)'
-            });
-          } else {
-            dispatch(user.actions.setAccessToken(null));
-            dispatch(user.actions.setUserId(null));
-            dispatch(user.actions.setError(data.response));
-            Swal.fire({
-              icon: 'error',
-              title: 'Sorry',
-              text: 'We\'re sorry, something went wrong with the registration. Please, try again.',
-              confirmButtonColor: 'var(--submit-button-color-two)'
-            });
-          }
-        });
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+
+        if (data.success) {
+          batch(() => {
+            dispatch(user.actions.setFirstName(data.response.firstName));
+            dispatch(user.actions.setLastName(data.response.lastName));
+            dispatch(user.actions.setMobilePhone(data.response.mobilePhone));
+            dispatch(user.actions.setEmail(data.response.email));
+            dispatch(user.actions.setAccessToken(data.response.accessToken));
+            dispatch(user.actions.setUserId(data.response.userId));
+          });
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Your are successfully registered, and logged in.',
+            confirmButtonColor: 'var(--submit-button-color-two)'
+          });
+        } else {
+          dispatch(user.actions.setAccessToken(null));
+          dispatch(user.actions.setUserId(null));
+          dispatch(user.actions.setError(data.response));
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Sorry',
+            text: 'We\'re sorry, something went wrong with the registration. Please, try again.',
+            confirmButtonColor: 'var(--submit-button-color-two)'
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
