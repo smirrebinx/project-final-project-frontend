@@ -8,7 +8,7 @@
   --navbar-color-one:#ffffff; 
   --navbar-button-color-one: #5b604d;
 
-  --headings-font-family-two: "Proxima Nova", cursive;
+  --headings-font-family-two: "Proxima Nova", serif;
   --paragraph-font-family-two: "Proxima Nova", serif;
   --second-headings-font-color-two: #227d85;
   --submit-button-color-two: #2E868B;
@@ -17,6 +17,8 @@
   
   --footer-background-color: rgba(148, 177, 170, 0.5);
 }
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
 
 body {
   margin: 0;
