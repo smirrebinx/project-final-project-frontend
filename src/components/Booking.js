@@ -1,11 +1,10 @@
 /* eslint-disable max-len */
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useSelector, useDispatch, batch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
-import user, { setAccessToken } from 'reducers/user';
+import { useSelector, useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import classNames from 'classnames';
+import { setAccessToken } from '../reducers/user';
 import { CalendarContainer, StyledButton, StyledParagraphBooking } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
@@ -17,15 +16,11 @@ const PickedDateContext = createContext();
 
 const Booking = () => {
   const { sticky, stickyRef } = useSticky();
-  const userAccessToken = useSelector((store) => store.user.accessToken || localStorage.getItem('accessToken'));
-  console.log(userAccessToken);
-  // const navigate = useNavigate();
+  // const userAccessToken = useSelector((store) => store.user.accessToken || localStorage.getItem('accessToken'));
   const [pickedDate, setPickedDate] = useState(new Date());
-  // const [pickedDate, setPickedDate] = useState([]);
 
   // Access the access token from Redux store
   const accessToken = useSelector((store) => store.user.accessToken);
-
   const dispatch = useDispatch();
 
   // Check for the access token in local storage and update Redux store when the component mounts
@@ -38,16 +33,16 @@ const Booking = () => {
 
   const handleDateChange = (date) => {
     setPickedDate(date);
-    // onDateChange(date); // Call the onDateChange prop function
   };
 
   const handleConfirmDate = () => {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}` // Include the access token in the request headers
       },
-      body: JSON.stringify({ pickedDate })
+      body: JSON.stringify({ treatmentId: 'your_treatment_id', pickedDate }) // Include the pickedDate in the request body
     };
 
     const url = API_URL('booktreatment');
@@ -56,16 +51,13 @@ const Booking = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          batch(() => {
-            console.log(data.response)
-            dispatch(user.actions.setPickedDate(data.response.pickedDate));
-            dispatch(user.actions.setAccessToken(data.response.accessToken));
-          })
+          // Treatment booked successfully
+          console.log('Treatment booked successfully');
         } else {
-          dispatch(user.actions.setError(data.response));
+          // Failed to book treatment
+          console.log('Failed to book treatment');
         }
       });
-    // navigate('/userinfo', { state: { pickedDate } });
   };
 
   return (
