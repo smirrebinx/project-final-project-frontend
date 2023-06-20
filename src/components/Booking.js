@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
@@ -16,7 +15,6 @@ const PickedDateContext = createContext();
 
 const Booking = () => {
   const { sticky, stickyRef } = useSticky();
-  // const userAccessToken = useSelector((store) => store.user.accessToken || localStorage.getItem('accessToken'));
   const [pickedDate, setPickedDate] = useState(new Date());
 
   // Access the access token from Redux store
@@ -35,7 +33,7 @@ const Booking = () => {
     setPickedDate(date);
   };
 
-  const handleConfirmDate = () => {
+  const handleConfirmDate = async () => {
     const options = {
       method: 'POST',
       headers: {
@@ -47,17 +45,19 @@ const Booking = () => {
 
     const url = API_URL('booktreatment');
 
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          // Treatment booked successfully
-          console.log('Treatment booked successfully');
-        } else {
-          // Failed to book treatment
-          console.log('Failed to book treatment');
-        }
-      });
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      if (data.success) {
+        // Treatment booked successfully
+        console.log('Treatment booked successfully');
+      } else {
+        // Failed to book treatment
+        console.log('Failed to book treatment');
+      }
+    } catch (error) {
+      console.log('Error occurred while booking treatment:', error);
+    }
   };
 
   return (
