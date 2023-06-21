@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import useSticky from './useSticky';
@@ -14,6 +14,34 @@ const UserInfo = () => {
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
+
+  const bookTreatment = async () => {
+    const treatmentId = 'yourTreatmentId'; // Replace with the actual treatment ID
+    const pickedDate = 'yourPickedDate'; // Replace with the actual picked date
+
+    try {
+      const response = await fetch('/bookTreatment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ treatmentId, pickedDate })
+      });
+
+      const data = await response.json();
+
+      // Handle the response data accordingly
+      console.log(data);
+    } catch (error) {
+      // Handle any errors that occurred during the request
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    // Example usage: automatically book treatment when component mounts
+    bookTreatment();
+  }, []);
 
   return (
     <>

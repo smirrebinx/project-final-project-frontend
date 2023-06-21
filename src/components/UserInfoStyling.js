@@ -39,11 +39,11 @@ export const StyledLegend = styled.legend`
 `;
 
 export const StyledFieldset = styled.fieldset`
-  margin-top: 2rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
 
    @media (min-width: 1024px) {
-    margin-top: 2rem;
-    width: 25rem;
+    width: 31rem;
   }
 `;
 

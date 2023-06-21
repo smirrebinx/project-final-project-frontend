@@ -33,7 +33,7 @@ const ValidationInfo = ({ onClose }) => {
           }}
           type="button"
           onClick={onClose}>
-          Cancel
+          Close
         </button>
       </div>
     </div>

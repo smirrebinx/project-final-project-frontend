@@ -30,7 +30,7 @@ const Login = () => {
     setShowValidationInfo(true);
   };
 
-  // Handles the cancel button in the validation information div
+  // Handles the close button in the validation information div
   const handleClose = () => {
     setShowValidationInfo(false);
   };
