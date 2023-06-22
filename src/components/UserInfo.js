@@ -1,47 +1,53 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledImage, StyledLegend } from './UserInfoStyling';
 import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
+import { API_URL } from '../utils/urls';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
+  const dispatch = useDispatch();
 
   // Retrieve user information from the Redux store
   const user = useSelector((state) => state.user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
 
-  const bookTreatment = async () => {
-    const treatmentId = 'yourTreatmentId'; // Replace with the actual treatment ID
-    const pickedDate = 'yourPickedDate'; // Replace with the actual picked date
-
-    try {
-      const response = await fetch('/bookTreatment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ treatmentId, pickedDate })
-      });
-
-      const data = await response.json();
-
-      // Handle the response data accordingly
-      console.log(data);
-    } catch (error) {
-      // Handle any errors that occurred during the request
-      console.error(error);
-    }
-  };
+  const url = API_URL('bookedTreatment');
 
   useEffect(() => {
-    // Example usage: automatically book treatment when component mounts
-    bookTreatment();
-  }, []);
+    const fetchBookedTreatment = async () => {
+      try {
+        console.log('Fetching booked treatment...'); // Log before fetch
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            Authorization: user.accessToken
+          }
+        });
+
+        console.log('Fetch completed:', response); // Log after fetch
+        if (response.ok) {
+          // Handle successful response and update the Redux store with booked treatments
+          // For example, dispatch an action to update the booked treatments in the Redux store
+          dispatch(/* your action here */);
+        } else {
+          // Handle unsuccessful response and display an error message to the user
+        }
+      } catch (error) {
+        // Handle any errors that occurred during the request
+        console.error(error);
+      }
+    };
+
+    if (user.accessToken) {
+      fetchBookedTreatment();
+    }
+  }, [url, user.accessToken, dispatch]);
 
   return (
     <>

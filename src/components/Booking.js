@@ -2,6 +2,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 import classNames from 'classnames';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import { setSelectedTreatment } from '../reducers/treatments';
 import 'react-calendar/dist/Calendar.css';
 import { setAccessToken } from '../reducers/user';
@@ -37,26 +39,40 @@ const Booking = () => {
     setPickedDate(date);
   };
 
+  // Use the useNavigate hook to get the navigate function for navigation
+  const navigate = useNavigate();
+
   const handleConfirmDate = async () => {
     const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`
+        Authorization: accessToken
       },
       body: JSON.stringify({ treatmentId: selectedTreatment, pickedDate })
     };
 
-    const url = API_URL('booktreatment');
+    const url = API_URL('bookTreatment');
 
     try {
       const response = await fetch(url, options);
       const data = await response.json();
       if (data.success) {
-        console.log('Treatment booked successfully');
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Your treatment has been booked.',
+          confirmButtonColor: 'var(--submit-button-color-two)'
+        });
         dispatch(setSelectedTreatment(null)); // Clear the selected treatment after booking
+        navigate('/userinfo'); // Navigate to /userinfo
       } else {
-        console.log('Failed to book treatment');
+        Swal.fire({
+          icon: 'error',
+          title: 'Sorry',
+          text: 'We\'re sorry, your treatment could not be booked. Please, try again.',
+          confirmButtonColor: 'var(--submit-button-color-two)'
+        });
       }
     } catch (error) {
       console.log('Error occurred while booking treatment:', error);
