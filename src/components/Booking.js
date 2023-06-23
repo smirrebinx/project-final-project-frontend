@@ -33,20 +33,23 @@ const Booking = () => {
   }, [dispatch]);
 
   const handleDateChange = (date) => {
-    setPickedDate(date);
+    const londonTimezoneOffset = new Date().getTimezoneOffset() / 60; // Calculate the offset between the user's local timezone and the London timezone in hours
+    const pickedDateInLondonTimezone = new Date(date.getTime() - londonTimezoneOffset * 60 * 60 * 1000); // Adjust the picked date to the London timezone
+    setPickedDate(pickedDateInLondonTimezone);
   };
 
   // Use the useNavigate hook to get the navigate function for navigation
   const navigate = useNavigate();
 
   const handleConfirmDate = async () => {
+    const formattedDate = pickedDate.toISOString().split('T')[0]; // Extract the date portion without the time
     const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: accessToken
       },
-      body: JSON.stringify({ pickedDate: pickedDate.toISOString() }) // Send pickedDate directly
+      body: JSON.stringify({ pickedDate: formattedDate })
     };
 
     const url = API_URL('booktreatment');
@@ -92,8 +95,7 @@ const Booking = () => {
         <div>
           <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
           {pickedDate && (
-            <p> Selected Date: {pickedDate.toLocaleDateString('en-GB')}
-            </p>
+            <p>Selected Date: {pickedDate.toLocaleDateString('en-GB', { timeZone: 'Europe/London' })}</p>
           )}
           <StyledButton type="submit" onClick={handleConfirmDate}>
             Confirm Date
