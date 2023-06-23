@@ -1,10 +1,10 @@
+/* eslint-disable max-len */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 import classNames from 'classnames';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import { setSelectedTreatment } from '../reducers/treatments';
 import 'react-calendar/dist/Calendar.css';
 import { setAccessToken } from '../reducers/user';
 import { CalendarContainer, StyledButton, StyledParagraphBooking } from './BookingStyling';
@@ -19,9 +19,6 @@ const PickedDateContext = createContext();
 const Booking = () => {
   const { sticky, stickyRef } = useSticky();
   const [pickedDate, setPickedDate] = useState(new Date());
-
-  // Access the selected treatment ID from the Redux store
-  const selectedTreatment = useSelector((store) => store.treatments.selectedTreatment);
 
   // Access the access token from Redux store
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -49,10 +46,10 @@ const Booking = () => {
         'Content-Type': 'application/json',
         Authorization: accessToken
       },
-      body: JSON.stringify({ treatmentId: selectedTreatment, pickedDate })
+      body: JSON.stringify({ pickedDate: pickedDate.toISOString() }) // Send pickedDate directly
     };
 
-    const url = API_URL('bookTreatment');
+    const url = API_URL('booktreatment');
 
     try {
       const response = await fetch(url, options);
@@ -64,13 +61,12 @@ const Booking = () => {
           text: 'Your treatment has been booked.',
           confirmButtonColor: 'var(--submit-button-color-two)'
         });
-        dispatch(setSelectedTreatment(null)); // Clear the selected treatment after booking
         navigate('/userinfo'); // Navigate to /userinfo
       } else {
         Swal.fire({
           icon: 'error',
           title: 'Sorry',
-          text: 'We\'re sorry, your treatment could not be booked. Please, try again.',
+          text: "We're sorry, your treatment could not be booked. Please try again.",
           confirmButtonColor: 'var(--submit-button-color-two)'
         });
       }
