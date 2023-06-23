@@ -36,9 +36,7 @@ const user = createSlice({
     setError: (store, action) => {
       store.error = action.payload; // Update the error with the payload
     },
-    setPickedDate: (store, action) => {
-      store.pickedDate = action.payload; // Update the pickedDate with the payload
-    },
+
     loginSuccess: (store, action) => {
       const { accessToken } = action.payload;
       store.accessToken = accessToken;
@@ -52,6 +50,14 @@ const user = createSlice({
       store.accessToken = null; // Clear the accessToken
       store.pickedDate = null; // Clear the pickedDate
       localStorage.removeItem('accessToken'); // Remove access token from local storage
+    },
+    setUserInfo: (store, action) => {
+      const { userId, firstName, lastName, mobilePhone, email } = action.payload;
+      store.userId = userId;
+      store.firstName = firstName;
+      store.lastName = lastName;
+      store.mobilePhone = mobilePhone;
+      store.email = email;
     }
   }
 });
@@ -65,9 +71,9 @@ export const {
   setMobilePhone,
   setEmail,
   setError,
-  setPickedDate, // Add setPickedDate action
   loginSuccess,
-  logout
+  logout,
+  setUserInfo // Add setUserInfo action
 } = user.actions;
 
 export default user; // Export the user slice as the default export
