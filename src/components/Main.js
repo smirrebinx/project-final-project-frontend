@@ -55,7 +55,7 @@ const Main = () => {
         {/* Define routes for different pages */}
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/bookTreatment" element={<Booking onDateChange={handleDateChange} />} />
+        <Route path="/booktreatment" element={<Booking onDateChange={handleDateChange} />} />
         <Route path="/treatment" element={<Cards />} />
         <Route path="/userinfo" element={<UserInfo pickedDate={bookedTreatmentDate || pickedDate} />} />
       </Routes>
