@@ -206,6 +206,7 @@ const Login = () => {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   aria-labelledby="firstName"
+                  placeholder="Minimum 2 characters"
                   required />
 
                 <label htmlFor="lastName">Last Name*</label>
@@ -215,6 +216,7 @@ const Login = () => {
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   aria-labelledby="lastName"
+                  placeholder="Minimum 2 characters"
                   required />
 
                 <label htmlFor="mobilePhone">Mobile Phone*</label>
@@ -225,7 +227,7 @@ const Login = () => {
                   onChange={(e) => setMobilePhone(e.target.value)}
                   aria-labelledby="mobilePhone"
                   pattern="[0-9]+"
-                  placeholder="07XXXXXXXX"
+                  placeholder="0700000000"
                   required />
 
                 <label htmlFor="registerEmail">Email*</label>
@@ -235,6 +237,7 @@ const Login = () => {
                   value={registerEmail}
                   onChange={(e) => setRegisterEmail(e.target.value)}
                   aria-labelledby="email-register"
+                  placeholder="email@.com"
                   required />
 
                 <label htmlFor="registerPassword">Password*</label>
@@ -245,6 +248,7 @@ const Login = () => {
                   onChange={(e) => setRegisterPassword(e.target.value)}
                   autoComplete="off"
                   aria-labelledby="password-register"
+                  placeholder="Between 15 and 20 characters"
                   required />
                 <button type="submit">Complete Registration</button>
               </form>
