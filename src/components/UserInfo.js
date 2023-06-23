@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import useSticky from './useSticky';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
@@ -11,43 +12,37 @@ import { API_URL } from '../utils/urls';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
-  const dispatch = useDispatch();
-
-  // Retrieve user information from the Redux store
+  const [pickedDate, setPickedDate] = useState(null); // Add state for picked date
   const user = useSelector((state) => state.user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
 
-  const url = API_URL('bookedTreatment');
-
   useEffect(() => {
-    const fetchBookedTreatment = async () => {
-      try {
-        console.log('Fetching booked treatment...'); // Log before fetch
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            Authorization: user.accessToken
-          }
-        });
+    const fetchPickedDate = async () => {
+      const url = API_URL('bookedTreatment');
 
-        console.log('Fetch completed:', response); // Log after fetch
-        if (response.ok) {
-          // Handle successful response and update the Redux store with booked treatments
-          // For example, dispatch an action to update the booked treatments in the Redux store
-          dispatch(/* your action here */);
-        } else {
-          // Handle unsuccessful response and display an error message to the user
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: user.accessToken
+        }
+      };
+
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        if (data.success && data.bookedTreatments.length > 0) {
+          const latestBooking = data.bookedTreatments[data.bookedTreatments.length - 1];
+          setPickedDate(latestBooking.date);
         }
       } catch (error) {
-        // Handle any errors that occurred during the request
-        console.error(error);
+        console.log('Error occurred while fetching picked date:', error);
       }
     };
 
     if (user.accessToken) {
-      fetchBookedTreatment();
+      fetchPickedDate();
     }
-  }, [url, user.accessToken, dispatch]);
+  }, [user.accessToken]);
 
   return (
     <>
@@ -73,12 +68,14 @@ const UserInfo = () => {
                   </FlexboxUserInfo>
                 </Flexbox>
               </StyledFieldset>
-              {/* Display picked date and booked treatments */}
+              {/* Display picked date */}
               <StyledFieldset>
                 <StyledLegend>Upcoming bookings</StyledLegend>
-                <ParagraphUserInfo>Treatment Date: </ParagraphUserInfo>
-                {bookedTreatment ? (
-                  <ParagraphUserInfo>Treatment: {bookedTreatment.name}</ParagraphUserInfo>
+                {pickedDate ? (
+                  <>
+                    <ParagraphUserInfo>Picked Date: {pickedDate}</ParagraphUserInfo>
+                    <ParagraphUserInfo>Treatment: {bookedTreatment ? bookedTreatment.name : ''}</ParagraphUserInfo>
+                  </>
                 ) : (
                   // Display message if no treatments are booked
                   <ParagraphUserInfo>No booked treatments</ParagraphUserInfo>
