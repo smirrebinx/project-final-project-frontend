@@ -73,7 +73,7 @@ const UserInfo = () => {
                 <StyledLegend>Upcoming bookings</StyledLegend>
                 {pickedDate ? (
                   <>
-                    <ParagraphUserInfo>Picked Date: {pickedDate}</ParagraphUserInfo>
+                    <ParagraphUserInfo>Picked Date: {new Date(pickedDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</ParagraphUserInfo>
                     <ParagraphUserInfo>Treatment: {bookedTreatment ? bookedTreatment.name : ''}</ParagraphUserInfo>
                   </>
                 ) : (
