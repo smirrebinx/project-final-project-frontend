@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from 'components/Main';
 import { Provider, useSelector } from 'react-redux';
-import { configureStore, combineReducers, compose } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
 import user from 'reducers/user';
 import treatments from 'reducers/treatments';
@@ -20,15 +20,11 @@ if (persistedStateJSON) {
   persistedState = JSON.parse(persistedStateJSON);
 }
 
-// Compose enhancers for Redux DevTools extension
-const composedEnhancers = (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-
 // Configure the Redux store
 const store = configureStore({
   reducer: rootReducer,
   preloadedState: persistedState,
-  middleware: [thunkMiddleware],
-  enhancers: composedEnhancers
+  middleware: [thunkMiddleware]
 });
 
 // Component that wraps the Main component and handles user access token changes
