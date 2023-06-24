@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import menuBars from '../assets/menu_FILL0_wght400_GRAD0_opsz48.svg';
+import closeBars from '../assets/close_FILL0_wght400_GRAD0_opsz48.svg';
 import { StyledMenuBarButton } from './NavbarStyling';
 
 const NavbarMenu = () => {
@@ -13,7 +14,7 @@ const NavbarMenu = () => {
   return (
     <nav>
       <StyledMenuBarButton type="button" onClick={toggleMenu}>
-        <img src={menuBars} alt="Menu" />
+        <img src={isMenuOpen ? closeBars : menuBars} alt={isMenuOpen ? 'Close' : 'Menu'} />
       </StyledMenuBarButton>
       <div className={`navbar-overlay ${isMenuOpen ? 'active' : ''}`}>
         {isMenuOpen && ( // Render the links only when the menu is open

@@ -159,3 +159,16 @@ export const StyledParagraph = styled.p`
     font-size: 1.2rem;
   }
 `;
+
+export const GoToTreatmentButton = styled.button`
+  display: flex;
+  background-color: var(--navbar-button-color-one);
+  padding: 1rem;
+  border: none;
+  color: var(--navbar-color-one);
+  text-transform: uppercase;
+  font-family: var(--paragraph-font-family-one);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+`;
