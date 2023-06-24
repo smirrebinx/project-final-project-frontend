@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Nav = styled.nav`
     min-width: 0;
@@ -177,6 +178,12 @@ export const NavItem = styled.a`
   @media (max-width: 768px) {
       cursor: pointer;
   }
+`;
+
+export const StyledNavLink = styled(NavLink)`
+text-decoration: none;
+color: rgba(0, 0, 0, 0.5);
+font-weight: 600;
 `;
 
 export const StyledMenuBarButton = styled.button`

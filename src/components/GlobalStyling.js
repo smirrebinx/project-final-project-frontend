@@ -172,3 +172,7 @@ export const GoToTreatmentButton = styled.button`
   letter-spacing: 0.05em;
   cursor: pointer;
 `;
+
+export const StyledLi = styled.li`
+list-style: none;
+`;
