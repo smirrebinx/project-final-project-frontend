@@ -16,6 +16,7 @@ import iconHaircut from '../assets/cardsvgs/cut_FILL0_wght100_GRAD0_opsz40.svg';
 import iconHairDye from '../assets/cardsvgs/brush_FILL0_wght100_GRAD0_opsz48.svg';
 import iconHaircutDye from '../assets/cardsvgs/your_trips_FILL0_wght100_GRAD0_opsz48.svg';
 import iconHairStyling from '../assets/cardsvgs/auto_fix_FILL0_wght100_GRAD0_opsz48.svg';
+import NavbarMenu from './NavbarMenu';
 
 // Function to get the appropriate treatment icon based on the treatment name
 const getTreatmentIcon = (treatmentName) => {
@@ -83,6 +84,7 @@ const Cards = () => {
       {/* Sticky navigation */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>What Would You Like to Do?</StyledNavHeaderTwo>
+        <NavbarMenu />
       </StickyNavTwo>
       <div>
         {isLoading ? (

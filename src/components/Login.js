@@ -12,6 +12,7 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraph, StyledQuestionIcon, StyledQuestionImage } from './GlobalStyling';
 import svgIcon from '../assets/help_FILL0_wght400_GRAD0_opsz48.svg';
 import ValidationInfo from './ValidationInfo';
+import NavbarMenu from './NavbarMenu';
 
 const Login = () => {
   const { sticky, stickyRef } = useSticky();
@@ -153,6 +154,7 @@ const Login = () => {
     <>
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>Log In or Register</StyledNavHeaderTwo>
+        <NavbarMenu />
       </StickyNavTwo>
       <OuterWrapper>
         <InnerWrapper>

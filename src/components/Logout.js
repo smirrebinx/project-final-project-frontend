@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledCancelCloseButton, StyledLogOutButton } from './GlobalStyling';
 
 const Logout = ({ handleCloseLogout, handleLogout }) => {
   const handleLogoutClick = () => {
@@ -22,26 +23,14 @@ const Logout = ({ handleCloseLogout, handleLogout }) => {
       }}>
       <div style={{ background: 'white', padding: '16px' }}>
         <p>Are you sure you want to log out?</p>
-        <button
-          style={{ cursor: 'pointer',
-            background: 'transparent',
-            padding: '0.4rem',
-            border: '2px solid var(--submit-button-color-two)',
-            borderRadius: '0.25rem',
-            margin: '1rem' }}
+        <StyledLogOutButton
           type="button"
           onClick={handleLogoutClick}>Log out
-        </button>
-        <button
-          style={{ cursor: 'pointer',
-            background: 'transparent',
-            padding: '0.4rem',
-            border: '2px solid var(--submit-button-color-two)',
-            borderRadius: '0.25rem',
-            margin: '1rem' }}
+        </StyledLogOutButton>
+        <StyledCancelCloseButton
           type="button"
           onClick={handleCloseLogout}>Cancel
-        </button>
+        </StyledCancelCloseButton>
       </div>
     </div>
   );

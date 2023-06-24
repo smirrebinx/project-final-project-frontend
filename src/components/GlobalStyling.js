@@ -39,6 +39,28 @@ export const StyledLink = styled(Link)`
   }
 `;
 
+export const ToggleButton = styled.button`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 10;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+  @media (min-width: 667px){
+  display: none;
+}
+  @media (min-width: 1024px){
+    display: none;
+}
+`
+
 const glideInAnimation = keyframes`
   from {
     transform: translateX(-100%);
@@ -90,15 +112,29 @@ border: 1px solid rgba(0, 0, 0, 0.1);
   }
 `;
 
+export const StyledLogOutButton = styled.button`
+    cursor: pointer;
+    padding: 0.4rem;
+    border: 2px solid var(--submit-button-color-two);
+    border-radius: 0.25rem;
+    text-align: center;
+    margin: 1rem 1rem;
+`;
+
+export const StyledCancelCloseButton = styled.button`
+    cursor: pointer;
+    padding: 0.4rem;
+    border: 2px solid var(--submit-button-color-two);
+    border-radius: 0.25rem;
+    text-align: center;
+    margin: 1rem 1rem;
+`;
+
 export const StyledAvatarLoginOut = styled.div`
   display: grid;
   justify-content: end;
   align-content: start;
   position: relative;
-
-   /* @media (min-width: 1024px) {
-      margin-right: 10rem;
-   } */
 `;
 
 export const StyledQuestionImage = styled.img`

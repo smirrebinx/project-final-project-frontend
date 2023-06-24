@@ -9,6 +9,7 @@ import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledImage, StyledLegend } from './UserInfoStyling';
 import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 import { API_URL } from '../utils/urls';
+import NavbarMenu from './NavbarMenu';
 
 const UserInfo = () => {
   const { sticky, stickyRef } = useSticky();
@@ -49,6 +50,7 @@ const UserInfo = () => {
       {/* Sticky navigation header */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>
+        <NavbarMenu />
       </StickyNavTwo>
 
       <OuterWrapper>
