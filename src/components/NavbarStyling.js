@@ -154,6 +154,10 @@ export const StyledNavHeaderTwo = styled.h1`
   padding-top: 1rem;
   padding-bottom: 1rem;
 
+  @media (min-width: 1024px) {
+    margin: 0 auto;
+  }
+
 `;
 
 export const NavIcon = styled.div`
