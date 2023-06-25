@@ -178,9 +178,11 @@ font-weight: 700;
 `;
 
 export const StyledMenuBarButton = styled.button`
-background: transparent;
-border: none;
-cursor: pointer;
+ &&& {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
 `;
 
 export const StyledNavButtonLinkDiv = styled.div`

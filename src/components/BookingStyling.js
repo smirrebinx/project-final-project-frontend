@@ -11,7 +11,7 @@ export const CalendarContainer = styled.div`
   padding: 0.25rem;
   border-radius: 3px;
 
-  button {
+ button {
     background-color: transparent;
     border: solid 0.0625rem rgba(0, 0, 0, 0.1);
     padding-top: 0.8rem;
