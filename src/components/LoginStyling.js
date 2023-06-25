@@ -47,6 +47,7 @@ export const FormWrapper = styled.div`
     margin: 0.625rem 0.125rem;
     cursor: pointer;
     width: 100%;
+    color: #000;
   }
 `;
 
