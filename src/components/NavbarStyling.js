@@ -222,9 +222,9 @@ export const NavbarOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5); 
   z-index: 100; /* Ensure it appears on top of other elements */
-  display: none; /* Hide by default */
+  display: none; 
 
   &.active {
     display: block; /* Show the overlay when active */

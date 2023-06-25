@@ -8,11 +8,11 @@ const user = createSlice({
     userId: null,
     accessToken: null,
     error: null,
-    firstName: null, // Add firstName property
-    lastName: null, // Add lastName property
-    mobilePhone: null, // Add mobilePhone property
-    email: null, // Add email property
-    pickedDate: [] // Add pickedDate property
+    firstName: null,
+    lastName: null,
+    mobilePhone: null,
+    email: null,
+    pickedDate: []
   },
   reducers: {
     setUserId: (store, action) => {
