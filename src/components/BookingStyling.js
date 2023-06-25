@@ -24,6 +24,7 @@ export const CalendarContainer = styled.div`
     width: 90%;
     height: auto;
     margin: 0 auto;
+    box-shadow: var(--box-shadow);
 
      @media (min-width: 1024px) {
     width: 25rem;
@@ -56,4 +57,5 @@ export const StyledButton = styled.button`
   margin: 0.625rem 0.125rem;
   cursor: pointer;
   width: 100%;
+  box-shadow: var(--box-shadow);
 `;

@@ -33,7 +33,7 @@ export const ParagraphUserInfo = styled.p`
 export const StyledLegend = styled.legend`
   font-family: var(--second-headings-font-family-two);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: var(--second-headings-font-color-two);
 `;
@@ -41,6 +41,7 @@ export const StyledLegend = styled.legend`
 export const StyledFieldset = styled.fieldset`
   margin-top: 0;
   margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
 
    @media (min-width: 1024px) {
     width: 31rem;

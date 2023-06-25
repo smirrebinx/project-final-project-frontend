@@ -19,7 +19,8 @@ const Logout = ({ handleCloseLogout, handleLogout }) => {
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 9999,
-        border: '1px solid rgba(0, 0, 0, 0.1)'
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: 'var(--box-shadow)'
       }}>
       <div style={{ background: 'white', padding: '16px' }}>
         <p>Are you sure you want to log out?</p>
