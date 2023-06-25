@@ -4,6 +4,7 @@ import { CardReview } from './GlobalStyling';
 
 const Loading = ({ loader }) => {
   const userReviews = [
+    // User reviews array
     '"I loved the result, my hair looks great and the staff is super nice and the atmosphere is so cosy"',
     '"I had an amazing experience at this salon! The hairstylist was extremely talented and understood exactly what I wanted. My hair turned out beautiful, and I couldn\'t be happier."',
     '"The staff at this salon is top-notch! They were friendly, professional, and made me feel comfortable throughout my visit. I left with a stunning new hairstyle that received many compliments."',
@@ -33,13 +34,15 @@ const Loading = ({ loader }) => {
     let interval;
 
     if (loader) {
+      // Set interval to cycle through user reviews
       interval = setInterval(() => {
         setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % userReviews.length);
-      }, 5000);
+      }, 9000);
     } else {
       setCurrentReviewIndex(0);
     }
 
+    // Cleanup the interval on component unmount
     return () => {
       clearInterval(interval);
     };
@@ -49,6 +52,7 @@ const Loading = ({ loader }) => {
     <div>
       {loader && (
         <>
+          {/* Render a Lottie animation while loading */}
           <Player
             src="https://assets2.lottiefiles.com/packages/lf20_60VYWWdg3U.json"
             className="lottie"
@@ -57,6 +61,7 @@ const Loading = ({ loader }) => {
             speed={1}
             style={{ height: '30rem', width: '30rem' }}
             aria-label="Loading" />
+          {/* Display the current user review */}
           <CardReview>{userReviews[currentReviewIndex]}</CardReview>
         </>
       )}
