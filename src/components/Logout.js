@@ -23,7 +23,7 @@ const Logout = ({ handleCloseLogout, handleLogout }) => {
         boxShadow: 'var(--box-shadow)'
       }}>
       <div style={{ background: 'white', padding: '16px' }}>
-        <p>Are you sure you want to log out?</p>
+        <p>Do you want to log out?</p>
         <StyledLogOutButton
           type="button"
           onClick={handleLogoutClick}>Log out
