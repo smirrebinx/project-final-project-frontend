@@ -16,6 +16,7 @@ const UserInfo = () => {
   const [pickedDate, setPickedDate] = useState(null); // Add state for picked date
   const user = useSelector((state) => state.user);
   const bookedTreatment = useSelector((state) => state.treatments.selectedTreatment);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchPickedDate = async () => {
@@ -48,9 +49,9 @@ const UserInfo = () => {
   return (
     <>
       {/* Sticky navigation header */}
-      <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
+      <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>
-        <NavbarMenu />
+        <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </StickyNavTwo>
 
       <OuterWrapper>

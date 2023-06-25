@@ -20,6 +20,7 @@ const PickedDateContext = createContext();
 const Booking = () => {
   const { sticky, stickyRef } = useSticky();
   const [pickedDate, setPickedDate] = useState(new Date());
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Access the access token from Redux store
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -81,9 +82,9 @@ const Booking = () => {
 
   return (
     <CalendarContainer>
-      <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
+      <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
-        <NavbarMenu />
+        <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </StickyNavTwo>
       {!accessToken && (
         <div>

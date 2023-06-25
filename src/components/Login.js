@@ -25,6 +25,7 @@ const Login = () => {
   const [registerPassword, setRegisterPassword] = useState('');
   const dispatch = useDispatch();
   const [showValidationInfo, setShowValidationInfo] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Handles the validation information when clicking the question mark icon
   const handleClick = () => {
@@ -152,9 +153,9 @@ const Login = () => {
 
   return (
     <>
-      <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
+      <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>Log In or Register</StyledNavHeaderTwo>
-        <NavbarMenu />
+        <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </StickyNavTwo>
       <OuterWrapper>
         <InnerWrapper>

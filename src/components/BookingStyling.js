@@ -57,5 +57,5 @@ export const StyledButton = styled.button`
   margin: 0.625rem 0.125rem;
   cursor: pointer;
   width: 100%;
-  box-shadow: var(--box-shadow);
+  
 `;
