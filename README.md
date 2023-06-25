@@ -1,6 +1,13 @@
 # Final Project Technigo Bootcamp
 This full-stack booking application built with React and Redux enables users to schedule hairdresser appointments through a calendar feature. It ensures secure password storage, input validation, and error handling through an API connecting the frontend and backend.
 
+Design inspired by
+Indtendit Webbyår:
+https://www.bighairmama.se/
+
+and Voady:
+https://bokning.voady.se/bighairmama/bighairmama/
+
 ## Features and Functionality
 The key features of this booking application include:
 
