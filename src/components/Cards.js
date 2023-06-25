@@ -82,7 +82,7 @@ const Cards = () => {
       icon: 'success',
       title: 'Treatment',
       html: `<p>You have selected the ${selectedTreatment.name} treatment.</p>`,
-      confirmButtonColor: 'var(--submit-button-color-two)'
+      confirmButtonColor: 'var(--submit-button-color-two), var(box-shadow: var(--box-shadow))'
     });
   };
 
