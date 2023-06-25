@@ -83,7 +83,7 @@ const Booking = () => {
 
   return (
     <CalendarContainer>
-      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" /></a>
+      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" title="Home" /></a>
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
         <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

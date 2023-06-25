@@ -154,7 +154,7 @@ const Login = () => {
 
   return (
     <>
-      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" /></a>
+      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" title="Home" /></a>
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>Log In or Register</StyledNavHeaderTwo>
         <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

@@ -49,7 +49,7 @@ const UserInfo = () => {
 
   return (
     <>
-      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" /></a>
+      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" title="Home" /></a>
       {/* Sticky navigation header */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>

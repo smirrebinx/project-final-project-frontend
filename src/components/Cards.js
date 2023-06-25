@@ -89,7 +89,7 @@ const Cards = () => {
 
   return (
     <>
-      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" /></a>
+      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" title="Home" /></a>
       {/* Sticky navigation */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>What Would You Like to Do?</StyledNavHeaderTwo>

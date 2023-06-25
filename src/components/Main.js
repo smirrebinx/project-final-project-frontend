@@ -47,7 +47,7 @@ const Main = () => {
         type="button"
         onClick={handleScrollToLogout}
         style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
-        <img src={LogOutIcon} alt="SVG Icon user avatar" />
+        <img src={LogOutIcon} alt="SVG Icon user avatar" title="Log Out" />
       </button>
       <Routes>
         {/* Define routes for different pages */}
