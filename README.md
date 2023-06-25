@@ -1,19 +1,31 @@
-# Technigo React Starter App
+# Final Project Technigo Bootcamp
+This full-stack booking application built with React and Redux enables users to schedule hairdresser appointments through a calendar feature. It ensures secure password storage, input validation, and error handling through an API connecting the frontend and backend.
 
-This app has been generated using `create-react-app`, then cleaned up a little so we have a project with just the elements we need to get started.
+## Features and Functionality
+The key features of this booking application include:
 
-Add components in the `src` folder and use them in `src/app.js` to get started.
+User registration and login: Users can create new accounts and log in to access the application.
 
-## Usage
+Secure password storage: User passwords are encrypted using bcrypt before being stored in the database.
 
-1. On GitHub, click the 'use this template' button to create a new repo on your account
-1. Clone the new repo to your computer
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
+Input validation: The backend API performs validation on user input and returns appropriate error messages if validation fails.
 
-Alternatively, if you don't want a new git repo on your account;
+Authentication: Once logged in, users can access authenticated endpoints and perform various actions within the application, including choosing and booking a treatment and see their user information.
 
-1. Download & extract the [latest release](https://github.com/Technigo/react-starter/releases/latest) from GitHub
-1. Open the directory in the terminal: `cd /path/to/react-starter`
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
+Tech stack: MongoDB, Mongoose, Express, MongoDB Compass, MongoDB Atlas, Google Cloud.
+
+## Installation and Usage Instructions
+To set up and run the project, follow these steps:
+
+Clone the repository to your local machine.
+Install the necessary dependencies by running npm install in the project directory.
+Configure the backend API by providing the required environment variables, such as the database connection details and API keys.
+Start the backend server by running npm start in the backend directory.
+Launch the frontend application by running npm start in the frontend directory.
+Access the application in your web browser at http://localhost:3000.
+
+## Backend repo
+https://github.com/smirrebinx/project-final-project-api-backend.git
+
+## View it live
+https://michelle-wegler-technigo-finalproject.netlify.app
