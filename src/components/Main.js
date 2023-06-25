@@ -11,6 +11,7 @@ import Cards from './Cards';
 import UserInfo from './UserInfo';
 import Logout from './Logout';
 import LogOutIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
+import NotFound from './NotFound';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,8 @@ const Main = () => {
         <Route path="/booktreatment" element={<Booking onDateChange={handleDateChange} />} />
         <Route path="/treatment" element={<Cards />} />
         <Route path="/userinfo" element={<UserInfo pickedDate={bookedTreatmentDate || pickedDate} />} />
+        {/* Catch-all route for NotFound */}
+        <Route path="*" element={<NotFound loader />} />
       </Routes>
       {/* Display logout component if showLogout state is true */}
       {showLogout && <Logout handleCloseLogout={handleCloseLogout} handleLogout={handleLogout} />}
