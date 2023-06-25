@@ -96,6 +96,15 @@ const Cards = () => {
         <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </StickyNavTwo>
       <div>
+        {selectedTreatmentId && (
+          <InnerWrapper>
+            {/* Display confirmation message and button for selected treatment */}
+            <StyledParagraphBookingCards>Confirm your booking or choose another card</StyledParagraphBookingCards>
+            <CardSelected type="button">
+              <StyledLink to="/login">Confirm {selectedTreatmentId.name}</StyledLink>
+            </CardSelected>
+          </InnerWrapper>
+        )}
         {isLoading ? (
           // Display loading animation while treatments are being loaded
           <InnerWrapper>
@@ -120,15 +129,6 @@ const Cards = () => {
                 </Card>
               ))}
             </CardContainer>
-            {selectedTreatmentId && (
-              <>
-                {/* Display confirmation message and button for selected treatment */}
-                <StyledParagraphBookingCards>Confirm your booking or choose another card</StyledParagraphBookingCards>
-                <CardSelected type="button">
-                  <StyledLink to="/login">Confirm {selectedTreatmentId.name}</StyledLink>
-                </CardSelected>
-              </>
-            )}
           </>
         )}
       </div>

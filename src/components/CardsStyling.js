@@ -88,7 +88,7 @@ export const StyledParagraphBookingCards = styled.p`
   text-align: center;
   font-size: 1.3rem;
   font-family: var(--paragraph-font-family-two);
-  margin: 1rem;
+  margin: 2rem;
 
   @media (min-width: 1024px) {
     margin-top: 0;
