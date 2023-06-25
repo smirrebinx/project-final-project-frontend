@@ -30,14 +30,20 @@ const Loading = ({ loader }) => {
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % userReviews.length);
-    }, 60000);
+    let interval;
+
+    if (loader) {
+      interval = setInterval(() => {
+        setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % userReviews.length);
+      }, 5000);
+    } else {
+      setCurrentReviewIndex(0);
+    }
 
     return () => {
       clearInterval(interval);
     };
-  }, [userReviews.length]);
+  }, [loader, userReviews.length]);
 
   if (loader) {
     return (
