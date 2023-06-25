@@ -17,11 +17,12 @@ import { API_URL } from '../utils/urls';
 import Loading from './Loading';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { InnerWrapper, StyledLink } from './GlobalStyling';
+import { InnerWrapper, StyledHomeImage, StyledLink } from './GlobalStyling';
 import iconHaircut from '../assets/cardsvgs/cut_FILL0_wght100_GRAD0_opsz40.svg';
 import iconHairDye from '../assets/cardsvgs/brush_FILL0_wght100_GRAD0_opsz48.svg';
 import iconHaircutDye from '../assets/cardsvgs/your_trips_FILL0_wght100_GRAD0_opsz48.svg';
 import iconHairStyling from '../assets/cardsvgs/auto_fix_FILL0_wght100_GRAD0_opsz48.svg';
+import HomeImage from '../assets/images/HomeImage.jpg';
 import NavbarMenu from './NavbarMenu';
 
 // Function to get the appropriate treatment icon based on the treatment name
@@ -88,6 +89,7 @@ const Cards = () => {
 
   return (
     <>
+      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" /></a>
       {/* Sticky navigation */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>What Would You Like to Do?</StyledNavHeaderTwo>

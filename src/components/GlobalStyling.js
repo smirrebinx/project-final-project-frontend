@@ -27,6 +27,16 @@ export const InnerWrapper = styled.div`
   }
 `;
 
+export const StyledHomeImage = styled.img`
+display: block;
+margin: 0.2rem auto;
+width: 2.8rem;
+position: absolute;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+`;
+
 export const StyledLink = styled(Link)`
   text-decoration: none;
   width: 70%;

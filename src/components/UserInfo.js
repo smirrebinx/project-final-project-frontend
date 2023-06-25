@@ -4,10 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import useSticky from './useSticky';
-import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
+import { InnerWrapper, OuterWrapper, StyledHomeImage, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import { Flexbox, FlexboxUserInfo, ParagraphUserInfo, StyledFieldset, StyledImage, StyledLegend } from './UserInfoStyling';
 import svgIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
+import HomeImage from '../assets/images/HomeImage.jpg';
 import { API_URL } from '../utils/urls';
 import NavbarMenu from './NavbarMenu';
 
@@ -48,6 +49,7 @@ const UserInfo = () => {
 
   return (
     <>
+      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" /></a>
       {/* Sticky navigation header */}
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>User Information</StyledNavHeaderTwo>

@@ -10,9 +10,10 @@ import { setAccessToken } from '../reducers/user';
 import { CalendarContainer, StyledButton, StyledParagraphBooking } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
-import { StyledLink, StyledParagraphAnimation } from './GlobalStyling';
+import { StyledHomeImage, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { API_URL } from '../utils/urls';
 import NavbarMenu from './NavbarMenu';
+import HomeImage from '../assets/images/HomeImage.jpg';
 
 // Create context for picked date
 const PickedDateContext = createContext();
@@ -82,6 +83,7 @@ const Booking = () => {
 
   return (
     <CalendarContainer>
+      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" /></a>
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
         <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

@@ -9,8 +9,9 @@ import { API_URL } from '../utils/urls';
 import { SecondHeaderLogIn, FormWrapper, LineBeforeAndAfter } from './LoginStyling';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { InnerWrapper, OuterWrapper, StyledLink, StyledParagraph, StyledQuestionIcon, StyledQuestionImage } from './GlobalStyling';
+import { InnerWrapper, OuterWrapper, StyledHomeImage, StyledLink, StyledParagraph, StyledQuestionIcon, StyledQuestionImage } from './GlobalStyling';
 import svgIcon from '../assets/help_FILL0_wght400_GRAD0_opsz48.svg';
+import HomeImage from '../assets/images/HomeImage.jpg';
 import ValidationInfo from './ValidationInfo';
 import NavbarMenu from './NavbarMenu';
 
@@ -153,6 +154,7 @@ const Login = () => {
 
   return (
     <>
+      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" /></a>
       <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>Log In or Register</StyledNavHeaderTwo>
         <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
