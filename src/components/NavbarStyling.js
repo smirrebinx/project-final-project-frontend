@@ -132,10 +132,6 @@ export const StickyNavTwo = styled(Nav)`
     width: 65%;
   }
 
-   &.menu-open {
-    top: 0;
-  }
-
   @media (min-width: 1024px) {
     width: 65%;
 
@@ -150,7 +146,7 @@ export const StickyNavTwo = styled(Nav)`
 
 export const StyledNavHeaderTwo = styled.h1`
   font-family: var(--headings-font-family-two);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-align: center;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -164,10 +160,6 @@ export const NavIcon = styled.div`
     font-size: 1.2rem;
     color: #E3F7FC;
     cursor: pointer;
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-  }
 `;
 
 export const MaterialIcon = styled.img`
@@ -189,6 +181,10 @@ export const StyledMenuBarButton = styled.button`
 background: transparent;
 border: none;
 cursor: pointer;
+`;
+
+export const StyledNavButtonLinkDiv = styled.div`
+text-align: right;
 `;
 
 export const MenuContainer = styled.div`
