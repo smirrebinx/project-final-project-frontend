@@ -9,8 +9,8 @@
   --navbar-button-color-one: #5b604d;
   --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 
-  --headings-font-family-two: "Proxima Nova", serif;
-  --paragraph-font-family-two: "Proxima Nova", serif;
+  --headings-font-family-two: 'PT Sans Narrow', sans-serif;
+  --paragraph-font-family-two: 'PT Sans Narrow', sans-serif;
   --second-headings-font-color-two: #227d85;
   --submit-button-color-two: #2E868B;
   --navbar-background-color-two: #94B1AA;
