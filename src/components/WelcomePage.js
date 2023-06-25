@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import Header from './Header';
 import useSticky from './useSticky';
 import { GoToTreatmentButton, StickyNav, StyledLinkWrapper } from './NavbarStyling';
-// import Footer from './Footer';
+import Footer from './Footer';
 import { CardReview } from './GlobalStyling';
 import { ContentContainer, PageContainer } from './FooterStyling';
 
@@ -87,7 +87,7 @@ const WelcomePage = () => {
             </CardReview>
           ))}
         </ContentContainer>
-        {/* <Footer /> */}
+        <Footer />
       </PageContainer>
     </>
   );
