@@ -45,20 +45,23 @@ const Loading = ({ loader }) => {
     };
   }, [loader, userReviews.length]);
 
-  if (loader) {
-    return (
-      <Player
-        src="https://assets2.lottiefiles.com/packages/lf20_60VYWWdg3U.json"
-        className="lottie"
-        loop
-        autoplay
-        speed={1}
-        style={{ height: '30rem', width: '30rem' }}
-        aria-label="Loading" />
-    );
-  }
-
-  return <CardReview>{userReviews[currentReviewIndex]}</CardReview>;
+  return (
+    <div>
+      {loader && (
+        <>
+          <Player
+            src="https://assets2.lottiefiles.com/packages/lf20_60VYWWdg3U.json"
+            className="lottie"
+            loop
+            autoplay
+            speed={1}
+            style={{ height: '30rem', width: '30rem' }}
+            aria-label="Loading" />
+          <CardReview>{userReviews[currentReviewIndex]}</CardReview>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Loading;
