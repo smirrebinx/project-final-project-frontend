@@ -142,13 +142,6 @@ export const StyledCancelCloseButton = styled.button`
     box-shadow: var(--box-shadow);
 `;
 
-export const StyledAvatarLoginOut = styled.div`
-  display: grid;
-  justify-content: end;
-  align-content: start;
-  position: relative;
-`;
-
 export const StyledQuestionImage = styled.img`
 width: 2rem;
 opacity: 0.5;
