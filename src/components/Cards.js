@@ -1,12 +1,18 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import treatments, { setSelectedTreatment } from 'reducers/treatments';
 import classNames from 'classnames';
 import Swal from 'sweetalert2';
-import { Card, CardContainer, CardIconContainer, CardSelected, StyledParagraphBookingCards, StyledSecondHeadingCards } from './CardsStyling';
+import {
+  Card,
+  CardContainer,
+  CardIconContainer,
+  CardSelected,
+  StyledParagraphBookingCards,
+  StyledSecondHeadingCards
+} from './CardsStyling';
 import { API_URL } from '../utils/urls';
 import Loading from './Loading';
 import useSticky from './useSticky';
@@ -40,6 +46,7 @@ const Cards = () => {
   const dispatch = useDispatch();
   const allTreatments = useSelector((state) => state.treatments.items);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const url = API_URL('treatments');
 
@@ -82,9 +89,9 @@ const Cards = () => {
   return (
     <>
       {/* Sticky navigation */}
-      <StickyNavTwo ref={stickyRef} className={classNames({ sticky })}>
+      <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
         <StyledNavHeaderTwo>What Would You Like to Do?</StyledNavHeaderTwo>
-        <NavbarMenu />
+        <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </StickyNavTwo>
       <div>
         {isLoading ? (
@@ -96,7 +103,7 @@ const Cards = () => {
         ) : (
           <>
             {/* Display treatment cards */}
-            <CardContainer>
+            <CardContainer className={classNames({ 'menu-open': isMenuOpen })}>
               {allTreatments.map((treatment) => (
                 <Card
                   key={treatment._id}

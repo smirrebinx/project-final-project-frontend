@@ -119,6 +119,7 @@ export const StyledLogOutButton = styled.button`
     border-radius: 0.25rem;
     text-align: center;
     margin: 1rem 1rem;
+    box-shadow: var(--box-shadow);
 `;
 
 export const StyledCancelCloseButton = styled.button`
@@ -128,6 +129,7 @@ export const StyledCancelCloseButton = styled.button`
     border-radius: 0.25rem;
     text-align: center;
     margin: 1rem 1rem;
+    box-shadow: var(--box-shadow);
 `;
 
 export const StyledAvatarLoginOut = styled.div`

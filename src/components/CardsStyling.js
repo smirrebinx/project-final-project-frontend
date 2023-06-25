@@ -12,6 +12,10 @@ export const CardContainer = styled.div`
     width: 60%;
     margin: 6rem auto;
   }
+
+   &.menu-open {
+    top: 0;
+  }
 `;
 
 export const Card = styled.div`
@@ -65,6 +69,7 @@ export const CardSelected = styled.div`
   border-radius: 0.1875rem;
   border: 0.3125rem solid var(--submit-button-color-two);
   cursor: pointer;
+  box-shadow: var(--box-shadow);
 
     @media (min-width: 1024px) {
     font-size: 1.2rem;
@@ -94,3 +99,14 @@ export const StyledParagraphBookingCards = styled.p`
     font-size: 1.2rem;
   }
 `;
+
+export const CardContainerMenuOpen = styled(CardContainer)`
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+export const CardMenuOpenFirstChild = styled.div`
+  order: 1;
+  margin-bottom: 1rem;
+`;
+

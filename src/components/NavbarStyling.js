@@ -17,6 +17,10 @@ export const Nav = styled.nav`
   }
 `;
 
+export const StyledNavbarLinkDiv = styled.div`
+text-align: center;
+`;
+
 export const StickyNav = styled(Nav)`
   position: absolute;
   top: 0;
@@ -52,6 +56,11 @@ export const GoToTreatmentButton = styled.button`
   font-size: 1rem;
   letter-spacing: 0.05em;
   cursor: pointer;
+  
+  &:hover {
+   text-decoration: underline;
+   background-color: rgba(0, 0, 0, 0.5); 
+ }
 `;
 
 export const StyledLinkWrapper = styled.div.attrs({
@@ -107,7 +116,7 @@ export const NavWrapper = styled.div`
 export const StickyNavTwo = styled(Nav)`
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: top;
   position: absolute;
   top: 3rem;
   left: 50%;
@@ -121,6 +130,10 @@ export const StickyNavTwo = styled(Nav)`
     position: fixed;
     top: 0;
     width: 65%;
+  }
+
+   &.menu-open {
+    top: 0;
   }
 
   @media (min-width: 1024px) {
@@ -161,29 +174,15 @@ export const MaterialIcon = styled.img`
 width: 3rem;
 `;
 
-export const NavItem = styled.a`
-  font-size: 1.2rem;
-  text-decoration: none;
-  color: #E3F7FC;
-  margin-right: 2rem;
-  cursor: pointer;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
-  @media (max-width: 768px) {
-      cursor: pointer;
-  }
-`;
-
 export const StyledNavLink = styled(NavLink)`
 text-decoration: none;
 color: rgba(0, 0, 0, 0.5);
-font-weight: 600;
+font-weight: 700;
+
+  &:hover {
+   text-decoration: underline;
+   background-color: rgba(255, 255, 255, 0.3); 
+ }
 `;
 
 export const StyledMenuBarButton = styled.button`

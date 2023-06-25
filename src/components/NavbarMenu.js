@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import menuBars from '../assets/menu_FILL0_wght400_GRAD0_opsz48.svg';
 import closeBars from '../assets/close_FILL0_wght400_GRAD0_opsz48.svg';
-import { StyledMenuBarButton, StyledNavLink } from './NavbarStyling';
+import { StyledMenuBarButton, StyledNavLink, StyledNavbarLinkDiv } from './NavbarStyling';
 import { StyledLi } from './GlobalStyling';
 
-const NavbarMenu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+const NavbarMenu = ({ isMenuOpen, setIsMenuOpen }) => {
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prevState) => !prevState);
   };
 
   return (
@@ -18,7 +16,7 @@ const NavbarMenu = () => {
       </StyledMenuBarButton>
       <div className={`navbar-overlay ${isMenuOpen ? 'active' : ''}`}>
         {isMenuOpen && ( // Render the links only when the menu is open
-          <div className="navbar-links">
+          <StyledNavbarLinkDiv>
             <ul>
               <StyledLi>
                 <StyledNavLink to="/" activeClassName="active" exact>
@@ -46,7 +44,7 @@ const NavbarMenu = () => {
                 </StyledNavLink>
               </StyledLi>
             </ul>
-          </div>
+          </StyledNavbarLinkDiv>
         )}
       </div>
     </nav>
