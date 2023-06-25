@@ -12,10 +12,6 @@ export const CardContainer = styled.div`
     width: 60%;
     margin: 6rem auto;
   }
-
-   &.menu-open {
-    top: 0;
-  }
 `;
 
 export const Card = styled.div`
