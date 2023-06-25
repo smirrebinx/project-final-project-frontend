@@ -178,6 +178,7 @@ font-weight: 700;
 `;
 
 export const StyledMenuBarButton = styled.button`
+/* &&& = Increase the specificity of the component, making it override other button styles on the page.  */
  &&& {
     background: transparent;
     border: none;
