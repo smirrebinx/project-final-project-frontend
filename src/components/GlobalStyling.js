@@ -104,7 +104,7 @@ font-size: 1.4rem;
 width: 30vh;
 height: auto;
 padding: 2rem 2rem 3rem;
-margin: 1rem auto;
+margin: 2rem auto;
 box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.1), 0 0 1px 0 rgba(0, 0, 0, 0.06);
 justify-content: center;
 background-color: #fff;
