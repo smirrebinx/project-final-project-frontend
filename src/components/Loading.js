@@ -52,6 +52,8 @@ const Loading = ({ loader }) => {
     <div>
       {loader && (
         <>
+          {/* Display the current user review */}
+          <CardReview>{userReviews[currentReviewIndex]}</CardReview>
           {/* Render a Lottie animation while loading */}
           <Player
             src="https://assets2.lottiefiles.com/packages/lf20_60VYWWdg3U.json"
@@ -61,8 +63,6 @@ const Loading = ({ loader }) => {
             speed={1}
             style={{ height: '30rem', width: '30rem' }}
             aria-label="Loading" />
-          {/* Display the current user review */}
-          <CardReview>{userReviews[currentReviewIndex]}</CardReview>
         </>
       )}
     </div>
