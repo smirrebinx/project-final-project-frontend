@@ -54,6 +54,8 @@ const Loading = ({ loader }) => {
         <>
           {/* Display the current user review */}
           <CardReview>{userReviews[currentReviewIndex]}</CardReview>
+          {/* Render the "Loading..." text */}
+          <p>Loading...</p>
           {/* Render a Lottie animation while loading */}
           <Player
             src="https://assets2.lottiefiles.com/packages/lf20_60VYWWdg3U.json"
