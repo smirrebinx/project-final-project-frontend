@@ -30,7 +30,7 @@
     "react-router-dom": "^6.12.0",
     "react-scroll": "^1.8.9",
     "styled-components": "^5.3.11",
-    "sweetalert2": "^11.10.7",
+    "sweetalert2": "^11.6.13",
     "typeit-react": "^2.6.4"
   },
   "scripts": {
