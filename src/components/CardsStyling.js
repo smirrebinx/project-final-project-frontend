@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
   display: grid;
   grid-gap: 1rem;
-  margin: 6rem auto;
+  margin: 4rem auto;
   grid-template-columns: repeat(2, minmax(2rem, 1fr));
   width: 95%;
   min-height: 100vh;
