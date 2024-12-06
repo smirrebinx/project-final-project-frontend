@@ -63,7 +63,7 @@ const Loading = ({ loader }) => {
             loop
             autoplay
             speed={1}
-            style={{ height: '30rem', width: '30rem' }}
+            style={{ height: '20rem', width: '20rem' }}
             aria-label="Loading" />
         </>
       )}
