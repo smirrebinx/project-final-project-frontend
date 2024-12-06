@@ -17,7 +17,7 @@ import { API_URL } from '../utils/urls';
 import Loading from './Loading';
 import useSticky from './useSticky';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
-import { InnerWrapper, StyledHomeImage, StyledLink } from './GlobalStyling';
+import { InnerWrapper, OuterWrapper, StyledHomeImage, StyledLink } from './GlobalStyling';
 import iconHaircut from '../assets/cardsvgs/cut_FILL0_wght100_GRAD0_opsz40.svg';
 import iconHairDye from '../assets/cardsvgs/brush_FILL0_wght100_GRAD0_opsz48.svg';
 import iconHaircutDye from '../assets/cardsvgs/your_trips_FILL0_wght100_GRAD0_opsz48.svg';
@@ -97,20 +97,24 @@ const Cards = () => {
       </StickyNavTwo>
       <div>
         {selectedTreatmentId && (
-          <InnerWrapper>
-            {/* Display confirmation message and button for selected treatment */}
-            <StyledParagraphBookingCards>Confirm your booking or choose another card</StyledParagraphBookingCards>
-            <CardSelected type="button">
-              <StyledLink to="/login">Confirm {selectedTreatmentId.name}</StyledLink>
-            </CardSelected>
-          </InnerWrapper>
+          <OuterWrapper>
+            <InnerWrapper>
+              {/* Display confirmation message and button for selected treatment */}
+              <StyledParagraphBookingCards>Confirm your booking or choose another card</StyledParagraphBookingCards>
+              <CardSelected type="button">
+                <StyledLink to="/login">Confirm {selectedTreatmentId.name}</StyledLink>
+              </CardSelected>
+            </InnerWrapper>
+          </OuterWrapper>
         )}
         {isLoading ? (
           // Display loading animation while treatments are being loaded
-          <InnerWrapper>
-            <Loading loader={isLoading} />
-            <span>Loading...</span>
-          </InnerWrapper>
+          <OuterWrapper>
+            <InnerWrapper>
+              <Loading loader={isLoading} />
+              <span>Loading...</span>
+            </InnerWrapper>
+          </OuterWrapper>
         ) : (
           <>
             {/* Display treatment cards */}
