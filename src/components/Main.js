@@ -12,6 +12,7 @@ import UserInfo from './UserInfo';
 import Logout from './Logout';
 import LogOutIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 import NotFound from './NotFound';
+import Footer from './Footer';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -63,8 +64,9 @@ const Main = () => {
       {showLogout && <Logout handleCloseLogout={handleCloseLogout} handleLogout={handleLogout} />}
       {/* Hidden div to mark the position of logout component */}
       <div ref={logoutRef} style={{ display: 'none' }}>
-        Log out
+          Log out
       </div>
+      <Footer />
     </>
   );
 };

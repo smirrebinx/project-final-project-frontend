@@ -8,9 +8,10 @@ export const OuterWrapper = styled.div`
   margin: 2rem auto;
 
   @media (min-width: 1024px) {
-     height: 100vh;
+     min-height: 100vh;
      width: 100vh;
      margin-top: 6rem;
+     margin-bottom: 2rem;
   }
 `;
 

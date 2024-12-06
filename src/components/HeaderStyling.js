@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div`
 display: flex;
 flex-direction: column;
-margin: 4rem auto;
+margin: 1rem auto;
 border: 0.625rem solid var(--circle-border-color-one);
 border-radius: 50%;
 background-color: var(--background-color-one);
-max-width: 28.125rem;
-height: 28.125rem;
+max-width: 20rem;
+max-height: 20rem;
 text-align: center;
 justify-content: center;
 align-items: center;

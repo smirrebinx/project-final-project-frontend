@@ -1,12 +1,12 @@
 :root {
   --headings-font-family-one: 'PT Sans Narrow', sans-serif;
   --paragraph-font-family-one: 'PT Sans Narrow', sans-serif;
-  --border-color-one: #5b604e;
-  --circle-border-color-one: #113125;
+  --border-color-one: #3d3d3b;
+  --circle-border-color-one: #3d3d3b;
   --background-color-one: #E2AE94;
-  --navbar-background-color-one: #697865;
-  --navbar-color-one:#ffffff; 
-  --navbar-button-color-one: #5b604d;
+  --navbar-background-color-one: #94B1AA;
+  --navbar-color-one:#3d3d3b; 
+  --navbar-button-color-one:#E2AE94;
   --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 
   --headings-font-family-two: 'PT Sans Narrow', sans-serif;
@@ -14,12 +14,16 @@
   --second-headings-font-color-two: #227d85;
   --submit-button-color-two: #2E868B;
   --navbar-background-color-two: #94B1AA;
-  --navbar-color-two:#ffffff;
-  
-  --footer-background-color: rgba(105, 120, 101);
+  --navbar-color-two:#000;
+  --footer-color-one:#000;
+  --footer-background-color: #94B1AA;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
+
+html, body {
+  height: 100%;
+}
 
 body {
   margin: 0;

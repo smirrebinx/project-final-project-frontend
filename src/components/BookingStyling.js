@@ -6,8 +6,7 @@ export const CalendarContainer = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 37.5rem;
-  margin: auto;
-  margin-top: 1.25rem;
+  margin: 0 auto;
   padding: 0.25rem;
   border-radius: 3px;
 
@@ -28,7 +27,6 @@ export const CalendarContainer = styled.div`
 
      @media (min-width: 1024px) {
     width: 25rem;
-    height: auto;
   }
 }
 

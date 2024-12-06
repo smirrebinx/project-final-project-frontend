@@ -10,7 +10,7 @@ import { setAccessToken } from '../reducers/user';
 import { CalendarContainer, StyledButton, StyledParagraphBooking } from './BookingStyling';
 import { StickyNavTwo, StyledNavHeaderTwo } from './NavbarStyling';
 import useSticky from './useSticky';
-import { StyledHomeImage, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
+import { InnerWrapper, OuterWrapper, StyledHomeImage, StyledLink, StyledParagraphAnimation } from './GlobalStyling';
 import { API_URL } from '../utils/urls';
 import NavbarMenu from './NavbarMenu';
 import HomeImage from '../assets/images/HomeImage.jpg';
@@ -82,35 +82,39 @@ const Booking = () => {
   };
 
   return (
-    <CalendarContainer>
-      <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" title="Home" /></a>
-      <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
-        <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
-        <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      </StickyNavTwo>
-      {!accessToken && (
-        <div>
-          <StyledParagraphAnimation>
+    <OuterWrapper>
+      <InnerWrapper>
+        <CalendarContainer>
+          <a href="/"><StyledHomeImage src={HomeImage} alt="Home page" title="Home" /></a>
+          <StickyNavTwo ref={stickyRef} className={classNames({ sticky, 'menu-open': isMenuOpen })}>
+            <StyledNavHeaderTwo>Pick a Treatment Date</StyledNavHeaderTwo>
+            <NavbarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          </StickyNavTwo>
+          {!accessToken && (
+            <div>
+              <StyledParagraphAnimation>
             Please log in to book a treatment.
-          </StyledParagraphAnimation>
-          <StyledLink to="/login">Log in</StyledLink>
-        </div>
-      )}
-      {accessToken && (
-        <div>
-          <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
-          {pickedDate && (
-            <p>Selected Date: {pickedDate.toLocaleDateString('en-GB', { timeZone: 'Europe/London' })}</p>
+              </StyledParagraphAnimation>
+              <StyledLink to="/login">Log in</StyledLink>
+            </div>
           )}
-          <StyledButton type="submit" onClick={handleConfirmDate}>
+          {accessToken && (
+            <div>
+              <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
+              {pickedDate && (
+                <p>Selected Date: {pickedDate.toLocaleDateString('en-GB', { timeZone: 'Europe/London' })}</p>
+              )}
+              <StyledButton type="submit" onClick={handleConfirmDate}>
             Confirm Date
-          </StyledButton>
-        </div>
-      )}
-      <PickedDateContext.Provider value={pickedDate}>
-        <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
-      </PickedDateContext.Provider>
-    </CalendarContainer>
+              </StyledButton>
+            </div>
+          )}
+          <PickedDateContext.Provider value={pickedDate}>
+            <Calendar onChange={handleDateChange} value={pickedDate} locale="en-GB" minDate={new Date()} />
+          </PickedDateContext.Provider>
+        </CalendarContainer>
+      </InnerWrapper>
+    </OuterWrapper>
   );
 };
 

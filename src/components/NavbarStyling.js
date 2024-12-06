@@ -59,7 +59,6 @@ export const GoToTreatmentButton = styled.button`
   
   &:hover {
    text-decoration: underline;
-   background-color: rgba(0, 0, 0, 0.5); 
  }
 `;
 
