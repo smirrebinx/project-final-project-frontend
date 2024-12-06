@@ -6,7 +6,6 @@ export const CardContainer = styled.div`
   margin: 4rem auto;
   grid-template-columns: repeat(2, minmax(2rem, 1fr));
   width: 95%;
-  min-height: 100vh;
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, minmax(2rem, 1fr));
