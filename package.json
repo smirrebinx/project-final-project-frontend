@@ -29,11 +29,11 @@
     "react-router-dom": "^6.12.0",
     "react-scroll": "^1.8.9",
     "styled-components": "^5.3.11",
-    "sweetalert2": "^11.6.13",
+    "sweetalert2": "^11.17.2",
     "typeit-react": "^2.6.4"
   },
   "overrides": {
-    "@babel/runtime":"^7.26.10"
+    "@babel/runtime": "^7.26.10"
   },
   "scripts": {
     "start": "react-scripts start",
