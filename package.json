@@ -29,7 +29,7 @@
     "react-router-dom": "^6.12.0",
     "react-scroll": "^1.8.9",
     "styled-components": "^5.3.11",
-    "sweetalert2": "^11.6.13",
+    "sweetalert2": "^11.4.8",
     "typeit-react": "^2.6.4"
   },
   "overrides": {
