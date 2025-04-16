@@ -67,19 +67,23 @@ const UserInfo = () => {
                   <StyledImage src={svgIcon} alt="SVG Icon" />
                   <FlexboxUserInfo className="user">
                     <ParagraphUserInfo>
-                      First name:
+                      <strong>First name:</strong>
+                      {' '}
                       {user.firstName}
                     </ParagraphUserInfo>
                     <ParagraphUserInfo>
-                      Last name:
+                      <strong>Last name:</strong>
+                      {' '}
                       {user.lastName}
                     </ParagraphUserInfo>
                     <ParagraphUserInfo>
-                      Phone:
+                      <strong>Phone:</strong>
+                      {' '}
                       {user.mobilePhone}
                     </ParagraphUserInfo>
                     <ParagraphUserInfo>
-                      Email:
+                      <strong>Email:</strong>
+                      {' '}
                       {user.email}
                     </ParagraphUserInfo>
                   </FlexboxUserInfo>
@@ -91,11 +95,13 @@ const UserInfo = () => {
                 {pickedDate ? (
                   <>
                     <ParagraphUserInfo>
-                      Picked Date:
+                      <strong>Picked Date:</strong>
+                      {' '}
                       {new Date(pickedDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                     </ParagraphUserInfo>
                     <ParagraphUserInfo>
-                      Treatment:
+                      <strong>Treatment:</strong>
+                      {' '}
                       {bookedTreatment ? bookedTreatment.name : ''}
                     </ParagraphUserInfo>
                   </>
