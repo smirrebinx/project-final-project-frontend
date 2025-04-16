@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import Header from './Header';
 import useSticky from './useSticky';
 import { GoToTreatmentButton, StickyNav, StyledLinkWrapper } from './NavbarStyling';
-import { CardReview, PageContainer } from './GlobalStyling';
+import { CardReviewWelcome, PageContainer } from './GlobalStyling';
 import { ContentContainer } from './FooterStyling';
 
 const WelcomePage = () => {
@@ -82,9 +82,9 @@ const WelcomePage = () => {
         <ContentContainer>
           <Header />
           {userReviews.map((review, index) => (
-            <CardReview key={index} style={{ display: currentReviewIndex === index ? 'block' : 'none' }}>
+            <CardReviewWelcome key={index} style={{ display: currentReviewIndex === index ? 'block' : 'none' }}>
               {review}
-            </CardReview>
+            </CardReviewWelcome>
           ))}
         </ContentContainer>
       </PageContainer>

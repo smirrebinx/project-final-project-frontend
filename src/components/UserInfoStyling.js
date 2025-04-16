@@ -39,8 +39,8 @@ export const StyledLegend = styled.legend`
 `;
 
 export const StyledFieldset = styled.fieldset`
-  margin-top: 0;
-  margin-bottom: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 0;
   box-shadow: var(--box-shadow);
 
    @media (min-width: 1024px) {

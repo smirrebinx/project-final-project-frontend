@@ -97,7 +97,7 @@ export const StyledParagraphAnimation = styled.p`
   }
 `;
 
-export const CardReview = styled.div`
+export const CardReviewWelcome = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -106,7 +106,7 @@ font-size: 1.4rem;
 width: 30vh;
 height: auto;
 padding: 2rem 2rem 3rem;
-margin: 2rem auto;
+margin: 1rem 0 auto;
 box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.1), 0 0 1px 0 rgba(0, 0, 0, 0.06);
 justify-content: center;
 background-color: #fff;
@@ -117,7 +117,34 @@ border: 1px solid rgba(0, 0, 0, 0.1);
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, minmax(13.9375rem, 1fr));
     max-width: 70%;
-    margin: 0 auto;
+    margin: 2rem 0 auto;
+    font-size: 1.2rem;
+    width: 18.75rem;
+    height: 6.25rem;
+  }
+`;
+
+export const CardReview = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+font-family: var(--paragraph-font-family-one);
+font-size: 1.4rem;
+width: 30vh;
+height: auto;
+padding: 2rem 2rem 3rem;
+margin: 4rem auto;
+box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.1), 0 0 1px 0 rgba(0, 0, 0, 0.06);
+justify-content: center;
+background-color: #fff;
+border-radius: 3px;
+border: 1px solid rgba(0, 0, 0, 0.1);
+
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, minmax(13.9375rem, 1fr));
+    max-width: 70%;
+    margin: 8rem 0 auto;
     font-size: 1.2rem;
     width: 18.75rem;
     height: 6.25rem;
@@ -159,10 +186,9 @@ export const StyledParagraph = styled.p`
   text-align: center;
   font-size: 1.3rem;
   font-family: var(--paragraph-font-family-two);
-  margin: 1.5rem;
+  margin: 4rem 0 2rem 0;
 
   @media (min-width: 1024px) {
-    margin-top: 0;
     font-size: 1.2rem;
   }
 `;

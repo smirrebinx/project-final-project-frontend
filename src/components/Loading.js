@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { CardReview, StyledParagraph } from './GlobalStyling';
+import { CardReview } from './GlobalStyling';
 
 const Loading = ({ loader }) => {
   const userReviews = [
@@ -52,8 +52,6 @@ const Loading = ({ loader }) => {
     <div>
       {loader && (
         <>
-          {/* Render the "Loading..." text */}
-          <StyledParagraph>Loading...</StyledParagraph>
           {/* Display the current user review */}
           <CardReview>{userReviews[currentReviewIndex]}</CardReview>
           {/* Render a Lottie animation while loading */}

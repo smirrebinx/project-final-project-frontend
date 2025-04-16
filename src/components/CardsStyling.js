@@ -3,16 +3,15 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
   display: grid;
   grid-gap: 2rem;
-  margin-top: 8rem;
-  grid-template-columns: repeat(2, minmax(2rem, 1fr));
-  grid-auto-rows: 6rem;
+  margin: 8rem auto 0;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  justify-content: center;
   width: 95%;
   min-height: 50vh;
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, minmax(2rem, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
-    grid-auto-rows: 6rem;
     width: 60%;
     min-height: 100%;
   }
@@ -42,7 +41,7 @@ export const Card = styled.div`
   @media (min-width: 1024px) {
     width: 10.625rem;
     height: 6.875rem;
-    margin: 0 2rem;
+    margin: 0 auto;
   }
 `;
 
@@ -93,10 +92,10 @@ export const StyledParagraphBookingCards = styled.p`
   text-align: center;
   font-size: 1.3rem;
   font-family: var(--paragraph-font-family-two);
-  margin: 2rem;
+  margin: 4rem 0 1rem 0;
 
   @media (min-width: 1024px) {
-    margin-top: 0;
+    margin-top: 4rem;
     font-size: 1.2rem;
   }
 `;

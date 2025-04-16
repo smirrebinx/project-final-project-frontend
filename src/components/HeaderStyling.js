@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 display: flex;
 flex-direction: column;
-margin: 1rem auto;
+margin: 2rem auto;
 border: 0.625rem solid var(--circle-border-color-one);
 border-radius: 50%;
 background-color: var(--background-color-one);
@@ -16,7 +16,7 @@ align-items: center;
 @media screen and (max-width: 768px) {
     max-width: 50vh;
     height: auto;
-    margin: 1rem 1rem auto;
+    margin-top: 2rem;
   }
 `
 export const StyledHeader = styled.h1`

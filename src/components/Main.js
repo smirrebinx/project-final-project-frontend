@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useRef, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { animateScroll } from 'react-scroll';
 import user from 'reducers/user';
@@ -18,6 +18,8 @@ import { PageContainer } from './GlobalStyling';
 const Main = () => {
   const dispatch = useDispatch();
   const logoutRef = useRef(null);
+  const location = useLocation();
+  const isWelcomePage = location.pathname === '/';
   const [showLogout, setShowLogout] = useState(false);
 
   const [pickedDate, setPickedDate] = useState([]);
@@ -45,6 +47,7 @@ const Main = () => {
   return (
     <PageContainer>
       {/* Display user icon with click event to scroll to logout */}
+      {!isWelcomePage && (
       <div style={{
         position: 'absolute',
         top: '0',
@@ -58,6 +61,7 @@ const Main = () => {
           <img src={LogOutIcon} alt="SVG Icon user avatar" title="Log Out" />
         </button>
       </div>
+      )}
       <Routes>
         {/* Define routes for different pages */}
         <Route path="/" element={<WelcomePage />} />
