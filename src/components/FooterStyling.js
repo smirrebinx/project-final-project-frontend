@@ -10,20 +10,28 @@ export const ContentContainer = styled.div`
   padding: 2rem;
 `;
 
+export const NameContainer = styled.div`
+text-align:center;
+`;
+
+export const IconContainer = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+`;
+
 export const FooterContainer = styled.div`
-  height: 2rem;
   width: 100%;
   background-color: var(--footer-background-color);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   margin-top: auto;
-  padding: 1rem;
 
-  @media (max-width: 600px) {
-    flex-direction: column;
-    padding: 0.5rem;
+  @media (min-width: 1064px) {
+    flex-direction: row;
   }
 `;
 
