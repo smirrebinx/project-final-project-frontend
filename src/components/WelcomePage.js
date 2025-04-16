@@ -7,9 +7,8 @@ import classNames from 'classnames';
 import Header from './Header';
 import useSticky from './useSticky';
 import { GoToTreatmentButton, StickyNav, StyledLinkWrapper } from './NavbarStyling';
-import { CardReview } from './GlobalStyling';
-import Footer from './Footer';
-import { ContentContainer, PageContainer } from './FooterStyling';
+import { CardReview, PageContainer } from './GlobalStyling';
+import { ContentContainer } from './FooterStyling';
 
 const WelcomePage = () => {
   // Hook to track sticky behavior of navigation
@@ -89,7 +88,6 @@ const WelcomePage = () => {
           ))}
         </ContentContainer>
       </PageContainer>
-      <Footer />
     </>
   );
 };

@@ -13,6 +13,7 @@ import Logout from './Logout';
 import LogOutIcon from '../assets/account_circle_FILL0_wght100_GRAD0_opsz48.svg';
 import NotFound from './NotFound';
 import Footer from './Footer';
+import { PageContainer } from './GlobalStyling';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const Main = () => {
   };
 
   return (
-    <>
+    <PageContainer>
       {/* Display user icon with click event to scroll to logout */}
       <button
         type="button"
@@ -67,7 +68,7 @@ const Main = () => {
         Log out
       </div>
       <Footer />
-    </>
+    </PageContainer>
   );
 };
 

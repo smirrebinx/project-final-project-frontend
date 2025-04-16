@@ -9,9 +9,9 @@ export const OuterWrapper = styled.div`
   min-height: 100vh;
 
   @media (min-width: 1024px) {
-     min-height: 100vh;
+     min-height: 100%;
      width: 100vh;
-     margin-top: 6rem;
+     margin-top: 2rem;
      margin-bottom: 2rem;
   }
 `;
@@ -25,7 +25,7 @@ export const InnerWrapper = styled.div`
   width: 20rem;
 
   @media (min-width: 1024px) {
-    margin-top: 6rem;
+    margin-top: 2rem;
   }
 `;
 
@@ -182,4 +182,14 @@ export const GoToTreatmentButton = styled.button`
 
 export const StyledLi = styled.li`
 list-style: none;
+`;
+
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
+  margin-bottom: 2rem;
 `;

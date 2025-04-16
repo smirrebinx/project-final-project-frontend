@@ -1,25 +1,16 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const PageContainer = styled.div`
+export const ContentContainer = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden; 
-  box-sizing: border-box;
-  min-height: 100vh;
-  position: relative;
-  margin-bottom: 2rem;
-`;
-
-export const ContentContainer = styled.div`
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  overflow: hidden; /* Prevent content overflow */ 
-  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 `;
 
 export const FooterContainer = styled.div`
-  flex-shrink: 0; 
   height: 2rem;
   width: 100%;
   background-color: var(--footer-background-color);
@@ -27,7 +18,13 @@ export const FooterContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  position: absolute;
+  margin-top: auto;
+  padding: 1rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
 `;
 
 export const StyledFooterHeaderTwo = styled.h3`
