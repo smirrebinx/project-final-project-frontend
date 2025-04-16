@@ -45,12 +45,19 @@ const Main = () => {
   return (
     <PageContainer>
       {/* Display user icon with click event to scroll to logout */}
-      <button
-        type="button"
-        onClick={handleScrollToLogout}
-        style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
-        <img src={LogOutIcon} alt="SVG Icon user avatar" title="Log Out" />
-      </button>
+      <div style={{
+        position: 'absolute',
+        top: '0',
+        left: '1rem',
+        zIndex: 1000
+      }}>
+        <button
+          type="button"
+          onClick={handleScrollToLogout}
+          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
+          <img src={LogOutIcon} alt="SVG Icon user avatar" title="Log Out" />
+        </button>
+      </div>
       <Routes>
         {/* Define routes for different pages */}
         <Route path="/" element={<WelcomePage />} />

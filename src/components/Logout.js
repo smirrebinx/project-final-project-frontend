@@ -10,11 +10,9 @@ const Logout = ({ handleCloseLogout, handleLogout }) => {
   return (
     <div
       style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        margin: '2.3rem',
-        background: 'rgba(0, 0, 0, 0.5)',
+        position: 'absolute',
+        top: '3rem',
+        left: '1rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

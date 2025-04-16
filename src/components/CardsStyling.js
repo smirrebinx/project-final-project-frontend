@@ -2,16 +2,18 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   display: grid;
-  grid-gap: 1rem;
-  margin: 4rem auto;
+  grid-gap: 2rem;
+  margin-top: 8rem;
   grid-template-columns: repeat(2, minmax(2rem, 1fr));
+  grid-auto-rows: 6rem;
   width: 95%;
   min-height: 50vh;
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, minmax(2rem, 1fr));
+    grid-gap: 1rem;
+    grid-auto-rows: 6rem;
     width: 60%;
-    margin: 6rem auto;
     min-height: 100%;
   }
 `;
@@ -20,6 +22,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 6rem;
   height: 8.125rem;
   padding: 1rem;
