@@ -6,7 +6,7 @@ export const OuterWrapper = styled.div`
   justify-content: center;
   text-align: center;
   margin: 2rem auto;
-  min-height: 100vh;
+  min-height: 100%;
 
   @media (min-width: 1024px) {
      min-height: 100%;
