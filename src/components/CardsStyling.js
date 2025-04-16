@@ -12,7 +12,7 @@ export const CardContainer = styled.div`
     grid-template-columns: repeat(4, minmax(2rem, 1fr));
     width: 60%;
     margin: 6rem auto;
-    min-height: 100vh;
+    min-height: 100%;
   }
 `;
 
