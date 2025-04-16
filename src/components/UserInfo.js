@@ -66,10 +66,22 @@ const UserInfo = () => {
                 <Flexbox>
                   <StyledImage src={svgIcon} alt="SVG Icon" />
                   <FlexboxUserInfo className="user">
-                    <ParagraphUserInfo>First name: {user.firstName}</ParagraphUserInfo>
-                    <ParagraphUserInfo>Last name: {user.lastName}</ParagraphUserInfo>
-                    <ParagraphUserInfo>Phone: {user.mobilePhone}</ParagraphUserInfo>
-                    <ParagraphUserInfo>Email: {user.email}</ParagraphUserInfo>
+                    <ParagraphUserInfo>
+                      First name:
+                      {user.firstName}
+                    </ParagraphUserInfo>
+                    <ParagraphUserInfo>
+                      Last name:
+                      {user.lastName}
+                    </ParagraphUserInfo>
+                    <ParagraphUserInfo>
+                      Phone:
+                      {user.mobilePhone}
+                    </ParagraphUserInfo>
+                    <ParagraphUserInfo>
+                      Email:
+                      {user.email}
+                    </ParagraphUserInfo>
                   </FlexboxUserInfo>
                 </Flexbox>
               </StyledFieldset>
@@ -78,8 +90,14 @@ const UserInfo = () => {
                 <StyledLegend>Upcoming bookings</StyledLegend>
                 {pickedDate ? (
                   <>
-                    <ParagraphUserInfo>Picked Date: {new Date(pickedDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</ParagraphUserInfo>
-                    <ParagraphUserInfo>Treatment: {bookedTreatment ? bookedTreatment.name : ''}</ParagraphUserInfo>
+                    <ParagraphUserInfo>
+                      Picked Date:
+                      {new Date(pickedDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </ParagraphUserInfo>
+                    <ParagraphUserInfo>
+                      Treatment:
+                      {bookedTreatment ? bookedTreatment.name : ''}
+                    </ParagraphUserInfo>
                   </>
                 ) : (
                   // Display message if no treatments are booked

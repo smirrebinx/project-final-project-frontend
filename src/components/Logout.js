@@ -26,11 +26,13 @@ const Logout = ({ handleCloseLogout, handleLogout }) => {
         <p>Do you want to log out?</p>
         <StyledLogOutButton
           type="button"
-          onClick={handleLogoutClick}>Log out
+          onClick={handleLogoutClick}>
+          Log out
         </StyledLogOutButton>
         <StyledCancelCloseButton
           type="button"
-          onClick={handleCloseLogout}>Cancel
+          onClick={handleCloseLogout}>
+          Cancel
         </StyledCancelCloseButton>
       </div>
     </div>

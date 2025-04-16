@@ -64,7 +64,7 @@ const Main = () => {
       {showLogout && <Logout handleCloseLogout={handleCloseLogout} handleLogout={handleLogout} />}
       {/* Hidden div to mark the position of logout component */}
       <div ref={logoutRef} style={{ display: 'none' }}>
-          Log out
+        Log out
       </div>
       <Footer />
     </>

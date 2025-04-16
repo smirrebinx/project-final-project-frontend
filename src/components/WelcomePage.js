@@ -66,6 +66,7 @@ const WelcomePage = () => {
         clearInterval(interval);
       };
     }
+    return undefined;
   }, [userReviews.length]);
 
   return (

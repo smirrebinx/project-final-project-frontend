@@ -21,6 +21,8 @@ const NotFound = ({ loader }) => {
       </InnerWrapper>
     );
   }
+
+  return null;
 };
 
 export default NotFound;

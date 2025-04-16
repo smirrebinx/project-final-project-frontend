@@ -93,7 +93,7 @@ const Booking = () => {
           {!accessToken && (
             <div>
               <StyledParagraphAnimation>
-            Please log in to book a treatment.
+                Please log in to book a treatment.
               </StyledParagraphAnimation>
               <StyledLink to="/login">Log in</StyledLink>
             </div>
@@ -102,10 +102,13 @@ const Booking = () => {
             <div>
               <StyledParagraphBooking>Welcome, pick a treatment date</StyledParagraphBooking>
               {pickedDate && (
-                <p>Selected Date: {pickedDate.toLocaleDateString('en-GB', { timeZone: 'Europe/London' })}</p>
+                <p>
+                  Selected Date:
+                  {pickedDate.toLocaleDateString('en-GB', { timeZone: 'Europe/London' })}
+                </p>
               )}
               <StyledButton type="submit" onClick={handleConfirmDate}>
-            Confirm Date
+                Confirm Date
               </StyledButton>
             </div>
           )}

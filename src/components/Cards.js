@@ -102,7 +102,10 @@ const Cards = () => {
               {/* Display confirmation message and button for selected treatment */}
               <StyledParagraphBookingCards>Confirm your booking or choose another card</StyledParagraphBookingCards>
               <CardSelected type="button">
-                <StyledLink to="/login">Confirm {selectedTreatmentId.name}</StyledLink>
+                <StyledLink to="/login">
+                  Confirm
+                  {selectedTreatmentId.name}
+                </StyledLink>
               </CardSelected>
             </InnerWrapper>
           </OuterWrapper>
