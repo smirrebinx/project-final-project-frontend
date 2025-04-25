@@ -1,12 +1,9 @@
 # Final Project Technigo Bootcamp
 This full-stack booking application built with React and Redux enables users to schedule hairdresser appointments through a calendar feature. It ensures secure password storage, input validation, and error handling through an API connecting the frontend and backend.
 
-Design inspired by
-Indtendit Webbyår:
-https://www.bighairmama.se/
-
-and Voady:
-https://bokning.voady.se/bighairmama/bighairmama/
+## View it live
+https://michelle-wegler-technigo-finalproject.netlify.app
+![final-project](https://github.com/smirrebinx/project-final-project-frontend/assets/48405465/5c531b90-85e9-43e3-adf8-a63ca4d973a0)
 
 ## Features and Functionality
 The key features of this booking application include:
@@ -34,6 +31,9 @@ Access the application in your web browser at http://localhost:3000.
 ## Backend repo
 https://github.com/smirrebinx/project-final-project-api-backend.git
 
-## View it live
-https://michelle-wegler-technigo-finalproject.netlify.app
-![final-project](https://github.com/smirrebinx/project-final-project-frontend/assets/48405465/5c531b90-85e9-43e3-adf8-a63ca4d973a0)
+## Design inspired by
+Indtendit Webbyår:
+https://www.bighairmama.se/
+
+Voady:
+https://bokning.voady.se/bighairmama/bighairmama/
